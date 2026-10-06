@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "timeseries.schema.json",
+  "title": "Time-series record",
+  "description": "One or more sampled channels captured together. Works for uniformly sampled waveforms and for irregular readings.",
+  "type": "object",
+  "required": ["schema_version", "record_type", "record_id", "provenance", "channels"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "record_type": { "const": "timeseries" },
+    "record_id": { "type": "string" },
+    "event_id": { "type": "string", "description": "Optional link to the operational event this capture belongs to." },
+    "provenance": { "$ref": "provenance.schema.json" },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "unit", "t0", "values"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "unit": { "type": "string", "description": "Unit string, e.g. V, degC, mm/s, 1 (dimensionless)." },
+          "quantity": { "type": "string", "description": "Free-text physical quantity, e.g. voltage, temperature." },
+          "t0": { "type": "string", "format": "date-time", "description": "Timestamp of the first sample (UTC)." },
+          "sample_rate_hz": { "type": "number", "exclusiveMinimum": 0, "description": "For uniformly sampled data." },
+          "timestamps": {
+            "type": "array",
+            "items": { "type": "string", "format": "date-time" },
+            "description": "For irregularly sampled data; one per value."
+          },
+          "values": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": ["number", "null"] },
+            "description": "Samples in order. null marks a missing sample."
+          },
+          "quality": {
+            "type": "array",
+            "items": { "enum": ["good", "suspect", "bad", "missing"] },
+            "description": "Optional per-sample quality flag."
+          }
+        },
+        "oneOf": [
+          { "required": ["sample_rate_hz"], "not": { "required": ["timestamps"] } },
+          { "required": ["timestamps"], "not": { "required": ["sample_rate_hz"] } }
+        ]
+      }
+    }
+  }
+}

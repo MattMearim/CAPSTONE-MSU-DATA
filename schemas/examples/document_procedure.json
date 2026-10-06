@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "document",
+  "record_id": "doc-000001",
+  "provenance": {
+    "source": { "system": "synthetic-generator" },
+    "asset": { "id": "CAV-01", "domain": "rf" },
+    "acquired_at": "2026-10-06T14:00:00Z",
+    "synthetic": true,
+    "generator": { "name": "synthgen", "version": "0.0.0", "seed": 42 }
+  },
+  "title": "Recovery after a permit trip (example)",
+  "doc_type": "procedure",
+  "revision": "A",
+  "status": "current",
+  "effective_date": "2026-01-15",
+  "applies_to": ["CAV-01", "interlock"],
+  "sections": [
+    { "section_id": "1", "heading": "Scope", "text": "Placeholder text for a fictional procedure." },
+    { "section_id": "2", "heading": "Steps", "text": "Placeholder step list." }
+  ]
+}
