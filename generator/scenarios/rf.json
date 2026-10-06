@@ -1,0 +1,103 @@
+{
+  "domain": "rf",
+  "description": "Fictional RF cavity station. Shapes and numbers are illustrative, not taken from any real machine.",
+  "instrument": "simulated fast digitizer",
+  "assets": [
+    {"id": "CAV-01", "subsystem": "rf station", "location": "Linac segment 1"},
+    {"id": "CAV-02", "subsystem": "rf station", "location": "Linac segment 1"},
+    {"id": "CAV-03", "subsystem": "rf station", "location": "Linac segment 2"},
+    {"id": "CAV-04", "subsystem": "rf station", "location": "Linac segment 2"}
+  ],
+  "operating_modes": ["operating", "operating", "conditioning"],
+  "configuration": {
+    "field_setpoint_mv_per_m": {"min": 5.0, "max": 8.0},
+    "forward_power_setpoint_kw": {"min": 2.0, "max": 4.0},
+    "frequency_mhz": {"choice": [80.5, 322.0]}
+  },
+  "window": {"duration_s": 0.2, "pre_fault_s": 0.1},
+  "imperfections": {"gap_probability": 0.06, "gap_max_fraction": 0.01},
+  "channels": [
+    {"name": "cavity_field", "unit": "MV/m", "quantity": "field amplitude", "sample_rate_hz": 10000, "min": 0,
+     "baseline": [{"type": "constant", "value": {"ref": "field_setpoint_mv_per_m"}},
+                  {"type": "sine", "amp": 0.01, "freq_hz": 60},
+                  {"type": "noise", "sigma": 0.01}]},
+    {"name": "forward_power", "unit": "kW", "quantity": "power", "sample_rate_hz": 10000, "min": 0,
+     "baseline": [{"type": "constant", "value": {"ref": "forward_power_setpoint_kw"}},
+                  {"type": "noise", "sigma": 0.01}]},
+    {"name": "reflected_power", "unit": "kW", "quantity": "power", "sample_rate_hz": 10000, "min": 0,
+     "baseline": [{"type": "constant", "value": 0.05}, {"type": "noise", "sigma": 0.005}]},
+    {"name": "phase_error", "unit": "deg", "quantity": "phase", "sample_rate_hz": 10000,
+     "baseline": [{"type": "sine", "amp": 0.3, "freq_hz": {"min": 20, "max": 80}},
+                  {"type": "noise", "sigma": 0.2}]},
+    {"name": "vacuum_pressure", "unit": "Torr", "quantity": "pressure", "sample_rate_hz": 1000, "min": 0,
+     "baseline": [{"type": "constant", "value": 2e-9}, {"type": "noise", "sigma": 1e-10}]}
+  ],
+  "scenarios": [
+    {"id": "normal", "label": "normal", "weight": 2,
+     "description": "Routine capture, no fault"},
+
+    {"id": "field_collapse", "label": "field_collapse", "weight": 2,
+     "description": "Cavity field collapses first; reflected power rises; interlock removes RF",
+     "effects": [
+       {"channel": "cavity_field", "type": "exp_decay", "tau_s": {"min": 0.0005, "max": 0.002}},
+       {"channel": "reflected_power", "type": "spike", "amp": {"min": 1.0, "max": 2.5}, "width_s": 0.002, "delay_s": 0.0002},
+       {"channel": "forward_power", "type": "exp_decay", "tau_s": 0.0002, "delay_s": 0.002},
+       {"channel": "phase_error", "type": "noise_burst", "sigma": 20, "delay_s": 0.003}
+     ],
+     "events": [
+       {"offset_s": 0.0006, "jitter_s": 0.0001, "name": "FIELD_LOW", "state_from": false, "state_to": true, "severity": "alarm", "message": "Cavity field below low limit"},
+       {"offset_s": 0.0012, "jitter_s": 0.0001, "name": "REFLECTED_POWER_HIGH", "state_from": false, "state_to": true, "severity": "alarm"},
+       {"offset_s": 0.002, "name": "RF_PERMIT", "state_from": "GRANTED", "state_to": "REVOKED", "severity": "trip", "message": "RF permit removed by interlock: field low"},
+       {"offset_s": 0.0021, "name": "RF_DRIVE", "state_from": "ON", "state_to": "OFF", "severity": "info"}
+     ],
+     "documents": ["doc-rf-op-001-c", "doc-rf-ts-004-a"]},
+
+    {"id": "vacuum_burst_arc", "label": "vacuum_arc", "weight": 2,
+     "description": "Vacuum pressure rises, then an arc reflects power and the interlock removes RF",
+     "effects": [
+       {"channel": "vacuum_pressure", "type": "spike", "amp": {"min": 6e-7, "max": 5e-6}, "width_s": 0.03},
+       {"channel": "reflected_power", "type": "spike", "amp": {"min": 0.5, "max": 1.5}, "width_s": 0.001, "delay_s": 0.004},
+       {"channel": "cavity_field", "type": "exp_decay", "tau_s": 0.001, "delay_s": 0.0045},
+       {"channel": "forward_power", "type": "exp_decay", "tau_s": 0.0002, "delay_s": 0.006},
+       {"channel": "phase_error", "type": "noise_burst", "sigma": 20, "delay_s": 0.008}
+     ],
+     "events": [
+       {"offset_s": 0.002, "jitter_s": 0.0005, "name": "VACUUM_HIGH", "state_from": false, "state_to": true, "severity": "alarm", "message": "Vacuum pressure above trip limit"},
+       {"offset_s": 0.0045, "jitter_s": 0.0002, "name": "ARC_DETECTED", "state_from": false, "state_to": true, "severity": "alarm"},
+       {"offset_s": 0.006, "name": "RF_PERMIT", "state_from": "GRANTED", "state_to": "REVOKED", "severity": "trip", "message": "RF permit removed by interlock: vacuum"},
+       {"offset_s": 0.0061, "name": "RF_DRIVE", "state_from": "ON", "state_to": "OFF", "severity": "info"}
+     ],
+     "documents": ["doc-rf-op-001-c", "doc-rf-ts-004-a", "doc-rf-ma-010-a"]},
+
+    {"id": "phase_instability", "label": "phase_instability", "weight": 1,
+     "description": "Phase error oscillation grows for tens of milliseconds until the phase limit trips RF",
+     "effects": [
+       {"channel": "phase_error", "type": "oscillation", "amp": {"min": 0.5, "max": 1.0}, "freq_hz": {"min": 150, "max": 400}, "growth_per_s": {"min": 30, "max": 45}, "delay_s": -0.08, "duration_s": 0.0805},
+       {"channel": "forward_power", "type": "exp_decay", "tau_s": 0.0002, "delay_s": 0.0005},
+       {"channel": "cavity_field", "type": "exp_decay", "tau_s": 0.001, "delay_s": 0.0005},
+       {"channel": "phase_error", "type": "noise_burst", "sigma": 20, "delay_s": 0.003}
+     ],
+     "events": [
+       {"offset_s": -0.02, "jitter_s": 0.003, "name": "PHASE_ERROR_WARN", "state_from": false, "state_to": true, "severity": "warning"},
+       {"offset_s": 0.0, "name": "PHASE_ERROR_HIGH", "state_from": false, "state_to": true, "severity": "alarm", "message": "Phase error above trip limit"},
+       {"offset_s": 0.0005, "name": "RF_PERMIT", "state_from": "GRANTED", "state_to": "REVOKED", "severity": "trip", "message": "RF permit removed by interlock: phase"},
+       {"offset_s": 0.0006, "name": "RF_DRIVE", "state_from": "ON", "state_to": "OFF", "severity": "info"}
+     ],
+     "documents": ["doc-rf-op-001-c", "doc-rf-ts-004-a"]},
+
+    {"id": "reflected_sensor_glitch", "label": "false_trip_sensor_glitch", "weight": 1,
+     "description": "A one-sample glitch on the reflected power reading trips RF although the cavity was healthy",
+     "effects": [
+       {"channel": "reflected_power", "type": "spike", "amp": {"min": 3.0, "max": 5.0}, "width_s": 0.00004},
+       {"channel": "forward_power", "type": "exp_decay", "tau_s": 0.0002, "delay_s": 0.001},
+       {"channel": "cavity_field", "type": "exp_decay", "tau_s": 0.001, "delay_s": 0.001},
+       {"channel": "phase_error", "type": "noise_burst", "sigma": 20, "delay_s": 0.004}
+     ],
+     "events": [
+       {"offset_s": 0.0001, "name": "REFLECTED_POWER_HIGH", "state_from": false, "state_to": true, "severity": "alarm"},
+       {"offset_s": 0.001, "name": "RF_PERMIT", "state_from": "GRANTED", "state_to": "REVOKED", "severity": "trip", "message": "RF permit removed by interlock: reflected power"},
+       {"offset_s": 0.0011, "name": "RF_DRIVE", "state_from": "ON", "state_to": "OFF", "severity": "info"}
+     ],
+     "documents": ["doc-rf-ts-004-a", "doc-rf-op-001-c"]}
+  ]
+}

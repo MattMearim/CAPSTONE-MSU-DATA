@@ -18,7 +18,7 @@ Approve / Correct / Escalate gate.
 | Folder | Contents |
 |---|---|
 | `schemas/` | The data contract: JSON Schemas for the three input types, plus examples |
-| `generator/` | Synthetic Engineering Data Generator (not written yet) |
+| `generator/` | Synthetic Engineering Data Generator; see `generator/README.md` |
 | `ingestion/` | Level 1 |
 | `processing/` | Level 2 |
 | `rag/` | Level 3 |
@@ -43,7 +43,17 @@ No schema contains a field tied to one engineering domain. The domain is a
 free-text label in `provenance.asset.domain` and nothing may branch on it.
 See `docs/schema_overview.md`.
 
-## Getting the data
+## Generating synthetic data
+
+```
+python3 -m generator --seed 42 --events 30    # writes data/generated/seed-42/
+python3 -m generator --list                   # show fields and scenarios
+```
+
+Covers three fields (RF, mechanical, PLC) with 14 scenarios and 12
+procedure documents. See `generator/README.md`.
+
+## Getting real public data
 
 ```
 python3 scripts/fetch_data.py      # download public datasets into data/external/

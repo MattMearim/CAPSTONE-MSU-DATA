@@ -1,0 +1,161 @@
+{
+  "documents": [
+    {
+      "record_id": "doc-rf-op-001-c",
+      "title": "RF-OP-001 Recovery after an RF permit trip",
+      "doc_type": "procedure",
+      "revision": "C",
+      "status": "current",
+      "effective_date": "2025-11-03",
+      "applies_to": [
+        "rf station",
+        "CAV-01",
+        "CAV-02",
+        "CAV-03",
+        "CAV-04"
+      ],
+      "sections": [
+        {
+          "section_id": "1",
+          "heading": "Scope",
+          "text": "This is a fictional procedure written for a synthetic test corpus. It does not describe any real facility. Applies to every RF station. Use it whenever the RF permit changes from GRANTED to REVOKED."
+        },
+        {
+          "section_id": "2",
+          "heading": "Identify the first interlock",
+          "text": "Open the event log for the trip and find the earliest alarm before the RF_PERMIT change. The first alarm, not the last, names the cause. Typical first alarms are FIELD_LOW, VACUUM_HIGH, ARC_DETECTED, PHASE_ERROR_HIGH and REFLECTED_POWER_HIGH. If two alarms are less than 0.2 ms apart, treat their order as uncertain and consult RF-TS-004."
+        },
+        {
+          "section_id": "3",
+          "heading": "Checks before restart",
+          "text": "Confirm vacuum pressure is below 5e-8 Torr. Confirm cooling permits are present. Confirm the cavity field has decayed to zero. If the first alarm was VACUUM_HIGH or ARC_DETECTED, follow RF-MA-010 before continuing."
+        },
+        {
+          "section_id": "4",
+          "heading": "Restart ramp",
+          "text": "Restore the field in three steps: 25 percent, 50 percent and 100 percent of the setpoint. Hold each step for 30 seconds and watch reflected power and vacuum. Abort the ramp if reflected power exceeds 0.5 kW during a hold."
+        },
+        {
+          "section_id": "5",
+          "heading": "Escalation",
+          "text": "Escalate to the RF system owner if the same station trips 3 times within 1 hour, if the cause cannot be identified from the log, or if the trip is suspected to be false. Do not bypass an interlock to keep a station running."
+        },
+        {
+          "section_id": "6",
+          "heading": "Record keeping",
+          "text": "Record the first alarm, the suspected cause, the action taken and the restart time in the event summary. The summary must be reviewed by a person before it is filed."
+        }
+      ]
+    },
+    {
+      "record_id": "doc-rf-op-001-b",
+      "title": "RF-OP-001 Recovery after an RF permit trip",
+      "doc_type": "procedure",
+      "revision": "B",
+      "status": "superseded",
+      "effective_date": "2025-03-10",
+      "applies_to": [
+        "rf station"
+      ],
+      "sections": [
+        {
+          "section_id": "1",
+          "heading": "Scope",
+          "text": "This is a fictional procedure written for a synthetic test corpus. It does not describe any real facility. Applies to every RF station. Superseded by revision C."
+        },
+        {
+          "section_id": "2",
+          "heading": "Identify the first interlock",
+          "text": "Open the event log for the trip and find the earliest alarm before the RF_PERMIT change."
+        },
+        {
+          "section_id": "3",
+          "heading": "Checks before restart",
+          "text": "Confirm vacuum pressure is below 1e-7 Torr. Confirm cooling permits are present."
+        },
+        {
+          "section_id": "4",
+          "heading": "Restart ramp",
+          "text": "Restore the field in two steps: 50 percent and 100 percent of the setpoint. Hold each step for 10 seconds."
+        },
+        {
+          "section_id": "5",
+          "heading": "Escalation",
+          "text": "Escalate to the RF system owner if the same station trips 5 times within 1 hour."
+        }
+      ],
+      "superseded_by": "doc-rf-op-001-c"
+    },
+    {
+      "record_id": "doc-rf-ts-004-a",
+      "title": "RF-TS-004 Telling apart field collapse, arc, phase instability and sensor glitch",
+      "doc_type": "troubleshooting guide",
+      "revision": "A",
+      "status": "current",
+      "effective_date": "2025-06-16",
+      "applies_to": [
+        "rf station"
+      ],
+      "sections": [
+        {
+          "section_id": "1",
+          "heading": "Purpose",
+          "text": "This is a fictional procedure written for a synthetic test corpus. It does not describe any real facility. Describes the waveform signature of each common trip cause so the first alarm can be confirmed against the captured signals."
+        },
+        {
+          "section_id": "2",
+          "heading": "Field collapse",
+          "text": "The cavity field starts to fall while forward power is still at its setpoint. Reflected power rises as the field falls. Forward power is removed only afterwards, about 2 ms later, when the interlock acts. Vacuum pressure stays flat. First alarm is normally FIELD_LOW."
+        },
+        {
+          "section_id": "3",
+          "heading": "Vacuum burst and arc",
+          "text": "Vacuum pressure rises first, by more than two orders of magnitude, a few milliseconds before any change in RF signals. A short reflected power spike follows, then the field falls. First alarm is normally VACUUM_HIGH, followed by ARC_DETECTED."
+        },
+        {
+          "section_id": "4",
+          "heading": "Phase instability",
+          "text": "Phase error shows an oscillation between 150 Hz and 400 Hz whose amplitude grows for tens of milliseconds before the trip. Field and power stay at setpoint until the phase limit is reached. A PHASE_ERROR_WARN normally comes 10 to 30 ms before PHASE_ERROR_HIGH."
+        },
+        {
+          "section_id": "5",
+          "heading": "Sensor glitch (false trip)",
+          "text": "Reflected power shows a spike lasting one or two samples, with no change in cavity field, forward power, phase or vacuum beforehand. The field falls only after the permit is removed. Treat as a suspected false trip: do not reset repeatedly, escalate per RF-OP-001 and request an inspection of the reflected power signal path."
+        },
+        {
+          "section_id": "6",
+          "heading": "When the signature does not match",
+          "text": "If the captured signals do not match any signature above, say so in the summary and escalate. Do not force a classification."
+        }
+      ]
+    },
+    {
+      "record_id": "doc-rf-ma-010-a",
+      "title": "RF-MA-010 Vacuum interlock limits and recovery",
+      "doc_type": "manual",
+      "revision": "A",
+      "status": "current",
+      "effective_date": "2025-02-03",
+      "applies_to": [
+        "rf station"
+      ],
+      "sections": [
+        {
+          "section_id": "1",
+          "heading": "Limits",
+          "text": "This is a fictional procedure written for a synthetic test corpus. It does not describe any real facility. Vacuum warning limit is 1e-7 Torr. Vacuum trip limit is 5e-7 Torr. Normal operating pressure is near 2e-9 Torr."
+        },
+        {
+          "section_id": "2",
+          "heading": "Recovery after a vacuum trip",
+          "text": "Wait until pressure is below 5e-8 Torr and has stayed there for 10 minutes before requesting a permit reset. If pressure does not recover within 30 minutes, escalate to the vacuum group."
+        },
+        {
+          "section_id": "3",
+          "heading": "Repeated arcs",
+          "text": "Two arc events on the same station within 24 hours require conditioning at reduced field before returning to the operating setpoint."
+        }
+      ]
+    }
+  ]
+}
