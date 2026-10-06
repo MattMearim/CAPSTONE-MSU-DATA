@@ -1,0 +1,39 @@
+{
+  "_comment": "Manifest of public datasets pulled by scripts/fetch_data.py. Add an entry here to pull a new source.",
+  "sources": [
+    {
+      "id": "skab",
+      "title": "Skoltech Anomaly Benchmark (SKAB) v0.9",
+      "description": "Real water-circulation pump testbed. 8 sensors at about 1 Hz, with labeled anomalies and changepoints.",
+      "homepage": "https://github.com/waico/SKAB",
+      "license": "GPL-3.0",
+      "citation": "Katser, I. D. and Kozitsin, V. O. (2020). Skoltech Anomaly Benchmark (SKAB). Kaggle. https://doi.org/10.34740/KAGGLE/DSV/1693952",
+      "adapter": "skab",
+      "base_url": "https://raw.githubusercontent.com/waico/SKAB/master/data/",
+      "files": [
+        "anomaly-free/anomaly-free.csv",
+        "valve1/0.csv", "valve1/1.csv", "valve1/2.csv", "valve1/3.csv", "valve1/4.csv", "valve1/5.csv",
+        "valve1/6.csv", "valve1/7.csv", "valve1/8.csv", "valve1/9.csv", "valve1/10.csv", "valve1/11.csv",
+        "valve1/12.csv", "valve1/13.csv", "valve1/14.csv", "valve1/15.csv",
+        "valve2/0.csv", "valve2/1.csv", "valve2/2.csv", "valve2/3.csv",
+        "other/1.csv", "other/2.csv", "other/3.csv", "other/4.csv", "other/5.csv", "other/6.csv", "other/7.csv",
+        "other/8.csv", "other/9.csv", "other/10.csv", "other/11.csv", "other/12.csv", "other/13.csv", "other/14.csv"
+      ]
+    },
+    {
+      "id": "nab",
+      "title": "Numenta Anomaly Benchmark (NAB), known-cause files",
+      "description": "Single-channel real-world series with documented anomaly windows, including an industrial machine temperature sensor that ends in a failure.",
+      "homepage": "https://github.com/numenta/NAB",
+      "license": "MIT",
+      "citation": "Ahmad, S., Lavin, A., Purdy, S., Agha, Z. (2017). Unsupervised real-time anomaly detection for streaming data. Neurocomputing.",
+      "adapter": "nab",
+      "base_url": "https://raw.githubusercontent.com/numenta/NAB/master/",
+      "files": [
+        "data/realKnownCause/machine_temperature_system_failure.csv",
+        "data/realKnownCause/ambient_temperature_system_failure.csv",
+        "labels/combined_windows.json"
+      ]
+    }
+  ]
+}

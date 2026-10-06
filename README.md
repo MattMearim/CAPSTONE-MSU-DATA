@@ -24,7 +24,8 @@ Approve / Correct / Escalate gate.
 | `rag/` | Level 3 |
 | `knowledge/` | Level 4 |
 | `dashboard/` | Streamlit interface |
-| `data/external/` | Downloaded public datasets (not committed to git) |
+| `scripts/` | Data download and conversion scripts |
+| `data/` | `sources.json` lists the datasets; `external/` and `converted/` hold the files (not committed to git) |
 | `tests/` | Automated checks |
 | `docs/` | Design notes and data-source survey |
 
@@ -41,6 +42,16 @@ record carries the same provenance block.
 No schema contains a field tied to one engineering domain. The domain is a
 free-text label in `provenance.asset.domain` and nothing may branch on it.
 See `docs/schema_overview.md`.
+
+## Getting the data
+
+```
+python3 scripts/fetch_data.py      # download public datasets into data/external/
+python3 scripts/convert_data.py    # convert them into canonical records in data/converted/
+```
+
+Sources and licenses are listed in `docs/data_sources.md`. Downloaded and
+converted data are not committed to git.
 
 ## Running the checks
 

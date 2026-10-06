@@ -10,6 +10,7 @@ venv/
 data/external/*
 !data/external/README.md
 data/generated/
+data/converted/
 *.sqlite
 *.db
 chroma/

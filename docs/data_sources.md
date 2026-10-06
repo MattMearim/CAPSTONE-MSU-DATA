@@ -4,7 +4,7 @@ Surveyed 2026-10-06. Purpose: an out-of-domain validation set. The core
 system is built against synthetic RF, mechanical and PLC data. Feeding it
 real data from an unrelated field tests the claim that it is field-agnostic.
 
-Nothing has been downloaded yet.
+No MSU data has been downloaded yet. Two non-MSU engineering datasets have been; see "Data already pulled" below.
 
 ## Summary
 
@@ -87,6 +87,47 @@ datasets was found. MSU Libraries provides researchers access to Dryad,
 so individual MSU datasets may exist there, but none relevant turned up.
 The engineering librarian is the next step if a true engineering dataset
 from MSU is wanted.
+
+## Data already pulled (2026-10-06)
+
+MSU's public data could not be downloaded automatically (see above), so
+the first real data in the project comes from two openly licensed
+engineering datasets. Both are fetched by `scripts/fetch_data.py` and
+converted by `scripts/convert_data.py`.
+
+| Source | What it is | Size | License |
+|---|---|---|---|
+| SKAB v0.9 | Real pump testbed: 2 vibration, motor current and voltage, pressure, 2 temperatures, flow rate, at about 1 Hz. 34 fault experiments plus one fault-free run, with ground-truth anomaly and changepoint labels | 35 files | GPL-3.0 |
+| NAB known-cause | Industrial machine temperature ending in a failure, and an office ambient temperature series, with labeled anomaly windows | 2 files + labels | MIT |
+
+- SKAB: <https://github.com/waico/SKAB>. Cite: Katser, I. D. and
+  Kozitsin, V. O. (2020). Skoltech Anomaly Benchmark (SKAB). Kaggle.
+  <https://doi.org/10.34740/KAGGLE/DSV/1693952>
+- NAB: <https://github.com/numenta/NAB>. Cite: Ahmad, S., Lavin, A.,
+  Purdy, S., Agha, Z. (2017). Unsupervised real-time anomaly detection for
+  streaming data. Neurocomputing.
+
+Converted result: 37 time-series records and 36 event-log records,
+about 404,000 samples, all passing schema validation.
+
+Caveats:
+
+- Neither dataset states a time zone. Timestamps are stored as UTC.
+- NAB does not state units. Degrees Fahrenheit is assumed from the value
+  range and that assumption is recorded in each record's configuration.
+- SKAB's fault scenarios (valve closure, rotor imbalance, cavitation,
+  leaks) are written into each record's configuration, so they can serve
+  as ground truth when testing Level 2 and Level 4.
+- These cover the mechanical domain with real data. RF and PLC still
+  need the synthetic generator.
+
+## Adding another source
+
+1. Add an entry to `data/sources.json` (base URL, file list, license).
+2. If the format is new, add an adapter function in
+   `ingestion/adapters.py`.
+3. Run `python3 scripts/fetch_data.py` then
+   `python3 scripts/convert_data.py`.
 
 ## Recommendation
 
