@@ -1,0 +1,12 @@
+time [s],pressure [kPa],temperature [C],mode,operator_note
+0,1,20,READY,[INFO] Recording started
+1,1,20,RUN,[INFO] Capture continues
+2,NA,20,RUN,[WARNING] Pressure entry unavailable
+3,broken,20,RUN,[WARNING] Inspect this source entry
+3,broken,20,RUN,[WARNING] Inspect this source entry
+4,1000 Pa,20,RUN,[INFO] Pressure has an explicit cell unit
+9,1,20,RUN,[WARNING] Check the recording interval
+10,20,20,RUN,[WARNING] A change was recorded
+11,20,20,RUN,[INFO] Capture continues
+12,20,20,RUN,[INFO] Capture continues
+13,20,20,RUN,[INFO] Capture complete

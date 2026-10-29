@@ -1,0 +1,843 @@
+{
+  "schema_version": "1.0",
+  "fictional": true,
+  "title": "FRIB decision-support fictional test lab",
+  "description": "FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.",
+  "generated_reference_time": "2026-10-11T12:00:00Z",
+  "datasets": [
+    {
+      "id": "RF-TRIP",
+      "title": "RF trip with recorded interlock",
+      "description": "A fictional field collapse with simultaneous reflected-power and tuner-pressure observations.",
+      "path": "sample_data/test_lab/rf_trip.csv",
+      "filename": "rf_trip.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-RF-TRIP",
+        "dataset_name": "RF trip with recorded interlock",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "rf",
+        "column_roles": {
+          "cavity_field [MV/m]": "numeric",
+          "reflected_power [kW]": "numeric",
+          "forward_power [kW]": "numeric",
+          "tuner_pressure [kPa]": "numeric",
+          "RF_INTERLOCK": "category"
+        },
+        "signal_names": {
+          "cavity_field [MV/m]": "cavity_field",
+          "reflected_power [kW]": "reflected_power",
+          "forward_power [kW]": "forward_power",
+          "tuner_pressure [kPa]": "tuner_pressure"
+        }
+      },
+      "expected_outcome": "Valid RF analysis: recorded reference at 0 s, 100 Pa pressure increase and approximately 25 ms field threshold crossing. Coincidence is not causation.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "rf_trip",
+        "signals": 4,
+        "units": {
+          "cavity_field": "V/m",
+          "reflected_power": "W",
+          "forward_power": "W",
+          "tuner_pressure": "Pa"
+        },
+        "features": {
+          "trip_time_s": 0,
+          "pressure_delta": 100,
+          "approx_decay_ms": 25
+        },
+        "feature_tolerance": 0.02,
+        "review": "approve"
+      },
+      "question": "RF cavity trip reflected power tuner pressure evidence review",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 7631,
+      "sha256": "44ebd58ef3a3e68cd4e779fbd87941e7f1b3a866f883d4d5704d5fb136f3276a"
+    },
+    {
+      "id": "RF-XRAY",
+      "title": "X-ray and gradient scan",
+      "description": "Two fictional gradient scans with increasing count-rate; descriptive correlation only.",
+      "path": "sample_data/test_lab/field_emission.csv",
+      "filename": "field_emission.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-RF-XRAY",
+        "dataset_name": "X-ray and gradient scan",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "rf",
+        "time_column": "time_ms",
+        "time_unit": "ms",
+        "column_roles": {
+          "gradient": "numeric",
+          "gradient_unit": "ignore",
+          "xray [counts/s]": "numeric",
+          "conditioning_phase": "category"
+        },
+        "signal_names": {
+          "xray [counts/s]": "xray"
+        },
+        "unit_columns": {
+          "gradient": "gradient_unit"
+        }
+      },
+      "expected_outcome": "Gradient becomes V/m; X-ray remains counts/s. Scatter/trend plots describe co-variation without proving field emission or safe gradient.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "rf_field_emission_trends",
+        "signals": 2,
+        "units": {
+          "gradient": "V/m",
+          "xray": "counts/s"
+        },
+        "features": {
+          "xray_peak": 90,
+          "gradient_min": 5000000.0,
+          "gradient_max": 15000000.0,
+          "xray_gradient_correlation": 1
+        },
+        "feature_tolerance": 1e-06,
+        "review": "escalate"
+      },
+      "question": "RF X-ray gradient scan conditioning descriptive evidence limitations",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 1079,
+      "sha256": "d50ecbe390c218dac292df8b17fad8d6b4587e5d23f8759743f8e4ea931a696f"
+    },
+    {
+      "id": "CRYO",
+      "title": "Cryogenic temperature with capture gap",
+      "description": "Temperature offsets and pressure scaling with a deliberately omitted 12-15 s interval.",
+      "path": "sample_data/test_lab/cryo_temperature.csv",
+      "filename": "cryo_temperature.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-CRYO",
+        "dataset_name": "Cryogenic temperature with capture gap",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "other",
+        "column_roles": {
+          "helium_temperature [C]": "numeric",
+          "helium_pressure [mbar]": "numeric",
+          "mode": "category",
+          "note": "log"
+        },
+        "signal_names": {
+          "helium_temperature [C]": "helium_temperature",
+          "helium_pressure [mbar]": "helium_pressure"
+        },
+        "quality_expectations": {
+          "expected_interval_s": 1,
+          "channels": {
+            "helium_temperature": {
+              "min": 4,
+              "max": 4.3,
+              "expected_stable": true,
+              "stability_tolerance": 0.05
+            }
+          }
+        }
+      },
+      "expected_outcome": "Celsius becomes kelvin and mbar becomes Pa; the capture gap and declared stability/bound differences are flagged. Generic evidence summary, no cryogenic diagnosis.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "mixed_evidence_summary",
+        "signals": 2,
+        "units": {
+          "helium_temperature": "K",
+          "helium_pressure": "Pa"
+        },
+        "first_values": {
+          "helium_temperature": 4.15,
+          "helium_pressure": 100000
+        },
+        "l2_codes": [
+          "RECORDING_GAP",
+          "STABILITY_EXCEEDED",
+          "OUT_OF_BOUNDS"
+        ]
+      },
+      "question": "Cryogenic helium temperature pressure capture gap evidence review",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 1669,
+      "sha256": "c7476d4df7e8051a383dbc816953707049a11d1e6677e1c42bb88db139c2cbbf"
+    },
+    {
+      "id": "PLC",
+      "title": "PLC states, permit and log messages",
+      "description": "Chronological categorical state changes, boolean permit and explicit severity labels.",
+      "path": "sample_data/test_lab/plc_sequence.csv",
+      "filename": "plc_sequence.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-PLC",
+        "dataset_name": "PLC states, permit and log messages",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "plc",
+        "column_roles": {
+          "PLC_STATE": "category",
+          "permit": "category",
+          "pressure [kPa]": "numeric",
+          "note": "log"
+        },
+        "signal_names": {
+          "pressure [kPa]": "pressure"
+        }
+      },
+      "expected_outcome": "RUNNING -> WARNING -> INTERLOCKED is observed; transition times are 4 s and 7 s. Boolean permit remains categorical and all 21 text records survive.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "plc_sequence",
+        "signals": 1,
+        "logs": 21,
+        "state_channels": [
+          "PLC_STATE",
+          "permit"
+        ],
+        "log_levels": [
+          "INFO",
+          "WARNING",
+          "ERROR"
+        ],
+        "features": {
+          "interlock_time_s": 7,
+          "expected_sequence_observed": true
+        },
+        "sequence": [
+          "RUNNING",
+          "WARNING",
+          "INTERLOCKED"
+        ],
+        "review": "correct"
+      },
+      "question": "PLC RUNNING WARNING INTERLOCKED sequence permit log evidence review",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 1066,
+      "sha256": "f6c74ce5c4ee54ab5926ee117d5612df6ef15e45826655b47e189e752d83113c"
+    },
+    {
+      "id": "UNITS",
+      "title": "TSV with mixed scales and offset units",
+      "description": "Tab-separated UTF-8 data, ISO timestamps, per-row voltage units, Fahrenheit and percent.",
+      "path": "sample_data/test_lab/mixed_units.tsv",
+      "filename": "mixed_units.tsv",
+      "format": "tsv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-UNITS",
+        "dataset_name": "TSV with mixed scales and offset units",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "other",
+        "time_column": "datetime",
+        "time_unit": "datetime",
+        "column_roles": {
+          "voltage": "numeric",
+          "voltage_unit": "ignore",
+          "temperature [F]": "numeric",
+          "pressure [kPa]": "numeric",
+          "fraction [%]": "numeric",
+          "note": "log"
+        },
+        "signal_names": {
+          "temperature [F]": "temperature",
+          "pressure [kPa]": "pressure",
+          "fraction [%]": "fraction"
+        },
+        "unit_columns": {
+          "voltage": "voltage_unit"
+        }
+      },
+      "expected_outcome": "Voltage [1,2000,0.5] V, temperature [273.15,293.15,373.15] K, pressure [1000,2000,1000] Pa, fraction [0.25,0.5,1]. Original TSV bytes remain unchanged.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "mixed_evidence_summary",
+        "signals": 4,
+        "values": {
+          "voltage": [
+            1,
+            2000,
+            0.5
+          ],
+          "temperature": [
+            273.15,
+            293.15,
+            373.15
+          ],
+          "pressure": [
+            1000,
+            2000,
+            1000
+          ],
+          "fraction": [
+            0.25,
+            0.5,
+            1
+          ]
+        },
+        "units": {
+          "voltage": "V",
+          "temperature": "K",
+          "pressure": "Pa",
+          "fraction": "1"
+        }
+      },
+      "question": "Mixed units voltage temperature pressure normalization evidence",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 264,
+      "sha256": "d7a606dbf6628790cff6e8f55ad524f7447eea401d948f1b8aab39feb53a6223"
+    },
+    {
+      "id": "REPAIR",
+      "title": "Damaged capture requiring explicit repairs",
+      "description": "An exact duplicate, missing token, invalid numeric cell and malformed row; narrative cells must survive.",
+      "path": "sample_data/test_lab/damaged_capture.csv",
+      "filename": "damaged_capture.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-REPAIR",
+        "dataset_name": "Damaged capture requiring explicit repairs",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "other",
+        "column_roles": {
+          "voltage [V]": "numeric",
+          "note": "log"
+        },
+        "signal_names": {
+          "voltage [V]": "voltage"
+        }
+      },
+      "expected_outcome": "Raw import is blocked with no writes. Only the listed explicit repairs produce a valid copy. Original bytes and repair receipt remain downloadable; no missing measurements are filled.",
+      "expected_issue_codes": [
+        "row_shape",
+        "duplicate_rows",
+        "missing_tokens",
+        "mixed_numeric_text"
+      ],
+      "expected": {
+        "valid": false,
+        "repaired_valid": true,
+        "repair_options": {
+          "_repairs": [
+            {
+              "operation": "drop_exact_duplicate_rows"
+            },
+            {
+              "operation": "mark_missing_tokens",
+              "columns": [
+                "voltage [V]"
+              ]
+            },
+            {
+              "operation": "drop_invalid_numeric_cells",
+              "rows": [
+                6
+              ],
+              "columns": [
+                "voltage [V]"
+              ]
+            },
+            {
+              "operation": "drop_malformed_rows",
+              "rows": [
+                8
+              ]
+            }
+          ]
+        },
+        "processor": "mixed_evidence_summary",
+        "repaired_values": {
+          "voltage": [
+            1,
+            2,
+            5,
+            7
+          ]
+        }
+      },
+      "question": "Missing measurements malformed rows preserve original evidence",
+      "steps": [
+        "Preview the blocked original.",
+        "Select duplicate removal, missing-token marking, invalid cell row 6 and malformed row 8 explicitly.",
+        "Re-preview; verify unchanged narrative and only four numeric measurements.",
+        "Save and compare original and reviewed-copy downloads."
+      ],
+      "size_bytes": 165,
+      "sha256": "329068b3d337784cd037f63a1a2e85f3e1f220b6c8fb0b8089049e545d71bb7a"
+    },
+    {
+      "id": "QUALITY",
+      "title": "Gap, jump and flatline expectations",
+      "description": "An omitted interval, abrupt voltage step and repeated temperature readings with explicit operator expectations.",
+      "path": "sample_data/test_lab/gap_jump_flatline.csv",
+      "filename": "gap_jump_flatline.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-QUALITY",
+        "dataset_name": "Gap, jump and flatline expectations",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "other",
+        "column_roles": {
+          "voltage [V]": "numeric",
+          "temperature [K]": "numeric"
+        },
+        "signal_names": {
+          "voltage [V]": "voltage",
+          "temperature [K]": "temperature"
+        },
+        "quality_expectations": {
+          "expected_interval_s": 1,
+          "required_channels": [
+            "voltage",
+            "temperature",
+            "vacuum"
+          ],
+          "channels": {
+            "voltage": {
+              "max": 10,
+              "expected_stable": true,
+              "stability_tolerance": 2
+            },
+            "temperature": {
+              "flatline_samples": 5
+            }
+          }
+        }
+      },
+      "expected_outcome": "Missing cadence/channel, voltage bound/stability and repeated-sample checks appear. They flag data/declared expectations and do not prove sensor failure or negligence.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "mixed_evidence_summary",
+        "signals": 2,
+        "l2_codes": [
+          "RECORDING_GAP",
+          "MISSING_CHANNEL",
+          "OUT_OF_BOUNDS",
+          "STABILITY_EXCEEDED",
+          "FLATLINE_RUN",
+          "BASELINE_CHANGE"
+        ]
+      },
+      "question": "Voltage gap jump flatline required channel evidence review",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 143,
+      "sha256": "4b351116a1ea4039427e91ffa3d5000b591056ff969fa360f1c9e8c04e64c030"
+    },
+    {
+      "id": "BAD-UNIT",
+      "title": "Incompatible physical dimensions",
+      "description": "Voltage suffixes contradict an explicitly pressure-valued header.",
+      "path": "sample_data/test_lab/incompatible_units.csv",
+      "filename": "incompatible_units.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-BAD-UNIT",
+        "dataset_name": "Incompatible physical dimensions",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "other",
+        "column_roles": {
+          "pressure [kPa]": "numeric"
+        }
+      },
+      "expected_outcome": "Validation blocks the incompatible V/Pa dimension; preview and failed save persist no event.",
+      "expected_issue_codes": [
+        "incompatible_units"
+      ],
+      "expected": {
+        "valid": false
+      },
+      "question": "Why are pressure and voltage units incompatible?",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 40,
+      "sha256": "00ac98e98a6f7e89f3ab35f0af59d60e7a9ae1fc4affc0559c50099aa8b53cab"
+    },
+    {
+      "id": "DBM",
+      "title": "Unsupported logarithmic unit",
+      "description": "An explicit dBm header must not silently become W or dimensionless.",
+      "path": "sample_data/test_lab/unsupported_dbm.csv",
+      "filename": "unsupported_dbm.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-DBM",
+        "dataset_name": "Unsupported logarithmic unit",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "other",
+        "column_roles": {
+          "rf_power [dBm]": "numeric"
+        }
+      },
+      "expected_outcome": "Unsupported dBm is blocked. Convert outside this app with a reviewed reference and import a supported unit; do not relabel numeric readings as W.",
+      "expected_issue_codes": [
+        "unsupported_unit"
+      ],
+      "expected": {
+        "valid": false
+      },
+      "question": "Unsupported logarithmic power units",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 37,
+      "sha256": "ce5992ab7f8c25c680f23e279b3525343a19d768b7b88240c2a49913065c0de5"
+    },
+    {
+      "id": "MECHANICAL",
+      "title": "Mechanical vibration native JSON",
+      "description": "Native event with 200 Hz vibration and 20 Hz temperature channels; alignment preserves both originals.",
+      "path": "sample_data/test_lab/mechanical.json",
+      "filename": "mechanical.json",
+      "format": "json",
+      "import_kind": "event",
+      "options": {
+        "event_id": "LAB-MECHANICAL",
+        "dataset_name": "Mechanical vibration native JSON",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        }
+      },
+      "expected_outcome": "Mechanical analysis observes approximately 12 Hz post-event oscillation and higher RMS. Temperature normalizes to K; alignment is derived and original grids remain unchanged.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "mechanical_vibration",
+        "signals": 2,
+        "units": {
+          "vibration": "m/s^2",
+          "bearing_temperature": "K"
+        },
+        "features": {
+          "anomaly_time_s": 1,
+          "dominant_frequency_hz": 12
+        },
+        "feature_tolerance": 0.2,
+        "review": "approve"
+      },
+      "question": "Mechanical vibration bearing temperature spectrum RMS evidence review",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 17893,
+      "sha256": "871e2800a1b10a321100e7e83cd14fb1d542bd08bfc60460920006b441432817"
+    },
+    {
+      "id": "UNTIMED",
+      "title": "Capture without measured timestamps",
+      "description": "Recorded sequence only; no physical cadence, FFT or event timing may be inferred.",
+      "path": "sample_data/test_lab/row_order.csv",
+      "filename": "row_order.csv",
+      "format": "csv",
+      "import_kind": "mixed",
+      "options": {
+        "event_id": "LAB-UNTIMED",
+        "dataset_name": "Capture without measured timestamps",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "rf",
+        "time_column": null,
+        "time_unit": "row_index",
+        "column_roles": {
+          "voltage [V]": "numeric",
+          "state": "category",
+          "note": "log"
+        },
+        "signal_names": {
+          "voltage [V]": "voltage"
+        }
+      },
+      "expected_outcome": "Unitless row order is explicit; generic evidence analysis is used for this incomplete RF capture, with no invented physical timing.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "mixed_evidence_summary",
+        "signals": 1,
+        "time_basis": "row_index"
+      },
+      "question": "Untimed RF records evidence limitations",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 215,
+      "sha256": "a71c14644b79d40d967d799151ccdc82cc52d8c829fc539af5b84a97a1f84036"
+    },
+    {
+      "id": "LOG",
+      "title": "Timestamped operator log",
+      "description": "Explicit ISO timestamps, severity labels and name=value states with no numeric waveforms.",
+      "path": "sample_data/test_lab/operator_shift.log",
+      "filename": "operator_shift.log",
+      "format": "log",
+      "import_kind": "text",
+      "options": {
+        "event_id": "LAB-LOG",
+        "dataset_name": "Timestamped operator log",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "plc"
+      },
+      "expected_outcome": "Four source lines retained; PLC_STATE transitions support sequence analysis, but no unrecorded waveforms or physical cause are invented.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "plc_sequence",
+        "signals": 0,
+        "logs": 4,
+        "state_channels": [
+          "PLC_STATE",
+          "permit",
+          "operator_action"
+        ],
+        "sequence": [
+          "RUNNING",
+          "WARNING",
+          "INTERLOCKED"
+        ],
+        "review": "escalate"
+      },
+      "question": "PLC operator log permit chronological evidence limitations",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 374,
+      "sha256": "59bb41e326cee36ba13c8f769344b70a63e49fd4291db2160341839459bb02ac"
+    },
+    {
+      "id": "PDF-NOTE",
+      "title": "Selectable-text PDF evidence",
+      "description": "A real generated PDF containing narrative observations, headings and explicit evidence limitations.",
+      "path": "sample_data/test_lab/operator_note.pdf",
+      "filename": "operator_note.pdf",
+      "format": "pdf",
+      "import_kind": "text",
+      "options": {
+        "event_id": "LAB-PDF-NOTE",
+        "dataset_name": "Selectable-text PDF evidence",
+        "metadata": {
+          "fictional": true,
+          "captured_by": "Fictional Test Lab",
+          "beam_state": "SIMULATION",
+          "equipment": "LAB fixture"
+        },
+        "domain": "other"
+      },
+      "expected_outcome": "Selectable text is retained as logs with page provenance; mixed untimed headings mean explicit row-order coordinates. No OCR, image/table interpretation or numeric diagnosis.",
+      "expected_issue_codes": [],
+      "expected": {
+        "valid": true,
+        "processor": "mixed_evidence_summary",
+        "signals": 0,
+        "time_basis": "row_index",
+        "pdf_pages": true
+      },
+      "question": "Fictional operator PDF reported pressure interlock evidence",
+      "steps": [
+        "Preview source quality and mapping.",
+        "Review units and the validated event.",
+        "Save explicitly, run analysis, then inspect the measured evidence."
+      ],
+      "size_bytes": 2283,
+      "sha256": "54cf21bdcb44ef2385931cbdfd4d0f45be91cb5ba77a0ec5182e5b6ff98dd9fb"
+    }
+  ],
+  "procedures": [
+    {
+      "id": "RF-A",
+      "path": "sample_docs/test_lab/rf_trip_rev_a.md",
+      "filename": "rf_trip_rev_a.md",
+      "title": "RF cavity trip evidence review",
+      "description": "FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.",
+      "version": "LAB-A",
+      "approved": true,
+      "question": "RF cavity trip reflected power tuner pressure evidence review",
+      "size_bytes": 605,
+      "sha256": "e3447697a2a1ceded4513b8b0a2856bfae79e2ea5730f4dd02c39157caf986db"
+    },
+    {
+      "id": "RF-B",
+      "path": "sample_docs/test_lab/rf_trip_rev_b.md",
+      "filename": "rf_trip_rev_b.md",
+      "title": "RF cavity trip evidence review",
+      "description": "FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.",
+      "version": "LAB-B",
+      "approved": true,
+      "question": "RF cavity trip reflected power tuner pressure evidence review",
+      "size_bytes": 764,
+      "sha256": "9e8117fe3e9de628854b76d0c05a0b910989d30221c049afe7a8240538814155"
+    },
+    {
+      "id": "RF-DRAFT",
+      "path": "sample_docs/test_lab/rf_trip_draft_c.md",
+      "filename": "rf_trip_draft_c.md",
+      "title": "RF cavity trip evidence review",
+      "description": "FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.",
+      "version": "LAB-C-DRAFT",
+      "approved": false,
+      "question": "RF cavity trip reflected power tuner pressure evidence review",
+      "size_bytes": 597,
+      "sha256": "ad8d27b5c927ad107e91faddaf4326c8b1bf10e997c07ef47fa0d2fe9b534c5d"
+    },
+    {
+      "id": "RF-XRAY",
+      "path": "sample_docs/test_lab/rf_xray_scan.md",
+      "filename": "rf_xray_scan.md",
+      "title": "RF X-ray gradient scan review",
+      "description": "FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.",
+      "version": "LAB-1",
+      "approved": true,
+      "question": "RF X-ray gradient scan conditioning descriptive evidence limitations",
+      "size_bytes": 491,
+      "sha256": "675704f8fca5c87ff94de3faf0705b4c34447ed3bb3716c83a01ef829c66b8db"
+    },
+    {
+      "id": "PLC",
+      "path": "sample_docs/test_lab/plc_sequence.md",
+      "filename": "plc_sequence.md",
+      "title": "PLC controls state sequence review",
+      "description": "FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.",
+      "version": "LAB-1",
+      "approved": true,
+      "question": "PLC RUNNING WARNING INTERLOCKED sequence permit log evidence review",
+      "size_bytes": 528,
+      "sha256": "a55c24d82ae473b29bca02a87d0a0f549b141f11e4b393da67e6b43945c1e096"
+    },
+    {
+      "id": "MECHANICAL",
+      "path": "sample_docs/test_lab/mechanical_vibration.txt",
+      "filename": "mechanical_vibration.txt",
+      "title": "Mechanical vibration bearing review",
+      "description": "FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.",
+      "version": "LAB-1",
+      "approved": true,
+      "question": "Mechanical vibration bearing temperature spectrum RMS evidence review",
+      "size_bytes": 473,
+      "sha256": "f236fb4be9c92e2d74fbb2a05f16bf4ee2a6b373e5acadda0979d878ce3bf98d"
+    },
+    {
+      "id": "CRYO",
+      "path": "sample_docs/test_lab/cryo_review.pdf",
+      "filename": "cryo_review.pdf",
+      "title": "Cryogenic helium temperature pressure review",
+      "description": "FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.",
+      "version": "LAB-1",
+      "approved": true,
+      "question": "Cryogenic helium temperature pressure capture gap evidence review",
+      "size_bytes": 2589,
+      "sha256": "872ca2e7f33bf25618e9529b8b3b79764542e2c1472bc2813f147b7f59e2c673"
+    }
+  ],
+  "walkthrough": [
+    "Download and import approved procedures individually; leave LAB-C-DRAFT unapproved.",
+    "Import RF-TRIP, analyze, ask its suggested question and inspect citations/version metadata.",
+    "Create a draft; verify no approved knowledge exists before named human review.",
+    "Approve RF, correct PLC, escalate X-ray/log examples; compare knowledge outcomes.",
+    "Try REPAIR/BAD-UNIT/DBM; blocked files must not create an event.",
+    "Review CRYO/QUALITY gaps and declared expectations; inspect original bytes and derived-copy receipts.",
+    "Compare two approved RF revisions. Current retrieval does not automatically supersede old versions; delete A explicitly to retire it."
+  ]
+}

@@ -1,0 +1,5 @@
+2026-10-10T12:00:00Z [INFO] PLC_STATE=RUNNING beam=enabled. Fictional demonstration record.
+2026-10-10T12:00:01Z [INFO] Operator reports no vibration fault observed.
+2026-10-10T12:00:02Z [WARNING] PLC_STATE=WARNING pressure trend requires review.
+2026-10-10T12:00:03Z [ERROR] PLC_STATE=INTERLOCKED beam=disabled. Recorded state only; cause not confirmed.
+2026-10-10T12:00:04Z [INFO] PLC_STATE=RESET_PENDING operator requests human review.

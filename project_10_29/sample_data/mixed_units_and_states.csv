@@ -1,0 +1,6 @@
+time_ms,pressure,pressure_unit,temperature [C],PLC_STATE,enabled,operator_note
+0,1,kPa,20,IDLE,false,[INFO] Planned demonstration start
+500,1000,Pa,68 F,RUNNING,true,[INFO] Operator recorded beam enabled
+1000,1.05,kPa,294.15 K,WARNING,true,[WARNING] Pressure change recorded for review
+1500,1080,Pa,21,INTERLOCKED,false,[ERROR] Interlock state reported in demonstration
+2000,1.02,kPa,69.8 F,RESET_PENDING,false,[INFO] Waiting for human review
