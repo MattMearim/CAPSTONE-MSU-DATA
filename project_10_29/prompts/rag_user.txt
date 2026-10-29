@@ -1,0 +1,14 @@
+EVENT CONTEXT
+{event_context}
+
+APPROVED DOCUMENT CONTEXT
+{document_context}
+
+QUESTION
+{question}
+
+Answer with these headings when applicable:
+Measured / Derived Evidence
+Procedural Guidance
+AI Interpretation
+Sources
