@@ -1,0 +1,8 @@
+scenario: mechanical_vibration
+duration_s: 12.0
+sample_rate_hz: 1000
+anomaly_time_s: 7.0
+base_frequency_hz: 30.0
+fault_frequency_hz: 117.0
+noise_std: 0.08
+fault_amplitude: 1.0

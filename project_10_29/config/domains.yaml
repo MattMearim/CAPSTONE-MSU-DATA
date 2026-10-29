@@ -1,0 +1,13 @@
+domains:
+  rf:
+    enabled: true
+    processor: rf
+    generator: rf_cavity_trip
+  mechanical:
+    enabled: true
+    processor: mechanical
+    generator: mechanical_vibration
+  plc:
+    enabled: true
+    processor: plc
+    generator: plc_interlock

@@ -1,0 +1,9 @@
+scenario: rf_cavity_trip
+duration_s: 10.0
+sample_rate_hz: 1000
+trip_time_s: 6.5
+noise_std: 0.015
+pressure_rise_start_s: 6.35
+pressure_rise_magnitude: 0.35
+reflected_power_rise_start_s: 6.46
+field_decay_tau_s: 0.018

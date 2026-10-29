@@ -1,0 +1,18 @@
+﻿llm:
+  provider: mock
+  model: qwen3:8b
+  temperature: 0.0
+  timeout_seconds: 300
+  ollama_base_url: http://localhost:11434
+  lmstudio_base_url: http://localhost:1234/v1
+
+embeddings:
+  provider: hash
+  model: all-MiniLM-L6-v2
+  dimensions: 384
+  device: cpu
+
+vector_store:
+  provider: sqlite
+  collection: frib_official_documents
+  persist_dir: data/chroma

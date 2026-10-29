@@ -1,0 +1,12 @@
+chunking:
+  strategy: section_window
+  max_chars: 1600
+  overlap_chars: 220
+retrieval:
+  top_k: 5
+  minimum_score: 0.20
+  require_sources: true
+answer:
+  show_source_excerpt: true
+  max_excerpt_chars: 360
+  insufficient_context_message: "I could not find sufficient support in the indexed approved documentation."

@@ -1,0 +1,6 @@
+scenario: plc_interlock
+duration_s: 10.0
+sample_rate_hz: 100
+warning_time_s: 5.8
+interlock_time_s: 6.2
+reset_time_s: 8.4

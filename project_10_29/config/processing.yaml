@@ -1,0 +1,14 @@
+common:
+  fft_window: hann
+  minimum_samples: 32
+rf:
+  pressure_pre_window_s: 0.5
+  pressure_post_window_s: 0.05
+  derivative_smoothing_samples: 7
+mechanical:
+  anomaly_threshold_sigma: 3.0
+plc:
+  required_sequence:
+    - RUNNING
+    - WARNING
+    - INTERLOCKED
