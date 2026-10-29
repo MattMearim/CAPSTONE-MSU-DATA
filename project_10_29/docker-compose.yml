@@ -1,0 +1,55 @@
+services:
+  ollama:
+    profiles: ["local-ai"]
+    image: ollama/ollama:latest
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        FRIB_PACKAGE: ${FRIB_PACKAGE:-.}
+    environment:
+      FRIB_CONFIG_DIR: /app/config
+      FRIB_DATA_DIR: /app/data
+      OLLAMA_BASE_URL: http://ollama:11434
+      FRIB_LLM_PROVIDER: ${FRIB_LLM_PROVIDER:-mock}
+      FRIB_LLM_MODEL: ${FRIB_LLM_MODEL:-qwen3:8b}
+      FRIB_EMBEDDING_PROVIDER: ${FRIB_EMBEDDING_PROVIDER:-hash}
+      FRIB_EMBEDDING_MODEL: ${FRIB_EMBEDDING_MODEL:-all-MiniLM-L6-v2}
+      FRIB_VECTOR_PROVIDER: ${FRIB_VECTOR_PROVIDER:-sqlite}
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./config:/app/config:ro
+      - ./prompts:/app/prompts:ro
+      - ./sample_docs:/app/sample_docs:ro
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://localhost:8000/health',timeout=5)"]
+      interval: 10s
+      timeout: 6s
+      retries: 10
+      start_period: 15s
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    environment:
+      FRIB_API_URL: http://backend:8000
+    ports:
+      - "127.0.0.1:8501:8501"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
