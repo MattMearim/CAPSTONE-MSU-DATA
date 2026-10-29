@@ -1,0 +1,53 @@
+{
+  "$defs": {
+    "ReviewDecision": {
+      "enum": [
+        "approve",
+        "correct",
+        "escalate"
+      ],
+      "title": "ReviewDecision",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "review_id": {
+      "title": "Review Id",
+      "type": "string"
+    },
+    "draft_id": {
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "decision": {
+      "$ref": "#/$defs/ReviewDecision"
+    },
+    "reviewer": {
+      "title": "Reviewer",
+      "type": "string"
+    },
+    "comments": {
+      "default": "",
+      "title": "Comments",
+      "type": "string"
+    },
+    "timestamp": {
+      "format": "date-time",
+      "title": "Timestamp",
+      "type": "string"
+    }
+  },
+  "required": [
+    "review_id",
+    "draft_id",
+    "event_id",
+    "decision",
+    "reviewer"
+  ],
+  "title": "ReviewRecord",
+  "type": "object"
+}

@@ -1,0 +1,87 @@
+{
+  "$defs": {
+    "TimelineItem": {
+      "properties": {
+        "timestamp_s": {
+          "title": "Timestamp S",
+          "type": "number"
+        },
+        "event": {
+          "title": "Event",
+          "type": "string"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        }
+      },
+      "required": [
+        "timestamp_s",
+        "event"
+      ],
+      "title": "TimelineItem",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "processor": {
+      "title": "Processor",
+      "type": "string"
+    },
+    "processor_version": {
+      "title": "Processor Version",
+      "type": "string"
+    },
+    "features": {
+      "additionalProperties": true,
+      "title": "Features",
+      "type": "object"
+    },
+    "timeline": {
+      "items": {
+        "$ref": "#/$defs/TimelineItem"
+      },
+      "title": "Timeline",
+      "type": "array"
+    },
+    "findings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Findings",
+      "type": "array"
+    },
+    "plot_specs": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Plot Specs",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "processor",
+    "processor_version"
+  ],
+  "title": "AnalysisResult",
+  "type": "object"
+}
