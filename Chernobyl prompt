@@ -1,0 +1,691 @@
+You are a synthetic-data architect creating a realistic, internally consistent,
+multi-document knowledge corpus for testing an LLM-maintained wiki.
+
+The corpus represents a fictional Soviet-era nuclear power station modeled on
+the 1986 Chernobyl disaster: a graphite-moderated, water-cooled channel-type
+reactor plant (RBMK-type) that suffers a reactor accident during a safety test,
+followed by emergency response, evacuation, investigation, containment, and
+long-term recovery.
+
+The purpose of the corpus is NOT primarily to test whether an LLM can answer
+questions from a single document. The purpose is to test whether an LLM can
+progressively ingest heterogeneous source material, build a persistent
+interlinked wiki, reconcile conflicting information, track temporal changes,
+maintain provenance, identify missing information, and answer questions by
+synthesizing information across many documents.
+
+The corpus will be fed incrementally to an LLM Wiki system inspired by Andrej
+Karpathy's "LLM Wiki" architecture.
+
+IMPORTANT:
+- The station, town, organizations, people, and documents are fictional. The
+  overall story may follow the real Chernobyl sequence of events, and real
+  generic reactor physics and terminology may be used, but:
+  - Do not use the names of real people (operators, managers, officials,
+    scientists, firefighters, physicians) or real quotes.
+  - Do not reproduce text from real reports, books, or films.
+  - Do not use the real station name, the real town name, or the real accident
+    date. Use fictional names and a fictional date in the same season.
+  - Use fictional names for ministries, institutes, commissions, and agencies.
+- The resulting data should nevertheless feel historically and operationally
+  realistic for the mid-1980s Soviet nuclear industry.
+- Do not make the corpus perfectly clean.
+- Introduce realistic ambiguity, outdated information, inconsistent terminology,
+  revisions, partial information, censorship, and occasional contradictions.
+- Every fact should have enough context for an LLM to determine whether it is
+  current, historical, uncertain, or contradicted.
+- Preserve document-level provenance.
+- Do not "fix" contradictions inside source documents. The wiki-building agent
+  should have to discover and reconcile them.
+
+==================================================
+1. FICTIONAL STATION AND ORGANIZATION
+==================================================
+
+Create a fictional nuclear power station:
+
+Station name:
+"Vereskovo Nuclear Power Station" (V-NPS)
+
+Company town:
+"Vereskovsk", a purpose-built town of roughly 45,000-50,000 people about
+3-4 km from the station.
+
+Organizational structure:
+
+State Committee for Atomic Power (fictional ministry)
+├── Republic-level energy directorate
+├── Vereskovo Nuclear Power Station
+│   ├── Unit 1 (RBMK-type, 1000 MWe)
+│   ├── Unit 2 (RBMK-type, 1000 MWe)
+│   ├── Unit 3 (RBMK-type, 1000 MWe)
+│   ├── Unit 4 (RBMK-type, 1000 MWe)  <- the accident unit
+│   └── Units 5-6 (under construction)
+├── Reactor design institute (fictional)
+├── Chief designer's bureau (fictional)
+├── Turbine-generator manufacturer (fictional)
+├── Regional civil defense and fire services
+└── State nuclear safety inspectorate (fictional)
+
+Place the station in a real Soviet republic of the period (the republic may be
+real) but in a fictional district, near a fictional river and reservoir, with a
+fictional regional center, rail station, and neighboring villages.
+
+Create approximately 4,000-6,000 station employees plus construction workers,
+distributed across:
+
+- Station management (director, chief engineer, deputy chief engineers)
+- Reactor shop
+- Turbine shop
+- Electrical shop
+- Chemical shop (water chemistry)
+- Thermal automation and measurements (instrumentation and control)
+- Radiation safety / dosimetry service
+- Centralized repair shop
+- Nuclear safety department
+- Training center
+- Fire brigade (station paramilitary fire unit)
+- Medical unit
+- Personnel / cadres department
+- Construction directorate for Units 5-6
+- Party committee and trade union (period-appropriate)
+
+Do not make the organization chart stable over time; after the accident many
+people are replaced, injured, transferred, or put on trial.
+
+Also define:
+- Physical layout: reactor buildings, turbine hall (shared), deaerator gallery,
+  control rooms per unit, auxiliary buildings, cooling pond, spent fuel storage,
+  administrative building, the town, the rail station, and nearby villages.
+  Some areas should be renamed after the accident (e.g., "Unit 4" becomes "the
+  Shelter object"; "Zone 1" boundaries are redefined).
+- Shift pattern: 5 operating shifts on 8-hour watches with named shift
+  supervisors. One shift is on duty during the test.
+- Record systems of the era: operating logs (shift supervisor log, senior
+  reactor control engineer log), the plant computer printouts (fictional name),
+  paper work permits, dosimetry logbooks, teletype and telegram traffic,
+  telephone logs. After the accident, a new registry of liquidators and a new
+  dose-record system are created, so record ID formats change.
+- The relationship between Unit 4 and Unit 3 (shared building and systems),
+  so damage and contamination affect both.
+
+==================================================
+2. SYNTHETIC TIME PERIOD
+==================================================
+
+Generate approximately 36 months of history:
+
+January 1985 through December 1987.
+
+The accident occurs in spring 1986 (fictional date, not the real one).
+The "current state" of the corpus is December 1987.
+
+Historical documents must sometimes describe an earlier state. For example:
+- A 1985 safety analysis describes the control-rod design as acceptable; a
+  1987 report identifies it as a contributing cause.
+- A test program approved in 1985 is revised before the 1986 test, and the
+  revision is not fully approved.
+- A shift supervisor appears in a 1985 staff list but is hospitalized,
+  deceased, or arrested by 1987.
+- Evacuation-zone boundaries change several times in 1986.
+- Dose limits for emergency workers are revised.
+- Units 1-3 are shut down and restarted on different dates.
+- Construction of Units 5-6 is suspended, then cancelled.
+
+The corpus must support temporal reasoning.
+
+Additional temporal rules:
+- Mix calendar dates with references to five-year plan years, quarters, and
+  "the first days after the accident".
+- Some documents should be undated or dated only by reference ("since the
+  incident", "after the second evacuation") so their date must be inferred.
+- Some documents should be written later but describe earlier events (e.g., a
+  1987 trial transcript summarizing the night of the accident).
+- Some documents should announce plans that change or are cancelled (e.g., a
+  Unit 3 restart scheduled for spring 1987 that slips).
+- Time zones and clocks matter: local time vs Moscow time vs the plant
+  computer's clock, which is not perfectly synchronized with the control-room
+  logs.
+
+==================================================
+3. SOURCE DOCUMENT PHILOSOPHY
+==================================================
+
+Generate RAW SOURCE DOCUMENTS. Do not generate the final wiki.
+
+The downstream LLM should be responsible for compiling these sources into the
+wiki.
+
+Documents should resemble things a real 1980s Soviet nuclear organization, its
+government overseers, and foreign observers might possess. Many should appear
+to be translations into English, with translator notes and inconsistent
+transliteration of names.
+
+Include:
+
+- Operating procedures and technological regulations
+- Safety test programs (drafts and approved versions)
+- Shift supervisor logs and control-room operating logs
+- Plant computer printouts (parameter snapshots, alarms)
+- Work permits and maintenance records
+- Equipment passports and design specifications
+- Safety analysis reports
+- Nuclear safety inspectorate findings
+- Radiation monitoring and dosimetry reports
+- Medical unit reports and hospital transfer lists
+- Fire brigade reports
+- Civil defense orders and evacuation orders
+- Government commission minutes and directives
+- Telegrams and teletype messages
+- Telephone call logs
+- Party committee meeting minutes
+- Newspaper articles and official press releases (fictional newspapers)
+- Foreign monitoring-station reports (from a fictional neighboring country)
+- Diplomatic notes and international briefings
+- Investigation and commission reports (initial and revised)
+- Interrogation and witness statements
+- Trial transcripts and verdict summaries
+- Decontamination plans and progress reports
+- Construction documents for the containment structure ("Shelter")
+- Liquidator registration lists and dose cards
+- Environmental sampling reports (soil, water, air, food)
+- Agricultural restriction orders
+- Resettlement records
+- Supply and logistics requests (equipment, lead, sand, boron, helicopters)
+- Internal memos and personal letters
+- Diaries and recollections written later
+
+Also include:
+- Handwritten-style handover notes between shifts (terse, abbreviated)
+- Translated documents with translator's notes, uncertain readings, and
+  "[illegible]" markings
+- CSV data extracts (reactor parameters, dosimetry readings, sampling results,
+  personnel exposure)
+- Tribal-knowledge notes from experienced operators about reactor behavior
+- Slide or briefing text for an international meeting (bullet-heavy, lacking
+  context)
+
+The documents should vary substantially in length: some only a few
+paragraphs, some 5-10 pages worth of content. Some should contain tables, some
+bullet lists, some informal notes, some highly structured technical documents.
+
+Writing voice should vary by author: reactor physicists write precisely,
+operators tersely, officials in bureaucratic summary form, journalists in
+propaganda style, foreign scientists formally and skeptically, and some
+authors should consistently use their own pet terminology.
+
+==================================================
+4. CORE ENTITIES
+==================================================
+
+Create a rich entity graph.
+
+ORGANIZATIONS
+- Vereskovo Nuclear Power Station and its shops/departments
+- State Committee for Atomic Power (fictional ministry)
+- Reactor design institute and chief designer's bureau (fictional)
+- State nuclear safety inspectorate (fictional)
+- Government commission (formed after the accident, membership rotates)
+- Civil defense, fire services, military units, medical institutions
+- Fictional newspapers and a fictional foreign monitoring agency
+
+PEOPLE
+Create 50-90 named fictional people.
+
+Each person should have:
+- personnel number
+- name (with Russian/Ukrainian-style patronymic)
+- job title
+- department or organization
+- supervisor
+- start date
+- location
+- relevant expertise
+- status as of December 1987 (working, transferred, hospitalized, deceased,
+  under investigation, convicted, retired)
+
+Some people should change roles. Some should be transferred or removed. Some
+should be promoted into replacement roles after the accident.
+
+Some should appear in multiple documents under transliteration variants,
+initials, diminutive nicknames, or inconsistent titles. Example:
+
+"Aleksandr Petrovich Kovalenko"
+"Alexander Kovalenko"
+"A. P. Kovalenko"
+"Sasha"
+"Kowalenko" (foreign-press spelling)
+
+Do NOT make every name ambiguity obvious.
+
+Additionally:
+- Include at least two DIFFERENT people who share a surname or initials, so
+  that "V. Morozov" is genuinely ambiguous.
+- Include at least one person whose surname appears in a different form in
+  the Ukrainian and Russian versions of documents.
+- Include contractors, construction workers, military personnel, firefighters,
+  and physicians who are not station employees.
+- Include ministry and commission officials who visit but work elsewhere.
+- Some people should hold "acting" or "deputy, temporarily performing the
+  duties" roles.
+
+EQUIPMENT
+
+Create 50-100 major systems and pieces of equipment, for example:
+
+- Reactor core and channels
+- Control and protection system rods (manual, automatic, shortened absorber,
+  emergency rods)
+- Emergency protection system (scram)
+- Main circulation pumps (8 per unit)
+- Drum separators
+- Feedwater pumps
+- Turbine-generators (2 per unit)
+- Diesel generators
+- Emergency core cooling system
+- Refueling machine
+- Plant computer and in-core monitoring system
+- Dosimeters and radiation monitors (with measurement ranges)
+- Fire engines and pumps
+- Helicopters, bulldozers, and remote-controlled vehicles used afterwards
+- Ventilation stack
+- Cooling pond pumps
+- Containment structure ("Shelter") components
+
+Each major item should have:
+- Asset/position ID
+- manufacturer (fictional)
+- fictional model number
+- installation date
+- location (unit, building, room)
+- rated capacity or measurement range
+- maintenance schedule
+- important components
+- known failure modes or design weaknesses
+- maintenance and damage history
+- current status (operating, damaged, destroyed, entombed, decommissioned)
+
+Do NOT expose all of this information in one document. Make the LLM
+reconstruct it across documents.
+
+Additionally:
+- Equipment should be referred to inconsistently: by position ID, by
+  operator nickname, by system abbreviation, or by position ("the third pump
+  on the left side"). Keep a hidden mapping in the answer key.
+- At least one piece of equipment should be moved (e.g., dosimeters brought
+  from another unit).
+- At least one asset should be destroyed and its ID later reused or confused
+  with a replacement.
+- Rated values should sometimes differ between the design specification, the
+  equipment passport, and what operators assume in practice (e.g., the
+  operating reactivity margin in rods, or a dosimeter's maximum range).
+
+REACTOR STATES AND PARAMETERS
+Create a parameter set that operating logs and CSV extracts can use: thermal
+power, electrical output, operating reactivity margin, coolant flow, drum
+separator pressure and level, feedwater temperature, and rod positions. Values
+should follow plausible relationships, but exact reconstruction of the
+accident sequence should remain uncertain, as it was historically.
+
+SUPPLIERS AND SUPPORT ORGANIZATIONS
+Create 12-25 fictional suppliers and support organizations: fuel assemblies,
+graphite, instrumentation, pumps, turbines, diesel generators, dosimetry
+equipment, construction materials, concrete, lead, boron carbide, sand, and
+transport. At least one should have delivered equipment with a known defect;
+at least one should be reorganized and change name.
+
+AFFECTED SETTLEMENTS
+Create 15-30 settlements (town, villages, regional center), each with:
+population, distance and direction from the station, evacuation date (if
+any), zone assignment, contamination measurements, and later status. Zone
+assignments should change over time.
+
+MATERIALS AND SUBSTANCES
+Create 20-40 materials and radionuclides with codes, storage or deployment
+details, and usage (e.g., boron carbide, sand, lead, clay, dolomite,
+decontamination solutions; iodine-131, cesium-137, strontium-90). Include at
+least one material that was dropped on the reactor and later judged
+counterproductive or ineffective.
+
+PROJECTS
+Create 6-12 projects spanning the period, e.g.:
+- Turbine rundown safety test (the test that leads to the accident)
+- Units 5-6 construction
+- Control-rod design modification (proposed before the accident, implemented
+  after)
+- Evacuation and resettlement
+- Decontamination of Units 1-3 and the town
+- Shelter construction
+- Restart of Units 1-3
+- Construction of a new town for station staff
+- Long-term health monitoring registry
+Each project should have a charter or order, owner, budget (in rubles),
+timeline, status updates, scope changes, and a final or current state.
+
+==================================================
+5. STORYLINES AND EVENT ARCS
+==================================================
+
+Build 10-15 multi-document storylines that unfold across time. Each storyline
+must span at least 4 documents of different types written by different people.
+
+Examples:
+
+1. The safety test: the test had been attempted before without success; the
+   program is revised; the grid dispatcher delays it by many hours; the shift
+   changes; power falls lower than planned; the test proceeds anyway.
+2. The accident night: conflicting accounts of the sequence and timing from
+   control-room logs, the plant computer printout, survivor statements, and
+   later reconstructions.
+3. Radiation underestimation: early reports cite low radiation levels because
+   the available dosimeters were at the top of their range; higher-range
+   instruments arrive later and show far higher readings.
+4. Firefighting: the fire brigade response, roof fires, hospital transfers,
+   and later medical reports.
+5. Evacuation: delayed decision, bus logistics, "temporary, for three days"
+   messaging, later zone expansions, villages evacuated weeks later.
+6. Foreign detection: a neighboring country's monitoring station detects
+   radioactivity before any official announcement; diplomatic inquiries;
+   a terse official statement.
+7. Root-cause shift: the initial commission report blames operator errors and
+   procedure violations; a revised report written later emphasizes reactor
+   design flaws (positive void coefficient and the control-rod tip effect)
+   that had been noted in earlier memos.
+8. Core containment efforts: materials dropped by helicopter, debate over
+   effectiveness, fears of a steam explosion from water under the reactor,
+   draining operations, tunneling under the foundation.
+9. Shelter construction: design, roof cleanup with robots that fail and are
+   replaced by people, dose limits, completion, and an engineering assessment
+   with unresolved concerns.
+10. Liquidator dose tracking: dose cards, registry ID format change, missing
+    records, doses recorded at exactly the limit.
+11. Trial: arrests, charges, testimony, and verdicts in 1987, with testimony
+    contradicting earlier statements.
+12. Units 1-3 restart: decontamination, safety modifications, and restart
+    dates that slip.
+
+Each storyline should include at least one misleading early hypothesis that is
+later disproven, so the wiki must update rather than simply accumulate.
+
+==================================================
+6. DELIBERATE DATA-QUALITY CHALLENGES
+==================================================
+
+Seed the following challenges throughout the corpus. Record every seeded
+instance in the answer key (Section 11).
+
+- Contradictions: at least 25, of varying severity (e.g., different times for
+  the explosion, different dose readings, different casualty counts,
+  different evacuation times). Some should be resolvable by date or authority
+  (a signed commission report outranks a newspaper), some only by
+  triangulating 3+ documents, and 3-5 should be genuinely unresolvable.
+- Superseded information: at least 15 facts that change over time, with old
+  and new versions present (zone boundaries, dose limits, root cause, death
+  toll, settlement status).
+- Entity aliases: people, equipment, settlements, and organizations under
+  multiple names, including transliteration variants and post-accident names.
+- Unit inconsistencies: roentgen vs rem vs sievert vs gray, R/h vs mR/h vs
+  µSv/h, curie vs becquerel, MW thermal vs MW electrical, kgf/cm² vs MPa vs
+  atmospheres, °C vs K, km vs versts in informal notes. Some documents should
+  omit units entirely.
+- Terminology drift: "the incident", "the accident", "the emergency", "the
+  event"; "liquidators" vs "participants in the cleanup"; "the sarcophagus" vs
+  "the Shelter object"; "zone" defined differently by different agencies.
+- Censorship and omission: official documents that understate or omit
+  information that internal documents state openly.
+- Missing information: facts referenced but never documented (e.g., "per the
+  1983 commissioning test report" with no such report in the corpus).
+- Translation and OCR errors in a small number of documents, including one
+  mistyped equipment ID and one mistyped settlement name.
+- Duplicate documents: 2-4 near-duplicates (draft and final versions; the same
+  telegram retransmitted with a changed figure).
+- Unverified claims: rumors among residents and staff that are never confirmed,
+  and one that is later shown to be false.
+- Numbers that should reconcile but do not: e.g., evacuated population totals
+  by settlement that don't sum to the official total because one count
+  excludes a village evacuated later.
+
+Never label a contradiction or error within the source document itself.
+
+==================================================
+7. OPERATIONAL AND HISTORICAL REALISM
+==================================================
+
+Use realistic value ranges and relationships:
+- Reactor: nominal thermal power around 3,200 MW; electrical output around
+  1,000 MW; plausible operating reactivity margin values and a documented
+  minimum; plausible coolant flows and pressures.
+- Radiation: background levels before the accident; levels after the accident
+  that decrease with distance and over time (iodine decay is fast, cesium
+  slow); dose limits for workers and the public that are revised.
+- Medical: acute radiation sickness cases and deaths for fictional people,
+  reported in the restrained clinical style of the era; counts that differ
+  between official and internal reports.
+- Logistics: buses, helicopters, sorties, tonnes of material, and personnel
+  rotations consistent with each other.
+- Finance: costs in rubles that roughly tie to the work done, and estimates
+  that keep rising.
+- Headcounts in staff lists, cadres reports, and commission documents should
+  roughly agree but not match exactly.
+- Physical constraints: dosimeters cannot read above their range; people
+  cannot work long in high-field areas; helicopters have payload limits.
+
+Plausibility rules:
+- Causes precede effects.
+- People cannot sign documents before their start date or after death or
+  removal, EXCEPT for one or two deliberate, recorded errors.
+- Equipment cannot operate after being destroyed.
+
+==================================================
+8. ID AND NAMING CONVENTIONS
+==================================================
+
+Define and use consistent formats (and document where they change):
+- Personnel: VNPS-#####
+- Equipment: U[unit]-[SYSTEM]-### (e.g., U4-MCP-03 for a main circulation
+  pump), with a different format used by the design institute
+- Settlements: SET-###
+- Suppliers/organizations: ORG-####
+- Liquidators: one registry format in 1986, a new format in 1987
+- Orders, work permits, telegrams, commission protocols, dosimetry reports,
+  medical reports, and sampling reports each with their own prefix and
+  sequential numbering
+- Documents: DOC-YYYY-#### (see Section 9)
+
+==================================================
+9. DOCUMENT METADATA AND FORMAT
+==================================================
+
+IMPORTANT: The target wiki system accepts ONLY Markdown (.md) and CSV (.csv)
+files. Every corpus file must be one of these two formats.
+
+Markdown documents
+Each narrative document should be a separate .md file with a header block:
+
+---
+doc_id: DOC-1986-0042
+title: <title>
+doc_type: <e.g., shift log, telegram, commission report, dosimetry report>
+source_system: <e.g., station archive, ministry registry, foreign agency, newspaper>
+author: <name as written in the doc; may be an alias or transliteration>
+date: <YYYY-MM-DD, or "unknown">
+original_language: <Russian / Ukrainian / English / other>
+classification: <unclassified / for official use / secret / unknown>
+revision: <if applicable>
+status: <draft / approved / superseded / withdrawn / unknown>
+related_ids: <equipment, settlement, person, or other IDs, if the document naturally lists them>
+---
+
+The header should reflect what a real archive would record: it may be
+incomplete or wrong in a few cases.
+
+Filename convention: DOC-YYYY-####_<short-slug>.md
+
+Tables inside Markdown documents should use Markdown table syntax.
+
+CSV data files
+Data extracts (reactor parameter logs, dosimetry readings, environmental
+sampling, liquidator dose lists, evacuation counts) should be separate .csv
+files:
+- Filename convention: DOC-YYYY-####_<short-slug>.csv
+- First column: a timestamp or date (state the time zone or clock in the
+  column name, e.g., time_local or time_plant_computer).
+- Measurement columns named with units in brackets, e.g.,
+  "thermal_power [MW]", "dose_rate [R/h]", "cs137_soil [Ci/km^2]".
+- Category columns for unit, location, settlement, or person IDs.
+- A "note" column for operator remarks.
+- Some CSVs should include realistic problems: blank cells, values at the top
+  of an instrument's range, a unit that changes between files, an
+  unrecognized unit, and a column with no unit.
+- Each CSV must have a companion entry in the manifest describing its source,
+  since CSV files have no header block.
+
+==================================================
+10. CORPUS SIZE AND DISTRIBUTION
+==================================================
+
+Target 150-250 source documents in total, of which 30-50 are CSV files.
+Suggested mix:
+- 15% operating logs, handover notes, and computer printouts
+- 12% radiation monitoring, dosimetry, and environmental sampling
+- 12% government commission, ministry, and Party documents
+- 10% emergency response (fire, medical, civil defense, evacuation)
+- 10% procedures, test programs, and technical specifications
+- 8% investigations, statements, and trial records
+- 8% containment, decontamination, and Shelter construction
+- 8% telegrams, telephone logs, and correspondence
+- 7% press, propaganda, and foreign/diplomatic documents
+- 5% personnel lists, training, and liquidator registries
+- 5% diaries, letters, and later recollections
+
+Distribute documents across all 36 months, with heavy clustering in the days
+and weeks after the accident, and smaller clusters around the commission
+reports, the Shelter completion, and the trial.
+
+==================================================
+11. GROUND TRUTH / ANSWER KEY (SEPARATE FROM CORPUS)
+==================================================
+
+In addition to the source documents, produce answer-key files that must NOT
+be fed to the wiki system. Store them in a separate /answer_key folder, as
+Markdown or CSV:
+
+1. entity_registry: canonical record for every person, equipment item,
+   settlement, organization, material, and project, with all aliases, and with
+   state as of 1987-12-31.
+2. timeline: dated master list of all significant events, including the
+   minute-by-minute sequence of the accident night as the world bible defines
+   it (and which parts no document can establish exactly).
+3. contradiction_ledger: every seeded contradiction, the documents involved,
+   the correct resolution (or "unresolvable"), and the reasoning.
+4. supersession_ledger: every fact that changed, with old value, new value,
+   effective date, and source documents.
+5. gaps_ledger: facts deliberately left undocumented.
+6. alias_ledger: every alias and transliteration for people, equipment, and
+   places.
+7. evaluation_questions: 100-150 questions with answers, supporting doc_ids,
+   difficulty, and category (see Section 12).
+
+==================================================
+12. EVALUATION QUESTION CATEGORIES
+==================================================
+
+The evaluation questions should cover:
+- Single-document lookup (easy baseline, ~10%)
+- Multi-document synthesis (e.g., "What is the full history of main
+  circulation pump U4-MCP-03 from 1985 to the accident?")
+- Temporal state (e.g., "Who was the acting station director in June 1986?")
+- Current state vs historical state (e.g., "What is the current official root
+  cause, and what did the first commission report say?")
+- Contradiction detection and resolution (e.g., "What time did the explosion
+  occur, and why do sources differ?")
+- Alias resolution (e.g., "Is 'Kowalenko' in the foreign press report the same
+  person as A. P. Kovalenko?")
+- Aggregation (e.g., "Total number of people evacuated from the 10 km zone by
+  May 10")
+- Causal chains (e.g., "Why was the test run at lower power than planned?")
+- Gap identification (questions whose correct answer is "not documented")
+- Provenance (e.g., "Which documents support the dose recorded for the first
+  fire crew?")
+- Official vs internal accounts (e.g., "How did the official death toll
+  differ from the medical unit's internal count?")
+- Unit conversion and normalization (e.g., roentgen to sievert, curie to
+  becquerel, kgf/cm² to MPa)
+
+==================================================
+13. GENERATION PROCESS
+==================================================
+
+Because the corpus is too large for a single output, work in stages:
+
+Stage 1 - World bible: generate the station, town, organizations, entity
+registry, ID conventions, reactor parameter baselines, storylines, the
+accident-night master sequence, and the planned list of all documents
+(doc_id, date, type, format (.md or .csv), author, storyline, and which
+facts/contradictions each carries). Do not write document bodies yet.
+
+Stage 2 - Documents: generate documents in chronological batches (e.g., one
+quarter at a time before and after the accident, and one week at a time for
+the first month after it), always checking consistency against the world
+bible. A document may only "know" what its author could know on its date.
+
+Stage 3 - Answer key: produce the ledgers and evaluation questions from the
+world bible and the generated documents.
+
+Stage 4 - Validation: check that every seeded contradiction, supersession, and
+gap actually appears in the corpus; that every evaluation answer is supported
+by cited doc_ids; that every CSV parses cleanly and uses the column-naming
+rule; and that no accidental (unrecorded) contradictions exist. Fix or record
+any that are found.
+
+Produce a manifest file listing every document with doc_id, filename, format,
+date, type, author, and a one-line description, sorted by date, to support
+incremental ingestion.
+
+Also split the corpus into ingestion batches of about 20-30 files each, in
+date order, so a wiki system with limited capacity can ingest it
+incrementally.
+
+==================================================
+14. OUTPUT STRUCTURE
+==================================================
+
+/corpus/
+    DOC-1985-0001_<slug>.md
+    DOC-1986-0123_<slug>.csv
+    ...
+/corpus_by_batch/
+    batch_01/ ... batch_NN/   (same files, grouped for incremental ingestion)
+/answer_key/
+    entity_registry.md
+    timeline.md
+    contradiction_ledger.md
+    supersession_ledger.md
+    gaps_ledger.md
+    alias_ledger.md
+    evaluation_questions.md
+    evaluation_questions.csv
+/world_bible.md
+/manifest.csv
+
+Only /corpus/ (or /corpus_by_batch/) is fed to the wiki. Everything else is
+kept for grading.
+
+==================================================
+15. FINAL CONSTRAINTS
+==================================================
+
+- The station, town, people, organizations, and documents are fictional. The
+  event is modeled on Chernobyl, but do not use real names of people, the
+  station, the town, or agencies, and do not quote real documents or reproduce
+  real text.
+- Real generic reactor physics, radiation units, radionuclides, health-physics
+  concepts, and the general sequence of a Chernobyl-type accident are fine.
+- Treat victims, casualties, and health effects with the restraint of real
+  official and medical records: factual, not sensational.
+- Source documents must never contain meta-commentary about the test (no
+  "this is a contradiction", "note to the LLM", etc.).
+- Every corpus file must be .md or .csv.
+- Favor realism over tidiness: real documents are incomplete, repetitive,
+  occasionally wrong, sometimes censored, and written for a specific audience
+  at a specific time.
