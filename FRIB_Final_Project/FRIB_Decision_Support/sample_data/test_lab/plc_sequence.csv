@@ -1,0 +1,22 @@
+time_s,PLC_STATE,permit,pressure [kPa],note
+0.0,RUNNING,true,2.0,[INFO] Recorded state
+0.5,RUNNING,true,2.01,[INFO] Recorded state
+1.0,RUNNING,true,2.02,[INFO] Recorded state
+1.5,RUNNING,true,2.03,[INFO] Recorded state
+2.0,RUNNING,true,2.04,[INFO] Recorded state
+2.5,RUNNING,true,2.05,[INFO] Recorded state
+3.0,RUNNING,true,2.06,[INFO] Recorded state
+3.5,RUNNING,true,2.07,[INFO] Recorded state
+4.0,WARNING,true,2.08,[WARNING] Recorded warning
+4.5,WARNING,true,2.09,[WARNING] Recorded warning
+5.0,WARNING,true,2.1,[WARNING] Recorded warning
+5.5,WARNING,true,2.11,[WARNING] Recorded warning
+6.0,WARNING,true,2.12,[WARNING] Recorded warning
+6.5,WARNING,true,2.13,[WARNING] Recorded warning
+7.0,INTERLOCKED,false,2.14,[ERROR] Recorded interlock
+7.5,INTERLOCKED,false,2.15,[ERROR] Recorded interlock
+8.0,INTERLOCKED,false,2.16,[ERROR] Recorded interlock
+8.5,INTERLOCKED,false,2.17,[ERROR] Recorded interlock
+9.0,INTERLOCKED,false,2.18,[ERROR] Recorded interlock
+9.5,INTERLOCKED,false,2.19,[ERROR] Recorded interlock
+10.0,INTERLOCKED,false,2.2,[ERROR] Recorded interlock

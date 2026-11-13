@@ -1,0 +1,4 @@
+FICTIONAL TRAINING ONLY - not a FRIB operating procedure or real measurement.
+
+Mechanical vibration bearing temperature spectrum RMS evidence review.
+Compare native sample rates, overlapping time range and alarm timestamp. Report measured vibration RMS before/after the alarm and the derived spectrum with its units and frequency resolution. A spectral peak alone does not prove bearing damage. Review temperature context and missing coverage before assigning a cause.

@@ -1,0 +1,7 @@
+voltage [V],state,note
+0,READY,untimed fictional record
+1,READY,untimed fictional record
+2,READY,untimed fictional record
+3,RUN,untimed fictional record
+4,RUN,untimed fictional record
+5,RUN,untimed fictional record

@@ -1,0 +1,20 @@
+.venv/
+.frib/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+.env
+.DS_Store
+# Runtime state
+data/events/*
+data/chroma/*
+data/frib.db
+!data/events/.gitkeep
+!data/chroma/.gitkeep
+data/documents/
+data/logs/
+data/*.db-*
+data-local-ai/
+tmp/
+.streamlit/secrets.toml

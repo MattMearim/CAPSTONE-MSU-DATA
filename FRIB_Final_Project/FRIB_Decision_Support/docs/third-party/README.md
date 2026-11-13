@@ -1,0 +1,1 @@
+The FRIB dashboard adapts visual design ideas from the supplied wiki-os-main project: cream surfaces, pastel accents, serif headings, collection cards and unified search. The dashboard retains the existing Python/Streamlit runtime and FRIB API. WikiOS is MIT licensed; its license is included in WikiOS-LICENSE.txt.

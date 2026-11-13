@@ -1,20 +1,48 @@
-# Python
+# Generated environments and model assets
 __pycache__/
 *.py[cod]
 .venv/
 venv/
+.frib/
 .pytest_cache/
 *.egg-info/
-
-# Local data and databases (downloaded or generated; do not commit)
-data/external/*
-!data/external/README.md
-data/generated/
-data/converted/
-*.sqlite
+.coverage
+.project-audit/
+dependencies/*
+!dependencies/*.py
+!dependencies/*.ps1
+!dependencies/*.cmd
+!dependencies/README.md
+# Saved local evidence and workspace preferences
+**/data-local-ai/
+**/Demo_Workspace/
+**/Demo_Workspace_AI/
+**/data/events/
+**/data/documents/
+**/data/logs/
+**/data/chroma/
 *.db
-chroma/
-
-# Secrets and OS files
+*.db-*
+*.sqlite
+*.sqlite3
+*.log
+!**/sample_data/**/*.log
+!**/sample_docs/**/*.log
+!FRIB_Final_Project/Live_Demo_Data/**/*.log
+**/ai-settings.json
+**/ai-setup-job.json
+**/quality-agent.json
+**/ui-preferences.json
+# Credentials, downloads and machine artifacts
 .env
+.env.*
+!.env.example
+!.env.demo
+**/.streamlit/secrets.toml
+*.zip
+*.exe
+*.dll
+*.safetensors
+*.gguf
+*.onnx
 .DS_Store

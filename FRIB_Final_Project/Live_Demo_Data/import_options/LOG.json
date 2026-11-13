@@ -1,0 +1,39 @@
+{
+  "fictional": true,
+  "dataset_id": "LOG",
+  "filename": "operator_shift.log",
+  "title": "Timestamped operator log",
+  "import_kind": "text",
+  "options": {
+    "event_id": "LAB-LOG",
+    "dataset_name": "Timestamped operator log",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "plc"
+  },
+  "expected_outcome": "Four source lines retained; PLC_STATE transitions support sequence analysis, but no unrecorded waveforms or physical cause are invented.",
+  "expected": {
+    "valid": true,
+    "processor": "plc_sequence",
+    "signals": 0,
+    "logs": 4,
+    "state_channels": [
+      "PLC_STATE",
+      "permit",
+      "operator_action"
+    ],
+    "sequence": [
+      "RUNNING",
+      "WARNING",
+      "INTERLOCKED"
+    ],
+    "review": "escalate"
+  },
+  "question": "PLC operator log permit chronological evidence limitations",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

@@ -1,0 +1,38 @@
+{
+  "fictional": true,
+  "dataset_id": "UNTIMED",
+  "filename": "row_order.csv",
+  "title": "Capture without measured timestamps",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-UNTIMED",
+    "dataset_name": "Capture without measured timestamps",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "rf",
+    "time_column": null,
+    "time_unit": "row_index",
+    "column_roles": {
+      "voltage [V]": "numeric",
+      "state": "category",
+      "note": "log"
+    },
+    "signal_names": {
+      "voltage [V]": "voltage"
+    }
+  },
+  "expected_outcome": "Unitless row order is explicit; generic evidence analysis is used for this incomplete RF capture, with no invented physical timing.",
+  "expected": {
+    "valid": true,
+    "processor": "mixed_evidence_summary",
+    "signals": 1,
+    "time_basis": "row_index"
+  },
+  "question": "Untimed RF records evidence limitations",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

@@ -1,4 +1,0 @@
-jsonschema>=4.20
-referencing>=0.31
-rfc3339-validator
-pytest

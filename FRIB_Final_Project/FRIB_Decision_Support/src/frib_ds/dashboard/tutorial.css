@@ -1,0 +1,65 @@
+/* A compact Home-only guide in the workspace's green and white theme.
+ * The tutorial never changes the surrounding theme or hides the Home page. */
+.frib-tutorial-active { display:none !important; }
+.st-key-panel_tutorial_welcome,.st-key-panel_tutorial {
+  background:linear-gradient(120deg,#f2f8f1,#ffffff 72%) !important;
+  border:1px solid #d5e5d9 !important; border-radius:20px !important;
+  padding:1rem 1.15rem !important; margin-bottom:.7rem; gap:.6rem;
+  box-shadow:0 1px 0 #fff inset,0 8px 24px -22px #265c3e40 !important;
+}
+.tutorial-invitation { display:flex; align-items:center; gap:.8rem; }
+.tutorial-invitation-icon { display:grid; place-items:center; flex-shrink:0; width:44px; height:44px; border:1px solid #b7d5bd; border-radius:14px; background:#e0efdf; color:var(--teal-ink,#2d7554); font-size:1.5rem; }
+.tutorial-kicker { display:block; color:var(--teal-ink,#2d7554); font-size:.63rem; font-weight:650; letter-spacing:.1em; }
+.stApp .tutorial-invitation h3 { font-family:var(--font-display); font-weight:500; font-size:1.22rem; letter-spacing:-.025em; margin:.18rem 0 .25rem; padding:0; color:var(--ink); }
+.tutorial-invitation p { margin:0; color:var(--muted); font-size:.79rem; line-height:1.6; }
+.st-key-panel_tutorial_welcome .stButton button { min-height:2.45rem; font-size:.78rem; }
+.tutorial-progress-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.4rem; margin:0 0 .45rem; font-size:.68rem; color:var(--muted); }
+.tutorial-progress-header > span:first-child { font-size:.61rem; color:var(--teal-ink,#2d7554); font-weight:650; letter-spacing:.12em; }
+.tutorial-stages { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:.3rem; list-style:none; margin:0 0 .35rem; padding:0; }
+.tutorial-stage { display:flex; align-items:center; justify-content:center; gap:.35rem; min-width:0; padding:.3rem .2rem; border:1px solid transparent; border-radius:9px; color:var(--muted); font-size:.65rem; white-space:nowrap; }
+.tutorial-stage-number { display:grid; place-items:center; flex-shrink:0; width:20px; height:20px; border-radius:50%; background:#e8eee7; color:#526759; font-size:.62rem; font-weight:600; }
+.tutorial-stage.current { color:#24573d; background:#e3f0e2; border-color:#bfd7bf; font-weight:650; }
+.tutorial-stage.current .tutorial-stage-number { color:#fff; background:var(--teal-ink,#2d7554); }
+.tutorial-stage.visited .tutorial-stage-number { color:#24573d; background:#d9ebd6; }
+.tutorial-summary { display:flex; align-items:center; gap:.8rem; min-width:0; }
+/* Custom HTML has no paragraph margin to offset Streamlit's markdown spacing. */
+.st-key-panel_tutorial [data-testid="stMarkdownContainer"]:has(> .tutorial-summary) { margin-bottom:0; }
+.tutorial-summary .tutorial-heading { min-width:0; }
+.stApp .st-key-panel_tutorial .tutorial-heading h2 { font-family:var(--font-display); font-size:1.4rem; line-height:1.25; font-weight:500; letter-spacing:-.025em; margin:0 0 .25rem; padding:0; color:var(--ink); }
+.tutorial-heading p { margin:0; max-width:850px; color:var(--muted); font-size:.82rem; line-height:1.6; }
+.tutorial-art { flex-shrink:0; width:56px; height:56px; display:grid; place-items:center; }
+.tutorial-app-icon { display:grid; place-items:center; width:56px; height:56px; border-radius:16px; color:#fff; background:linear-gradient(145deg,#80b77d,#2d7554); border:1px solid #ffffff80; box-shadow:inset 0 1px 0 #ffffff80,0 5px 12px #2b634b18; }
+.tutorial-app-icon svg { width:43px; height:43px; }
+.tutorial-art-2 .tutorial-app-icon,.tutorial-art-6 .tutorial-app-icon { background:linear-gradient(145deg,#8eae6a,#496d39); }
+.tutorial-art-3 .tutorial-app-icon { background:linear-gradient(145deg,#8fc6a2,#3b8066); }
+.st-key-panel_tutorial [data-testid="stExpander"] { border-color:#dce7dc; border-radius:11px; background:#ffffffc7; }
+.st-key-panel_tutorial [data-testid="stExpander"] summary { font-size:.77rem; }
+.st-key-panel_tutorial [data-testid="stMarkdownContainer"] li { font-size:.8rem; line-height:1.65; }
+.st-key-tutorial_controls { padding-top:.1rem; }
+.st-key-tutorial_controls button[kind] { min-height:2.6rem; font-size:.79rem; border-radius:11px; }
+.st-key-tutorial_hide button[kind] { background:transparent; border-color:transparent; color:var(--muted); box-shadow:none; }
+.st-key-tutorial_hide button[kind]:hover:not(:disabled) { background:#eaf2e8; color:var(--ink); }
+@media(max-width:900px) { .tutorial-stage { font-size:.61rem; gap:.2rem; } }
+@media(max-width:760px) {
+  .tutorial-stage > span:last-child { display:none; }
+  .tutorial-stage-number { width:24px; height:24px; }
+  .st-key-tutorial_controls [data-testid="stHorizontalBlock"] { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:.45rem; }
+  .st-key-tutorial_controls [data-testid="stColumn"] { min-width:0 !important; width:100% !important; }
+  .st-key-tutorial_controls button[kind] { min-height:2.8rem; }
+}
+@media(max-width:600px) {
+  .st-key-panel_tutorial_welcome,.st-key-panel_tutorial { padding:.85rem !important; border-radius:17px !important; }
+  .stApp .st-key-panel_tutorial .tutorial-heading h2 { font-size:1.2rem; }
+  .tutorial-heading p { font-size:.78rem; }
+  .st-key-panel_tutorial_welcome button[kind] { min-height:2.8rem; }
+  .tutorial-invitation-icon { width:36px; height:36px; border-radius:11px; font-size:1.3rem; }
+  .stApp .tutorial-invitation h3 { font-size:1.13rem; }
+  .tutorial-summary { gap:.65rem; }
+  .tutorial-art,.tutorial-app-icon { width:44px; height:44px; }
+  .tutorial-app-icon { border-radius:13px; }
+  .tutorial-app-icon svg { width:34px; height:34px; }
+}
+@media(forced-colors:active) {
+  .tutorial-stage.current,.tutorial-stage-number { border:1px solid CanvasText; }
+  .tutorial-stage.current { outline:2px solid Highlight; }
+}

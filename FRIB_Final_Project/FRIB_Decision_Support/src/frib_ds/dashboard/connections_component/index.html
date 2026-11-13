@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>FRIB interactive 3D knowledge web</title>
+  <link rel="stylesheet" href="component.css">
+  <script src="component.js" defer></script>
+</head>
+<body>
+  <section class="web-shell" aria-label="Interactive connections map">
+    <header class="map-toolbar">
+      <div class="map-heading">
+        <span class="map-mark" aria-hidden="true">✳</span>
+        <div><p class="eyebrow">CONNECTED KNOWLEDGE</p><p id="graph-count" class="map-count">Preparing your knowledge web…</p></div>
+      </div>
+      <div class="toolbar-actions" role="group" aria-label="Map controls">
+        <button id="motion-button" type="button" aria-pressed="false" title="Pause automatic rotation"><span class="button-symbol" aria-hidden="true">Ⅱ</span><span id="motion-label">Pause rotation</span></button>
+        <button id="reset-button" type="button" title="Reset the camera and show all connections (Home)"><span class="button-symbol" aria-hidden="true">↺</span>Reset view</button>
+      </div>
+    </header>
+    <div id="map-stage" class="map-stage">
+      <canvas id="knowledge-canvas" tabindex="0" role="img" aria-label="3D knowledge web. Drag to rotate, scroll to zoom, and select a node to see its connections. Use the keyboard node selector below for the same information." aria-describedby="keyboard-hint"></canvas>
+      <div class="map-depth-label" aria-hidden="true"><span class="live-dot"></span>3D · DRAG TO EXPLORE</div>
+      <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">✳</span><h2>Make room for connections.</h2><p id="empty-text">Add documents, investigate an event, or save a wiki entry to begin building your knowledge web.</p></div>
+      <div id="node-tooltip" class="node-tooltip" role="tooltip" hidden><span id="tooltip-kind" class="tooltip-kind"></span><strong id="tooltip-title"></strong><span id="tooltip-summary"></span></div>
+      <div class="map-navigation" role="group" aria-label="Zoom controls">
+        <button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in (+)">+</button>
+        <span id="zoom-level" aria-hidden="true">100%</span>
+        <button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out (−)">−</button>
+      </div>
+      <div id="selection-card" class="selection-card" hidden>
+        <div class="selection-copy"><span id="selection-kind" class="eyebrow"></span><strong id="selection-title"></strong><span id="selection-neighbors"></span></div>
+        <button id="focus-button" type="button" aria-pressed="false">Focus connections</button>
+        <button id="clear-button" class="icon-button" type="button" aria-label="Clear the selected node" title="Clear selection">×</button>
+      </div>
+    </div>
+    <footer class="map-footer">
+      <div id="legend" class="map-legend" aria-label="Types of connected records"></div>
+      <p id="keyboard-hint" class="map-hint">Drag to rotate <span>·</span> Scroll to zoom <span>·</span> Select a node to explore</p>
+      <div class="accessible-explorer">
+        <label for="node-picker">Explore a node</label>
+        <select id="node-picker" aria-label="Select a node without using the map"><option value="">Choose a node…</option></select>
+        <details class="keyboard-help"><summary>Keyboard controls</summary><p>Focus the map and use arrow keys to rotate, + or − to zoom, Home to reset, and Space to pause. Use the node selector to explore each record and its connections.</p></details>
+      </div>
+      <p id="map-announcement" class="screen-reader-only" aria-live="polite" aria-atomic="true"></p>
+    </footer>
+  </section>
+</body>
+</html>

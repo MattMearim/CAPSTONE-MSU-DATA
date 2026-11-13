@@ -1,0 +1,56 @@
+{
+  "fictional": true,
+  "dataset_id": "PLC",
+  "filename": "plc_sequence.csv",
+  "title": "PLC states, permit and log messages",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-PLC",
+    "dataset_name": "PLC states, permit and log messages",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "plc",
+    "column_roles": {
+      "PLC_STATE": "category",
+      "permit": "category",
+      "pressure [kPa]": "numeric",
+      "note": "log"
+    },
+    "signal_names": {
+      "pressure [kPa]": "pressure"
+    }
+  },
+  "expected_outcome": "RUNNING -> WARNING -> INTERLOCKED is observed; transition times are 4 s and 7 s. Boolean permit remains categorical and all 21 text records survive.",
+  "expected": {
+    "valid": true,
+    "processor": "plc_sequence",
+    "signals": 1,
+    "logs": 21,
+    "state_channels": [
+      "PLC_STATE",
+      "permit"
+    ],
+    "log_levels": [
+      "INFO",
+      "WARNING",
+      "ERROR"
+    ],
+    "features": {
+      "interlock_time_s": 7,
+      "expected_sequence_observed": true
+    },
+    "sequence": [
+      "RUNNING",
+      "WARNING",
+      "INTERLOCKED"
+    ],
+    "review": "correct"
+  },
+  "question": "PLC RUNNING WARNING INTERLOCKED sequence permit log evidence review",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

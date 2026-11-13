@@ -1,0 +1,29 @@
+{
+  "fictional": true,
+  "dataset_id": "PDF-NOTE",
+  "filename": "operator_note.pdf",
+  "title": "Selectable-text PDF evidence",
+  "import_kind": "text",
+  "options": {
+    "event_id": "LAB-PDF-NOTE",
+    "dataset_name": "Selectable-text PDF evidence",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "other"
+  },
+  "expected_outcome": "Selectable text is retained as logs with page provenance; mixed untimed headings mean explicit row-order coordinates. No OCR, image/table interpretation or numeric diagnosis.",
+  "expected": {
+    "valid": true,
+    "processor": "mixed_evidence_summary",
+    "signals": 0,
+    "time_basis": "row_index",
+    "pdf_pages": true
+  },
+  "question": "Fictional operator PDF reported pressure interlock evidence",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

@@ -1,0 +1,277 @@
+{
+  "$defs": {
+    "AgentFinding": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "category": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Category",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "signal_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Signal Name"
+        },
+        "start_index": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Start Index"
+        },
+        "end_index": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "End Index"
+        },
+        "explanation": {
+          "maxLength": 600,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "recommended_check": {
+          "maxLength": 400,
+          "minLength": 1,
+          "title": "Recommended Check",
+          "type": "string"
+        },
+        "related_event_id": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Related Event Id"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/SampleEvidence"
+          },
+          "maxItems": 8,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "repair": {
+          "$ref": "#/$defs/ProposedRepair"
+        }
+      },
+      "required": [
+        "title",
+        "category",
+        "severity",
+        "confidence",
+        "signal_name",
+        "start_index",
+        "end_index",
+        "explanation",
+        "recommended_check",
+        "evidence"
+      ],
+      "title": "AgentFinding",
+      "type": "object"
+    },
+    "ProposedRepair": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "default": "review_only",
+          "enum": [
+            "review_only",
+            "replace_sample",
+            "exclude_samples",
+            "set_display_label"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "rationale": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Rationale",
+          "type": "string"
+        }
+      },
+      "title": "ProposedRepair",
+      "type": "object"
+    },
+    "ReadRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "enum": [
+            "signal_summary",
+            "read_window",
+            "compare_dataset"
+          ],
+          "title": "Tool",
+          "type": "string"
+        },
+        "signal_name": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Signal Name"
+        },
+        "start_index": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Start Index",
+          "type": "integer"
+        },
+        "count": {
+          "default": 64,
+          "maximum": 96,
+          "minimum": 1,
+          "title": "Count",
+          "type": "integer"
+        },
+        "event_id": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Event Id"
+        }
+      },
+      "required": [
+        "tool"
+      ],
+      "title": "ReadRequest",
+      "type": "object"
+    },
+    "SampleEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "minimum": 0,
+          "title": "Index",
+          "type": "integer"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "index",
+        "value"
+      ],
+      "title": "SampleEvidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "summary": {
+      "maxLength": 800,
+      "title": "Summary",
+      "type": "string"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/AgentFinding"
+      },
+      "maxItems": 6,
+      "title": "Findings",
+      "type": "array"
+    },
+    "read_requests": {
+      "items": {
+        "$ref": "#/$defs/ReadRequest"
+      },
+      "maxItems": 2,
+      "title": "Read Requests",
+      "type": "array"
+    }
+  },
+  "required": [
+    "summary"
+  ],
+  "title": "AgentResponse",
+  "type": "object"
+}

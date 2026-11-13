@@ -1,0 +1,1222 @@
+{
+  "checked_at": "2026-10-30T13:53:17.537818+00:00",
+  "scope": "Real Ollama generation and MiniLM embeddings; isolated temporary event and procedure library",
+  "providers": {
+    "llm": {
+      "provider": "ollama",
+      "model": "qwen3:8b",
+      "temperature": 0.0,
+      "timeout_seconds": 300,
+      "ollama_base_url": "http://localhost:11434",
+      "lmstudio_base_url": "http://localhost:1234/v1"
+    },
+    "embeddings": {
+      "provider": "sentence_transformers",
+      "model": "all-MiniLM-L6-v2",
+      "dimensions": 384,
+      "device": "cpu",
+      "cache_folder": "/Users/hitheshnannapaneni/Documents/ChatGPT/Wuva 1/FRIB_Final_Project/FRIB_Decision_Support/.frib/cache/huggingface/hub"
+    }
+  },
+  "health": {
+    "status": "ok",
+    "instance_id": null,
+    "llm_provider": "ollama",
+    "embedding_provider": "sentence_transformers",
+    "vector_provider": "sqlite",
+    "domains": [
+      "mechanical",
+      "other",
+      "plc",
+      "rf"
+    ]
+  },
+  "signal_count": 4,
+  "analysis": {
+    "event_id": "CHERNOBYL-DEMO-LEAK",
+    "processor": "mixed_evidence_summary",
+    "processor_version": "1.0",
+    "features": {
+      "evidence_summary": {
+        "numeric_channels": 4,
+        "numeric_samples": 244,
+        "categorical_channels": 1,
+        "recorded_state_events": 4,
+        "text_records": 5,
+        "categories": {
+          "alarm_state": {
+            "recorded_events": 4,
+            "observed_changes": 3,
+            "values": [
+              {
+                "label": "DEMO_BASELINE",
+                "count": 1
+              },
+              {
+                "label": "DEMO_ALARM",
+                "count": 1
+              },
+              {
+                "label": "DEMO_ESCALATED",
+                "count": 1
+              },
+              {
+                "label": "DEMO_TEAM_REVIEW",
+                "count": 1
+              }
+            ],
+            "first_value": "DEMO_BASELINE",
+            "last_value": "DEMO_TEAM_REVIEW"
+          }
+        },
+        "log_severity_counts": {
+          "INFO": 2,
+          "WARNING": 3
+        },
+        "reported_term_mentions": {
+          "warning": 3
+        },
+        "text_excerpts": [
+          {
+            "timestamp_s": 0.0,
+            "level": "INFO",
+            "source": "chernobyl_leak_demo.csv:row 2:operator_note",
+            "text": "[INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only"
+          },
+          {
+            "timestamp_s": 180.0,
+            "level": "WARNING",
+            "source": "chernobyl_leak_demo.csv:row 20:operator_note",
+            "text": "[WARNING] Simulated water ingress near a fictional confinement service area; readings rising"
+          },
+          {
+            "timestamp_s": 240.0,
+            "level": "WARNING",
+            "source": "chernobyl_leak_demo.csv:row 26:operator_note",
+            "text": "[WARNING] Demo control room and radiation protection notified; access restricted in exercise"
+          },
+          {
+            "timestamp_s": 600.0,
+            "level": "WARNING",
+            "source": "chernobyl_leak_demo.csv:row 62:operator_note",
+            "text": "[WARNING] Training event unresolved; specialist assessment and repair authorization pending"
+          }
+        ],
+        "interpretation": "Counts, category changes and quoted text describe recorded evidence. Severity and term mentions do not establish an equipment condition or cause."
+      },
+      "measurement_summary": {
+        "pool_depth": {
+          "unit": "m",
+          "samples": 61,
+          "minimum": 0.0,
+          "maximum": 0.06,
+          "mean": 0.021147540983606557,
+          "first": 0.0,
+          "last": 0.06
+        },
+        "radiation_monitor": {
+          "unit": "counts/s",
+          "samples": 61,
+          "minimum": 30.0,
+          "maximum": 190.0,
+          "mean": 87.6883606557377,
+          "first": 32.0,
+          "last": 190.0
+        },
+        "confinement_pressure": {
+          "unit": "Pa",
+          "samples": 61,
+          "minimum": -30.43,
+          "maximum": -5.0,
+          "mean": -21.18852459016394,
+          "first": -30.0,
+          "last": -5.0
+        },
+        "relative_humidity": {
+          "unit": "1",
+          "samples": 61,
+          "minimum": 0.4181,
+          "maximum": 0.68,
+          "mean": 0.5116393442622951,
+          "first": 0.42,
+          "last": 0.68
+        }
+      },
+      "warnings": [
+        "Time column 'time_s' has no declared unit; confirm the selected time unit before import.",
+        "This is a descriptive evidence summary; no domain-specific physical diagnosis was calculated."
+      ],
+      "time_basis": "s",
+      "data_quality": {
+        "version": "1.0",
+        "stage": "L2",
+        "status": "review",
+        "summary": {
+          "error": 0,
+          "warning": 1,
+          "info": 0
+        },
+        "issues": [
+          {
+            "code": "FLATLINE_RUN",
+            "severity": "warning",
+            "title": "Potential constant or stuck readings",
+            "message": "There are 1 runs of at least 5 exactly repeated samples. A genuinely stable or quantized measurement can produce this pattern; sensor failure is not established.",
+            "column": "pool_depth",
+            "rows": [
+              1
+            ],
+            "timestamps_s": [
+              0.0
+            ],
+            "count": 1,
+            "suggestion": "Compare instrument resolution, operating state and independent measurements before treating the channel as stuck.",
+            "repair": null
+          }
+        ],
+        "unit_suggestions": [],
+        "expectations": {
+          "gap_factor": 1.8,
+          "channels": {},
+          "required_channels": []
+        },
+        "location_basis": "accepted_sample_index"
+      }
+    },
+    "timeline": [
+      {
+        "timestamp_s": 0.0,
+        "event": "alarm_state -> DEMO_BASELINE",
+        "evidence": "state log"
+      },
+      {
+        "timestamp_s": 0.0,
+        "event": "[INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+        "evidence": "event log: chernobyl_leak_demo.csv:row 2:operator_note"
+      },
+      {
+        "timestamp_s": 180.0,
+        "event": "alarm_state -> DEMO_ALARM",
+        "evidence": "state log"
+      },
+      {
+        "timestamp_s": 180.0,
+        "event": "[WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+        "evidence": "event log: chernobyl_leak_demo.csv:row 20:operator_note"
+      },
+      {
+        "timestamp_s": 240.0,
+        "event": "alarm_state -> DEMO_ESCALATED",
+        "evidence": "state log"
+      },
+      {
+        "timestamp_s": 240.0,
+        "event": "[WARNING] Demo control room and radiation protection notified; access restricted in exercise",
+        "evidence": "event log: chernobyl_leak_demo.csv:row 26:operator_note"
+      },
+      {
+        "timestamp_s": 420.0,
+        "event": "alarm_state -> DEMO_TEAM_REVIEW",
+        "evidence": "state log"
+      },
+      {
+        "timestamp_s": 420.0,
+        "event": "[INFO] Exercise response team reviewing remote observations; cause unconfirmed",
+        "evidence": "event log: chernobyl_leak_demo.csv:row 44:operator_note"
+      },
+      {
+        "timestamp_s": 600.0,
+        "event": "[WARNING] Training event unresolved; specialist assessment and repair authorization pending",
+        "evidence": "event log: chernobyl_leak_demo.csv:row 62:operator_note"
+      }
+    ],
+    "findings": [
+      "Evidence contains 4 measurement channels, 1 categorical channels and 5 text records.",
+      "Recorded category 'alarm_state': DEMO_BASELINE to DEMO_TEAM_REVIEW; 3 observed value changes.",
+      "Recorded text severity labels: INFO=2, WARNING=3.",
+      "Text mentions (not diagnoses): warning=3.",
+      "Recorded text at 0 s [INFO]: [INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+      "Recorded text at 180 s [WARNING]: [WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+      "Recorded text at 240 s [WARNING]: [WARNING] Demo control room and radiation protection notified; access restricted in exercise"
+    ],
+    "plot_specs": [
+      {
+        "kind": "timeseries",
+        "title": "Recorded pool depth",
+        "timestamps_s": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0,
+          110.0,
+          120.0,
+          130.0,
+          140.0,
+          150.0,
+          160.0,
+          170.0,
+          180.0,
+          190.0,
+          200.0,
+          210.0,
+          220.0,
+          230.0,
+          240.0,
+          250.0,
+          260.0,
+          270.0,
+          280.0,
+          290.0,
+          300.0,
+          310.0,
+          320.0,
+          330.0,
+          340.0,
+          350.0,
+          360.0,
+          370.0,
+          380.0,
+          390.0,
+          400.0,
+          410.0,
+          420.0,
+          430.0,
+          440.0,
+          450.0,
+          460.0,
+          470.0,
+          480.0,
+          490.0,
+          500.0,
+          510.0,
+          520.0,
+          530.0,
+          540.0,
+          550.0,
+          560.0,
+          570.0,
+          580.0,
+          590.0,
+          600.0
+        ],
+        "values": {
+          "pool_depth": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.00143,
+            0.00286,
+            0.00429,
+            0.00571,
+            0.00714,
+            0.008570000000000001,
+            0.01,
+            0.01143,
+            0.01286,
+            0.014289999999999999,
+            0.015710000000000002,
+            0.017140000000000002,
+            0.01857,
+            0.02,
+            0.02143,
+            0.02286,
+            0.02429,
+            0.02571,
+            0.02714,
+            0.02857,
+            0.03,
+            0.03143,
+            0.03286,
+            0.03429,
+            0.03571,
+            0.03714,
+            0.03857,
+            0.04,
+            0.04143,
+            0.04286,
+            0.04429,
+            0.04571,
+            0.04714,
+            0.04857,
+            0.05,
+            0.051430000000000003,
+            0.05286,
+            0.05429,
+            0.05571,
+            0.05714,
+            0.058570000000000004,
+            0.06
+          ]
+        },
+        "units": {
+          "pool_depth": "m"
+        },
+        "labels": {
+          "pool_depth": "pool depth"
+        },
+        "time_label": "Elapsed time (s)"
+      },
+      {
+        "kind": "timeseries",
+        "title": "Recorded radiation monitor",
+        "timestamps_s": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0,
+          110.0,
+          120.0,
+          130.0,
+          140.0,
+          150.0,
+          160.0,
+          170.0,
+          180.0,
+          190.0,
+          200.0,
+          210.0,
+          220.0,
+          230.0,
+          240.0,
+          250.0,
+          260.0,
+          270.0,
+          280.0,
+          290.0,
+          300.0,
+          310.0,
+          320.0,
+          330.0,
+          340.0,
+          350.0,
+          360.0,
+          370.0,
+          380.0,
+          390.0,
+          400.0,
+          410.0,
+          420.0,
+          430.0,
+          440.0,
+          450.0,
+          460.0,
+          470.0,
+          480.0,
+          490.0,
+          500.0,
+          510.0,
+          520.0,
+          530.0,
+          540.0,
+          550.0,
+          560.0,
+          570.0,
+          580.0,
+          590.0,
+          600.0
+        ],
+        "values": {
+          "radiation_monitor": [
+            32.0,
+            33.0,
+            33.73,
+            34.0,
+            33.73,
+            33.0,
+            32.0,
+            31.0,
+            30.27,
+            30.0,
+            30.27,
+            31.0,
+            32.0,
+            33.0,
+            33.73,
+            34.0,
+            33.73,
+            33.0,
+            32.0,
+            34.76,
+            37.79,
+            41.29,
+            45.32,
+            49.81,
+            54.57,
+            59.33,
+            63.83,
+            67.86,
+            71.35,
+            74.38,
+            77.14,
+            79.9,
+            82.93,
+            86.43,
+            90.46,
+            94.95,
+            99.71,
+            104.48,
+            108.97,
+            113.0,
+            116.49,
+            119.52,
+            122.29,
+            125.05,
+            128.08,
+            131.57,
+            135.6,
+            140.1,
+            144.86,
+            149.62,
+            154.11,
+            158.14,
+            161.64,
+            164.67,
+            167.43,
+            170.19,
+            173.22,
+            176.71,
+            180.74,
+            185.24,
+            190.0
+          ]
+        },
+        "units": {
+          "radiation_monitor": "counts/s"
+        },
+        "labels": {
+          "radiation_monitor": "radiation monitor"
+        },
+        "time_label": "Elapsed time (s)"
+      },
+      {
+        "kind": "timeseries",
+        "title": "Recorded confinement pressure",
+        "timestamps_s": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0,
+          110.0,
+          120.0,
+          130.0,
+          140.0,
+          150.0,
+          160.0,
+          170.0,
+          180.0,
+          190.0,
+          200.0,
+          210.0,
+          220.0,
+          230.0,
+          240.0,
+          250.0,
+          260.0,
+          270.0,
+          280.0,
+          290.0,
+          300.0,
+          310.0,
+          320.0,
+          330.0,
+          340.0,
+          350.0,
+          360.0,
+          370.0,
+          380.0,
+          390.0,
+          400.0,
+          410.0,
+          420.0,
+          430.0,
+          440.0,
+          450.0,
+          460.0,
+          470.0,
+          480.0,
+          490.0,
+          500.0,
+          510.0,
+          520.0,
+          530.0,
+          540.0,
+          550.0,
+          560.0,
+          570.0,
+          580.0,
+          590.0,
+          600.0
+        ],
+        "values": {
+          "confinement_pressure": [
+            -30.0,
+            -29.57,
+            -29.57,
+            -30.0,
+            -30.43,
+            -30.43,
+            -30.0,
+            -29.57,
+            -29.57,
+            -30.0,
+            -30.43,
+            -30.43,
+            -30.0,
+            -29.57,
+            -29.57,
+            -30.0,
+            -30.43,
+            -30.43,
+            -30.0,
+            -28.97,
+            -28.38,
+            -28.21,
+            -28.05,
+            -27.46,
+            -26.43,
+            -25.4,
+            -24.81,
+            -24.64,
+            -24.48,
+            -23.89,
+            -22.86,
+            -21.83,
+            -21.23,
+            -21.07,
+            -20.91,
+            -20.31,
+            -19.29,
+            -18.26,
+            -17.66,
+            -17.5,
+            -17.34,
+            -16.74,
+            -15.71,
+            -14.69,
+            -14.09,
+            -13.93,
+            -13.77,
+            -13.17,
+            -12.14,
+            -11.11,
+            -10.52,
+            -10.36,
+            -10.19,
+            -9.6,
+            -8.57,
+            -7.54,
+            -6.95,
+            -6.79,
+            -6.62,
+            -6.03,
+            -5.0
+          ]
+        },
+        "units": {
+          "confinement_pressure": "Pa"
+        },
+        "labels": {
+          "confinement_pressure": "confinement pressure"
+        },
+        "time_label": "Elapsed time (s)"
+      },
+      {
+        "kind": "timeseries",
+        "title": "Recorded relative humidity",
+        "timestamps_s": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0,
+          110.0,
+          120.0,
+          130.0,
+          140.0,
+          150.0,
+          160.0,
+          170.0,
+          180.0,
+          190.0,
+          200.0,
+          210.0,
+          220.0,
+          230.0,
+          240.0,
+          250.0,
+          260.0,
+          270.0,
+          280.0,
+          290.0,
+          300.0,
+          310.0,
+          320.0,
+          330.0,
+          340.0,
+          350.0,
+          360.0,
+          370.0,
+          380.0,
+          390.0,
+          400.0,
+          410.0,
+          420.0,
+          430.0,
+          440.0,
+          450.0,
+          460.0,
+          470.0,
+          480.0,
+          490.0,
+          500.0,
+          510.0,
+          520.0,
+          530.0,
+          540.0,
+          550.0,
+          560.0,
+          570.0,
+          580.0,
+          590.0,
+          600.0
+        ],
+        "values": {
+          "relative_humidity": [
+            0.42,
+            0.42119999999999996,
+            0.4219,
+            0.4219,
+            0.42119999999999996,
+            0.42,
+            0.41880000000000006,
+            0.4181,
+            0.4181,
+            0.41880000000000006,
+            0.42,
+            0.42119999999999996,
+            0.4219,
+            0.4219,
+            0.42119999999999996,
+            0.42,
+            0.41880000000000006,
+            0.4181,
+            0.4181,
+            0.425,
+            0.4324,
+            0.4397,
+            0.44670000000000004,
+            0.4529,
+            0.4583,
+            0.4633,
+            0.4683,
+            0.47380000000000005,
+            0.48,
+            0.4869,
+            0.4943,
+            0.5017,
+            0.5086,
+            0.5147999999999999,
+            0.5202,
+            0.5252,
+            0.5303,
+            0.5357000000000001,
+            0.5418999999999999,
+            0.5488000000000001,
+            0.5562,
+            0.5636,
+            0.5705,
+            0.5767,
+            0.5821000000000001,
+            0.5871000000000001,
+            0.5922,
+            0.5976,
+            0.6038,
+            0.6107,
+            0.6181,
+            0.6255,
+            0.6324000000000001,
+            0.6386000000000001,
+            0.644,
+            0.649,
+            0.6541,
+            0.6595000000000001,
+            0.6657,
+            0.6726000000000001,
+            0.68
+          ]
+        },
+        "units": {
+          "relative_humidity": "1"
+        },
+        "labels": {
+          "relative_humidity": "relative humidity"
+        },
+        "time_label": "Elapsed time (s)"
+      },
+      {
+        "kind": "state_timeline",
+        "state_name": "alarm_state",
+        "title": "Recorded alarm state",
+        "timestamps_s": [
+          0.0,
+          180.0,
+          240.0,
+          420.0
+        ],
+        "states": [
+          "DEMO_BASELINE",
+          "DEMO_ALARM",
+          "DEMO_ESCALATED",
+          "DEMO_TEAM_REVIEW"
+        ],
+        "time_label": "Elapsed time (s)"
+      },
+      {
+        "kind": "state_timeline",
+        "state_name": "Reported log severity",
+        "title": "Text record chronology",
+        "timestamps_s": [
+          0.0,
+          180.0,
+          240.0,
+          420.0,
+          600.0
+        ],
+        "states": [
+          "INFO",
+          "WARNING",
+          "WARNING",
+          "INFO",
+          "WARNING"
+        ],
+        "messages": [
+          "[INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+          "[WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+          "[WARNING] Demo control room and radiation protection notified; access restricted in exercise",
+          "[INFO] Exercise response team reviewing remote observations; cause unconfirmed",
+          "[WARNING] Training event unresolved; specialist assessment and repair authorization pending"
+        ],
+        "time_label": "Elapsed time (s)"
+      }
+    ],
+    "created_at": "2026-10-30T13:53:20.487326Z"
+  },
+  "rag": {
+    "question": "How should the response team address the Chernobyl leak in this fictional training scenario? Cite the procedure, explain the observations, and state whether the cause is confirmed or the leak is fixed.",
+    "answer": "### Measured / Derived Evidence\nThe event record indicates a simulated water ingress near a fictional confinement service area, with readings rising at 180 seconds. Two warnings were logged at 180 s and 240 s, indicating the scenario is progressing. The text mentions that the demo control room and radiation protection were notified, and access was restricted in the exercise. There is no confirmed cause or resolution of the leak, as the scenario ends unresolved. [S3]\n\n### Procedural Guidance\nThe response team should:\n1. Keep personnel away from the suspected leak and follow the designated site's emergency arrangements.\n2. Notify the control room, radiation protection, and emergency response personnel. Preserve timestamps, alarms, and the original sensor file.\n3. Ask qualified personnel to check instrument validity and assess the water and surrounding area using authorized monitoring methods. Review remote observations before assigning a cause.\n4. Authorized specialists decide containment and repair under approved site work plans. This demo supplies no valve, pump, pressure, or entry instructions.\n5. Document corrective work and independent follow-up measurements. Reopening requires authorized clearance; a lower reading alone does not prove the leak is fixed. [S1]\n\n### AI Interpretation\nThe scenario describes a fictional training exercise, not an actual incident. The observed water ingress and rising readings are part of the simulation. The cause is not confirmed, and the leak is not resolved. The response team should follow the procedural guidance provided in the training document to simulate an appropriate response. The scenario is designed to train personnel on how to handle a potential leak without real-world consequences.\n\n### Sources\n- [S1] Chernobyl leak response - FICTIONAL TRAINING\n- [S2] Chernobyl leak response - FICTIONAL TRAINING\n- [S3] Chernobyl leak response - FICTIONAL TRAINING",
+    "sources": [
+      {
+        "label": "S1",
+        "title": "Chernobyl leak response - FICTIONAL TRAINING",
+        "document_id": "DOC-adaf3fee2ed949d38c935f960fb66219",
+        "chunk_id": "DOC-adaf3fee2ed949d38c935f960fb66219-P1-C3",
+        "page": 1,
+        "section": "Response and recovery for the exercise",
+        "score": 0.7107859090021139,
+        "excerpt": "## Response and recovery for the exercise\n\n1. Keep personnel away from the suspected leak and follow the designated site's emergency arrangements.\n2. Notify the control room, radiation protection and emergency response personnel. Preserve timestamps, alarms and the original sensor file.\n3. Ask qualified personnel to check instrument validity and assess the w",
+        "version": "TRAINING-1.0"
+      },
+      {
+        "label": "S2",
+        "title": "Chernobyl leak response - FICTIONAL TRAINING",
+        "document_id": "DOC-adaf3fee2ed949d38c935f960fb66219",
+        "chunk_id": "DOC-adaf3fee2ed949d38c935f960fb66219-P1-C1",
+        "page": 1,
+        "section": "Chernobyl leak \u2014 FICTIONAL TRAINING (TRAINING-1.0)",
+        "score": 0.6490436075601189,
+        "excerpt": "# Chernobyl leak \u2014 FICTIONAL TRAINING (TRAINING-1.0)\n\nHow do we fix the Chernobyl leak? Keep people away from the water; notify the control room and radiation protection team. Authorized specialists assess, contain and repair under site procedures. The cause is unconfirmed; reopening needs clearance. Fictional exercise only.",
+        "version": "TRAINING-1.0"
+      },
+      {
+        "label": "S3",
+        "title": "Chernobyl leak response - FICTIONAL TRAINING",
+        "document_id": "DOC-adaf3fee2ed949d38c935f960fb66219",
+        "chunk_id": "DOC-adaf3fee2ed949d38c935f960fb66219-P1-C2",
+        "page": 1,
+        "section": "What went wrong in the demo?",
+        "score": 0.6246768737013552,
+        "excerpt": "## What went wrong in the demo?\n\nSimulated water ingress develops near a fictional Chernobyl (Chornobyl) confinement service area at 180 seconds. Over 10 minutes, pool_depth rises from 0 to 60 mm, radiation_monitor from 32 to 190 counts/s, confinement_pressure from -30 to -5 Pa, and relative_humidity from 42 to 68 percent. These are invented training values,",
+        "version": "TRAINING-1.0"
+      }
+    ],
+    "grounded": true,
+    "event_id": "CHERNOBYL-DEMO-LEAK",
+    "mode": "llm",
+    "error": null,
+    "evidence": [
+      "Evidence contains 4 measurement channels, 1 categorical channels and 5 text records.",
+      "Recorded category 'alarm_state': DEMO_BASELINE to DEMO_TEAM_REVIEW; 3 observed value changes.",
+      "Recorded text severity labels: INFO=2, WARNING=3.",
+      "Text mentions (not diagnoses): warning=3.",
+      "Recorded text at 0 s [INFO]: [INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+      "Recorded text at 180 s [WARNING]: [WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+      "Recorded text at 240 s [WARNING]: [WARNING] Demo control room and radiation protection notified; access restricted in exercise"
+    ],
+    "interpretation": "### Measured / Derived Evidence\nThe event record indicates a simulated water ingress near a fictional confinement service area, with readings rising at 180 seconds. Two warnings were logged at 180 s and 240 s, indicating the scenario is progressing. The text mentions that the demo control room and radiation protection were notified, and access was restricted in the exercise. There is no confirmed cause or resolution of the leak, as the scenario ends unresolved. [S3]\n\n### Procedural Guidance\nThe response team should:\n1. Keep personnel away from the suspected leak and follow the designated site's emergency arrangements.\n2. Notify the control room, radiation protection, and emergency response personnel. Preserve timestamps, alarms, and the original sensor file.\n3. Ask qualified personnel to check instrument validity and assess the water and surrounding area using authorized monitoring methods. Review remote observations before assigning a cause.\n4. Authorized specialists decide containment and repair under approved site work plans. This demo supplies no valve, pump, pressure, or entry instructions.\n5. Document corrective work and independent follow-up measurements. Reopening requires authorized clearance; a lower reading alone does not prove the leak is fixed. [S1]\n\n### AI Interpretation\nThe scenario describes a fictional training exercise, not an actual incident. The observed water ingress and rising readings are part of the simulation. The cause is not confirmed, and the leak is not resolved. The response team should follow the procedural guidance provided in the training document to simulate an appropriate response. The scenario is designed to train personnel on how to handle a potential leak without real-world consequences.\n\n### Sources\n- [S1] Chernobyl leak response - FICTIONAL TRAINING\n- [S2] Chernobyl leak response - FICTIONAL TRAINING\n- [S3] Chernobyl leak response - FICTIONAL TRAINING"
+  },
+  "draft": {
+    "draft_id": "DRAFT-8E1506066B",
+    "event_id": "CHERNOBYL-DEMO-LEAK",
+    "summary": "This event represents a fictional training scenario simulating a Chernobyl leak, with synthetic sensor data and no real-world operational implications. The procedural guidance from the approved documents is intended for training purposes only and does not apply to actual site operations.",
+    "observations": [
+      "Evidence contains 4 measurement channels, 1 categorical channels and 5 text records.",
+      "Recorded category 'alarm_state': DEMO_BASELINE to DEMO_TEAM_REVIEW; 3 observed value changes.",
+      "Recorded text severity labels: INFO=2, WARNING=3.",
+      "Text mentions (not diagnoses): warning=3.",
+      "Recorded text at 0 s [INFO]: [INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+      "Recorded text at 180 s [WARNING]: [WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+      "Recorded text at 240 s [WARNING]: [WARNING] Demo control room and radiation protection notified; access restricted in exercise"
+    ],
+    "hypotheses": [
+      {
+        "rank": 1,
+        "description": "Tentative review candidate: available finite features are insufficient to distinguish an engineering explanation.",
+        "support": "tentative_evidence_pattern",
+        "supporting_evidence": [
+          "Evidence contains 4 measurement channels, 1 categorical channels and 5 text records.",
+          "Recorded category 'alarm_state': DEMO_BASELINE to DEMO_TEAM_REVIEW; 3 observed value changes.",
+          "Recorded text severity labels: INFO=2, WARNING=3.",
+          "Text mentions (not diagnoses): warning=3.",
+          "Recorded text at 0 s [INFO]: [INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+          "Recorded text at 180 s [WARNING]: [WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+          "Recorded text at 240 s [WARNING]: [WARNING] Demo control room and radiation protection notified; access restricted in exercise"
+        ],
+        "contradicting_evidence": [
+          "No supported domain-specific observation pattern could be formed. Missing estimates are not evidence of a normal or faulty condition.",
+          "Analysis limitation: Time column 'time_s' has no declared unit; confirm the selected time unit before import.",
+          "Analysis limitation: This is a descriptive evidence summary; no domain-specific physical diagnosis was calculated."
+        ]
+      }
+    ],
+    "recommended_actions": [
+      "Review the measured and derived evidence together with the event timeline before assigning a cause.",
+      "Compare the event timing with the applicable retrieved procedure and state/event logs.",
+      "Have a qualified human reviewer confirm, correct, or escalate the draft before it becomes approved knowledge."
+    ],
+    "affected_hardware": [],
+    "relevant_sources": [
+      "S1: Chernobyl leak response - FICTIONAL TRAINING; document=DOC-adaf3fee2ed949d38c935f960fb66219; chunk=DOC-adaf3fee2ed949d38c935f960fb66219-P1-C2; version=TRAINING-1.0; page=1",
+      "S2: Chernobyl leak response - FICTIONAL TRAINING; document=DOC-adaf3fee2ed949d38c935f960fb66219; chunk=DOC-adaf3fee2ed949d38c935f960fb66219-P1-C3; version=TRAINING-1.0; page=1",
+      "S3: Chernobyl leak response - FICTIONAL TRAINING; document=DOC-adaf3fee2ed949d38c935f960fb66219; chunk=DOC-adaf3fee2ed949d38c935f960fb66219-P1-C1; version=TRAINING-1.0; page=1"
+    ],
+    "tags": [
+      "other",
+      "evidence_record"
+    ],
+    "status": "draft",
+    "generated_by": "configured_llm_with_deterministic_completion",
+    "created_at": "2026-10-30T13:53:59.976532Z",
+    "evidence_snapshot": {
+      "event_id": "CHERNOBYL-DEMO-LEAK",
+      "event_sha256": "c58d36ceaec7cf2d912d0b672960225ae7ad598c1ffca10b3dc516bf8c704dd9",
+      "event_sha256_scope": "stored_original_event_json",
+      "analysis": {
+        "event_id": "CHERNOBYL-DEMO-LEAK",
+        "processor": "mixed_evidence_summary",
+        "processor_version": "1.0",
+        "features": {
+          "evidence_summary": {
+            "numeric_channels": 4,
+            "numeric_samples": 244,
+            "categorical_channels": 1,
+            "recorded_state_events": 4,
+            "text_records": 5,
+            "categories": {
+              "alarm_state": {
+                "recorded_events": 4,
+                "observed_changes": 3,
+                "values": [
+                  {
+                    "label": "DEMO_BASELINE",
+                    "count": 1
+                  },
+                  {
+                    "label": "DEMO_ALARM",
+                    "count": 1
+                  },
+                  {
+                    "label": "DEMO_ESCALATED",
+                    "count": 1
+                  },
+                  {
+                    "label": "DEMO_TEAM_REVIEW",
+                    "count": 1
+                  }
+                ],
+                "first_value": "DEMO_BASELINE",
+                "last_value": "DEMO_TEAM_REVIEW"
+              }
+            },
+            "log_severity_counts": {
+              "INFO": 2,
+              "WARNING": 3
+            },
+            "reported_term_mentions": {
+              "warning": 3
+            },
+            "text_excerpts": [
+              {
+                "timestamp_s": 0.0,
+                "level": "INFO",
+                "source": "chernobyl_leak_demo.csv:row 2:operator_note",
+                "text": "[INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only"
+              },
+              {
+                "timestamp_s": 180.0,
+                "level": "WARNING",
+                "source": "chernobyl_leak_demo.csv:row 20:operator_note",
+                "text": "[WARNING] Simulated water ingress near a fictional confinement service area; readings rising"
+              },
+              {
+                "timestamp_s": 240.0,
+                "level": "WARNING",
+                "source": "chernobyl_leak_demo.csv:row 26:operator_note",
+                "text": "[WARNING] Demo control room and radiation protection notified; access restricted in exercise"
+              },
+              {
+                "timestamp_s": 600.0,
+                "level": "WARNING",
+                "source": "chernobyl_leak_demo.csv:row 62:operator_note",
+                "text": "[WARNING] Training event unresolved; specialist assessment and repair authorization pending"
+              }
+            ],
+            "interpretation": "Counts, category changes and quoted text describe recorded evidence. Severity and term mentions do not establish an equipment condition or cause."
+          },
+          "measurement_summary": {
+            "pool_depth": {
+              "unit": "m",
+              "samples": 61,
+              "minimum": 0.0,
+              "maximum": 0.06,
+              "mean": 0.021147540983606557,
+              "first": 0.0,
+              "last": 0.06
+            },
+            "radiation_monitor": {
+              "unit": "counts/s",
+              "samples": 61,
+              "minimum": 30.0,
+              "maximum": 190.0,
+              "mean": 87.6883606557377,
+              "first": 32.0,
+              "last": 190.0
+            },
+            "confinement_pressure": {
+              "unit": "Pa",
+              "samples": 61,
+              "minimum": -30.43,
+              "maximum": -5.0,
+              "mean": -21.18852459016394,
+              "first": -30.0,
+              "last": -5.0
+            },
+            "relative_humidity": {
+              "unit": "1",
+              "samples": 61,
+              "minimum": 0.4181,
+              "maximum": 0.68,
+              "mean": 0.5116393442622951,
+              "first": 0.42,
+              "last": 0.68
+            }
+          },
+          "warnings": [
+            "Time column 'time_s' has no declared unit; confirm the selected time unit before import.",
+            "This is a descriptive evidence summary; no domain-specific physical diagnosis was calculated."
+          ],
+          "time_basis": "s",
+          "data_quality": {
+            "version": "1.0",
+            "stage": "L2",
+            "status": "review",
+            "summary": {
+              "error": 0,
+              "warning": 1,
+              "info": 0
+            },
+            "issues": [
+              {
+                "code": "FLATLINE_RUN",
+                "severity": "warning",
+                "title": "Potential constant or stuck readings",
+                "message": "There are 1 runs of at least 5 exactly repeated samples. A genuinely stable or quantized measurement can produce this pattern; sensor failure is not established.",
+                "column": "pool_depth",
+                "rows": [
+                  1
+                ],
+                "timestamps_s": [
+                  0.0
+                ],
+                "count": 1,
+                "suggestion": "Compare instrument resolution, operating state and independent measurements before treating the channel as stuck.",
+                "repair": null
+              }
+            ],
+            "unit_suggestions": [],
+            "expectations": {
+              "gap_factor": 1.8,
+              "channels": {},
+              "required_channels": []
+            },
+            "location_basis": "accepted_sample_index"
+          }
+        },
+        "timeline": [
+          {
+            "timestamp_s": 0.0,
+            "event": "alarm_state -> DEMO_BASELINE",
+            "evidence": "state log"
+          },
+          {
+            "timestamp_s": 0.0,
+            "event": "[INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+            "evidence": "event log: chernobyl_leak_demo.csv:row 2:operator_note"
+          },
+          {
+            "timestamp_s": 180.0,
+            "event": "alarm_state -> DEMO_ALARM",
+            "evidence": "state log"
+          },
+          {
+            "timestamp_s": 180.0,
+            "event": "[WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+            "evidence": "event log: chernobyl_leak_demo.csv:row 20:operator_note"
+          },
+          {
+            "timestamp_s": 240.0,
+            "event": "alarm_state -> DEMO_ESCALATED",
+            "evidence": "state log"
+          },
+          {
+            "timestamp_s": 240.0,
+            "event": "[WARNING] Demo control room and radiation protection notified; access restricted in exercise",
+            "evidence": "event log: chernobyl_leak_demo.csv:row 26:operator_note"
+          },
+          {
+            "timestamp_s": 420.0,
+            "event": "alarm_state -> DEMO_TEAM_REVIEW",
+            "evidence": "state log"
+          },
+          {
+            "timestamp_s": 420.0,
+            "event": "[INFO] Exercise response team reviewing remote observations; cause unconfirmed",
+            "evidence": "event log: chernobyl_leak_demo.csv:row 44:operator_note"
+          },
+          {
+            "timestamp_s": 600.0,
+            "event": "[WARNING] Training event unresolved; specialist assessment and repair authorization pending",
+            "evidence": "event log: chernobyl_leak_demo.csv:row 62:operator_note"
+          }
+        ],
+        "findings": [
+          "Evidence contains 4 measurement channels, 1 categorical channels and 5 text records.",
+          "Recorded category 'alarm_state': DEMO_BASELINE to DEMO_TEAM_REVIEW; 3 observed value changes.",
+          "Recorded text severity labels: INFO=2, WARNING=3.",
+          "Text mentions (not diagnoses): warning=3.",
+          "Recorded text at 0 s [INFO]: [INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+          "Recorded text at 180 s [WARNING]: [WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+          "Recorded text at 240 s [WARNING]: [WARNING] Demo control room and radiation protection notified; access restricted in exercise"
+        ],
+        "created_at": "2026-10-30T13:53:20.487326Z"
+      },
+      "retrieval": {
+        "question": "What approved procedural context is relevant to this event?",
+        "answer": "**Measured / Derived Evidence**  \nThe event contains 4 measurement channels, 1 categorical channel, and 5 text records. The recorded category 'alarm_state' shows 3 observed value changes, with text severity labels indicating 2 INFO and 3 WARNING messages. The text mentions \"warning=3\" and includes specific timestamps with associated messages:  \n- At 0 s: [INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only.  \n- At 180 s: [WARNING] Simulated water ingress near a fictional confinement service area; readings rising.  \n- At 240 s: [WARNING] Demo control room and radiation protection notified; access restricted in exercise.  \n\n**Procedural Guidance**  \nThe approved procedural context relevant to this event is provided in the following sources:  \n- [S1] Describes the simulated water ingress scenario, including invented training values for pool_depth, radiation_monitor, confinement_pressure, and relative_humidity. It clarifies that these are not site measurements or safety limits and that detector counts do not establish water contamination.  \n- [S2] Outlines the response and recovery procedures for the exercise, including keeping personnel away from the suspected leak, notifying the control room and radiation protection, assessing instrument validity, and authorizing specialists to contain and repair the issue under site procedures. It also emphasizes that the demo supplies no valve, pump, pressure, or entry instructions.  \n- [S3] Summarizes the fictional training exercise, reiterating that the cause is unconfirmed, and that reopening requires authorized clearance. It also notes that this is a fictional exercise with no operational authority.  \n\n**AI Interpretation**  \nThe event appears to be a fictional training scenario simulating a Chernobyl leak, with synthetic sensor data and no real-world operational implications. The procedural guidance from the approved documents is intended for training purposes only and does not apply to actual site operations.  \n\n**Sources**  \n- [S1] Chernobyl leak response - FICTIONAL TRAINING  \n- [S2] Chernobyl leak response - FICTIONAL TRAINING  \n- [S3] Chernobyl leak response - FICTIONAL TRAINING",
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Chernobyl leak response - FICTIONAL TRAINING",
+            "document_id": "DOC-adaf3fee2ed949d38c935f960fb66219",
+            "chunk_id": "DOC-adaf3fee2ed949d38c935f960fb66219-P1-C2",
+            "page": 1,
+            "section": "What went wrong in the demo?",
+            "score": 0.5581380411649477,
+            "excerpt": "## What went wrong in the demo?\n\nSimulated water ingress develops near a fictional Chernobyl (Chornobyl) confinement service area at 180 seconds. Over 10 minutes, pool_depth rises from 0 to 60 mm, radiation_monitor from 32 to 190 counts/s, confinement_pressure from -30 to -5 Pa, and relative_humidity from 42 to 68 percent. These are invented training values,",
+            "version": "TRAINING-1.0"
+          },
+          {
+            "label": "S2",
+            "title": "Chernobyl leak response - FICTIONAL TRAINING",
+            "document_id": "DOC-adaf3fee2ed949d38c935f960fb66219",
+            "chunk_id": "DOC-adaf3fee2ed949d38c935f960fb66219-P1-C3",
+            "page": 1,
+            "section": "Response and recovery for the exercise",
+            "score": 0.5432034847110114,
+            "excerpt": "## Response and recovery for the exercise\n\n1. Keep personnel away from the suspected leak and follow the designated site's emergency arrangements.\n2. Notify the control room, radiation protection and emergency response personnel. Preserve timestamps, alarms and the original sensor file.\n3. Ask qualified personnel to check instrument validity and assess the w",
+            "version": "TRAINING-1.0"
+          },
+          {
+            "label": "S3",
+            "title": "Chernobyl leak response - FICTIONAL TRAINING",
+            "document_id": "DOC-adaf3fee2ed949d38c935f960fb66219",
+            "chunk_id": "DOC-adaf3fee2ed949d38c935f960fb66219-P1-C1",
+            "page": 1,
+            "section": "Chernobyl leak \u2014 FICTIONAL TRAINING (TRAINING-1.0)",
+            "score": 0.44547683935327687,
+            "excerpt": "# Chernobyl leak \u2014 FICTIONAL TRAINING (TRAINING-1.0)\n\nHow do we fix the Chernobyl leak? Keep people away from the water; notify the control room and radiation protection team. Authorized specialists assess, contain and repair under site procedures. The cause is unconfirmed; reopening needs clearance. Fictional exercise only.",
+            "version": "TRAINING-1.0"
+          }
+        ],
+        "grounded": true,
+        "event_id": "CHERNOBYL-DEMO-LEAK",
+        "mode": "llm",
+        "error": null,
+        "evidence": [
+          "Evidence contains 4 measurement channels, 1 categorical channels and 5 text records.",
+          "Recorded category 'alarm_state': DEMO_BASELINE to DEMO_TEAM_REVIEW; 3 observed value changes.",
+          "Recorded text severity labels: INFO=2, WARNING=3.",
+          "Text mentions (not diagnoses): warning=3.",
+          "Recorded text at 0 s [INFO]: [INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only",
+          "Recorded text at 180 s [WARNING]: [WARNING] Simulated water ingress near a fictional confinement service area; readings rising",
+          "Recorded text at 240 s [WARNING]: [WARNING] Demo control room and radiation protection notified; access restricted in exercise"
+        ],
+        "interpretation": "**Measured / Derived Evidence**  \nThe event contains 4 measurement channels, 1 categorical channel, and 5 text records. The recorded category 'alarm_state' shows 3 observed value changes, with text severity labels indicating 2 INFO and 3 WARNING messages. The text mentions \"warning=3\" and includes specific timestamps with associated messages:  \n- At 0 s: [INFO] FICTIONAL Chernobyl training scenario; synthetic sensors only.  \n- At 180 s: [WARNING] Simulated water ingress near a fictional confinement service area; readings rising.  \n- At 240 s: [WARNING] Demo control room and radiation protection notified; access restricted in exercise.  \n\n**Procedural Guidance**  \nThe approved procedural context relevant to this event is provided in the following sources:  \n- [S1] Describes the simulated water ingress scenario, including invented training values for pool_depth, radiation_monitor, confinement_pressure, and relative_humidity. It clarifies that these are not site measurements or safety limits and that detector counts do not establish water contamination.  \n- [S2] Outlines the response and recovery procedures for the exercise, including keeping personnel away from the suspected leak, notifying the control room and radiation protection, assessing instrument validity, and authorizing specialists to contain and repair the issue under site procedures. It also emphasizes that the demo supplies no valve, pump, pressure, or entry instructions.  \n- [S3] Summarizes the fictional training exercise, reiterating that the cause is unconfirmed, and that reopening requires authorized clearance. It also notes that this is a fictional exercise with no operational authority.  \n\n**AI Interpretation**  \nThe event appears to be a fictional training scenario simulating a Chernobyl leak, with synthetic sensor data and no real-world operational implications. The procedural guidance from the approved documents is intended for training purposes only and does not apply to actual site operations.  \n\n**Sources**  \n- [S1] Chernobyl leak response - FICTIONAL TRAINING  \n- [S2] Chernobyl leak response - FICTIONAL TRAINING  \n- [S3] Chernobyl leak response - FICTIONAL TRAINING"
+      },
+      "hypothesis_ranking_method": "Model-suggested ordering is unvalidated and requires human review; ranks are not probabilities."
+    }
+  },
+  "passed": true
+}

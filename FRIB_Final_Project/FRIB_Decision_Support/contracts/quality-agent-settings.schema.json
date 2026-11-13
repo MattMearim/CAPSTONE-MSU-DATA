@@ -1,0 +1,97 @@
+{
+  "$defs": {
+    "AISelection": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "ollama",
+            "lmstudio"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "base_url": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Base Url",
+          "type": "string"
+        },
+        "model": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "temperature": {
+          "default": 0.0,
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Temperature",
+          "type": "number"
+        },
+        "timeout_seconds": {
+          "default": 300,
+          "maximum": 600,
+          "minimum": 15,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        },
+        "context_length": {
+          "default": 4096,
+          "maximum": 32768,
+          "minimum": 512,
+          "title": "Context Length",
+          "type": "integer"
+        },
+        "max_output_tokens": {
+          "default": 500,
+          "maximum": 8192,
+          "minimum": 64,
+          "title": "Max Output Tokens",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "provider",
+        "base_url",
+        "model"
+      ],
+      "title": "AISelection",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {
+      "default": false,
+      "title": "Enabled",
+      "type": "boolean"
+    },
+    "automatic": {
+      "default": true,
+      "title": "Automatic",
+      "type": "boolean"
+    },
+    "selection": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AISelection"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "max_model_calls": {
+      "default": 4,
+      "maximum": 6,
+      "minimum": 1,
+      "title": "Max Model Calls",
+      "type": "integer"
+    }
+  },
+  "title": "QualityAgentSettings",
+  "type": "object"
+}

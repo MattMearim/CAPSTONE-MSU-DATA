@@ -1,0 +1,30 @@
+{
+  "fictional": true,
+  "dataset_id": "BAD-UNIT",
+  "filename": "incompatible_units.csv",
+  "title": "Incompatible physical dimensions",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-BAD-UNIT",
+    "dataset_name": "Incompatible physical dimensions",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "other",
+    "column_roles": {
+      "pressure [kPa]": "numeric"
+    }
+  },
+  "expected_outcome": "Validation blocks the incompatible V/Pa dimension; preview and failed save persist no event.",
+  "expected": {
+    "valid": false
+  },
+  "question": "Why are pressure and voltage units incompatible?",
+  "expected_issue_codes": [
+    "incompatible_units"
+  ],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

@@ -1,0 +1,36 @@
+{
+  "fictional": true,
+  "dataset_id": "MECHANICAL",
+  "filename": "mechanical.json",
+  "title": "Mechanical vibration native JSON",
+  "import_kind": "event",
+  "options": {
+    "event_id": "LAB-MECHANICAL",
+    "dataset_name": "Mechanical vibration native JSON",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    }
+  },
+  "expected_outcome": "Mechanical analysis observes approximately 12 Hz post-event oscillation and higher RMS. Temperature normalizes to K; alignment is derived and original grids remain unchanged.",
+  "expected": {
+    "valid": true,
+    "processor": "mechanical_vibration",
+    "signals": 2,
+    "units": {
+      "vibration": "m/s^2",
+      "bearing_temperature": "K"
+    },
+    "features": {
+      "anomaly_time_s": 1,
+      "dominant_frequency_hz": 12
+    },
+    "feature_tolerance": 0.2,
+    "review": "approve"
+  },
+  "question": "Mechanical vibration bearing temperature spectrum RMS evidence review",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

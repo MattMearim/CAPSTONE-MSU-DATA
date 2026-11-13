@@ -1,1 +1,0 @@
-"""Synthetic Engineering Data Generator."""

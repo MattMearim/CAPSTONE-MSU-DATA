@@ -1,0 +1,53 @@
+{
+  "fictional": true,
+  "dataset_id": "RF-XRAY",
+  "filename": "field_emission.csv",
+  "title": "X-ray and gradient scan",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-RF-XRAY",
+    "dataset_name": "X-ray and gradient scan",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "rf",
+    "time_column": "time_ms",
+    "time_unit": "ms",
+    "column_roles": {
+      "gradient": "numeric",
+      "gradient_unit": "ignore",
+      "xray [counts/s]": "numeric",
+      "conditioning_phase": "category"
+    },
+    "signal_names": {
+      "xray [counts/s]": "xray"
+    },
+    "unit_columns": {
+      "gradient": "gradient_unit"
+    }
+  },
+  "expected_outcome": "Gradient becomes V/m; X-ray remains counts/s. Scatter/trend plots describe co-variation without proving field emission or safe gradient.",
+  "expected": {
+    "valid": true,
+    "processor": "rf_field_emission_trends",
+    "signals": 2,
+    "units": {
+      "gradient": "V/m",
+      "xray": "counts/s"
+    },
+    "features": {
+      "xray_peak": 90,
+      "gradient_min": 5000000.0,
+      "gradient_max": 15000000.0,
+      "xray_gradient_correlation": 1
+    },
+    "feature_tolerance": 1e-06,
+    "review": "escalate"
+  },
+  "question": "RF X-ray gradient scan conditioning descriptive evidence limitations",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

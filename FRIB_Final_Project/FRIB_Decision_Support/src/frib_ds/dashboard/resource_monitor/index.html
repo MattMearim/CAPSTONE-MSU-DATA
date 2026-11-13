@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+  <title>FRIB live resources</title>
+  <link rel="stylesheet" href="/system/ai/monitor/monitor.css">
+  <script src="/system/ai/monitor/monitor.js" defer></script>
+</head>
+<body>
+  <section class="monitor" aria-label="Live resource monitor">
+    <header>
+      <div class="heading"><span id="status-dot" class="dot"></span><strong>Live resources</strong><span id="status" role="status" aria-live="off" title="Updates about every two seconds">Connecting…</span></div>
+      <div class="actions"><button id="pause" type="button" aria-pressed="false">Pause</button><a id="full-view" href="/system/ai/monitor?details=1" target="_blank" rel="noopener">Details ↗</a></div>
+    </header>
+    <div class="meters">
+      <section aria-label="CPU activity"><div class="label"><span>CPU <span class="muted">activity</span></span><strong id="cpu">—</strong></div><progress id="cpu-bar" max="100" value="0" aria-label="CPU activity"></progress><p id="cpu-detail">Waiting for a live sample</p></section>
+      <section aria-label="RAM allocation"><div class="label"><span>RAM <span class="muted">memory</span></span><strong id="ram">—</strong></div><progress id="ram-bar" max="100" value="0" aria-label="RAM in use"></progress><p id="ram-detail">Waiting for a live sample</p></section>
+      <section aria-label="GPU allocation"><div class="label"><span>GPU <span class="muted">memory</span></span><strong id="gpu">—</strong></div><progress id="gpu-bar" max="100" value="0" aria-label="GPU memory in use"></progress><p id="gpu-detail">Waiting for a live sample</p></section>
+    </div>
+    <footer id="model">Loading model allocation…</footer>
+  </section>
+  <main id="details" hidden>
+    <h1>Live resource allocation</h1>
+    <p>CPU is processing activity. RAM is computer memory. GPU memory is the graphics processor's memory. This view refreshes independently while the app works.</p>
+    <h2>Last two minutes</h2>
+    <p class="legend"><span class="cpu-key">CPU activity</span><span class="ram-key">RAM in use</span><span class="gpu-key">GPU activity</span><span>0–100%</span></p>
+    <svg id="history" viewBox="0 0 600 100" preserveAspectRatio="none" role="img" aria-label="Recent CPU activity, RAM use and GPU activity"><path class="grid" d="M0 1H600 M0 50H600 M0 99H600"/><polyline id="cpu-history"/><polyline id="ram-history"/><polyline id="gpu-history"/></svg>
+    <h2>What is using RAM and CPU?</h2>
+    <div class="table-wrap"><table><thead><tr><th>App component</th><th>Resident RAM</th><th>CPU activity</th></tr></thead><tbody id="processes"></tbody></table></div>
+    <p class="note">MiniLM document search is included in API RAM. Shared pages may appear in more than one process, so the app total is approximate.</p>
+    <h2>Model allocation</h2>
+    <div class="table-wrap"><table><thead><tr><th>Model</th><th>State</th><th>Host memory estimate</th><th>GPU memory</th></tr></thead><tbody id="models"></tbody></table></div>
+    <p class="note">Model memory is reported by Ollama. Host memory is its total allocation minus GPU allocation; it is an estimate, not a separate process measurement. Model, GPU and process figures overlap. Installed models may unload while idle. Unavailable telemetry is shown as unknown.</p>
+    <p id="timestamp" class="note"></p>
+  </main>
+</body>
+</html>

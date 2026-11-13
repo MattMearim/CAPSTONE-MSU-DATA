@@ -1,0 +1,13 @@
+.venv/
+.frib/
+**/__pycache__/
+.pytest_cache/
+data/
+data-local-ai/
+tmp/
+.git/
+.env
+.streamlit/secrets.toml
+*.zip
+*.db
+*.db-*

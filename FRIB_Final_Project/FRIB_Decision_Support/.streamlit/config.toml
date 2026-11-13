@@ -1,0 +1,15 @@
+[theme]
+base = "light"
+primaryColor = "#2d7554"
+backgroundColor = "#f7faf5"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#193b2c"
+font = "sans serif"
+
+[server]
+# Browser transport ceiling for a 1 GiB ZIP plus multipart overhead. Ordinary
+# data/procedure widgets and API routes retain their separate 20 MiB limits.
+maxUploadSize = 1025
+
+[browser]
+gatherUsageStats = false

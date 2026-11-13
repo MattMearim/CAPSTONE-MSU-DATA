@@ -1,76 +1,37 @@
-# Field-Agnostic Four-Level Human-Supervised Decision-Support System
+# FRIB workspace — Ayman version
 
-MSU ECE capstone, Fall 2026. Sponsor: Facility for Rare Isotope Beams (FRIB).
+Source-only publication of the local FRIB Decision Support workspace developed on the `ayman-version` branch. The application, tests, docs, sample inputs and private-runtime setup scripts are included. Installed runtimes, model weights, local evidence databases, caches and account-specific settings are intentionally downloaded or created locally.
 
-A proof-of-concept that helps a human operator analyze an operational event.
-It never acts on its own: every summary passes through an
-Approve / Correct / Escalate gate.
+## Start on Windows
 
-| Level | What it does | Folder |
-|---|---|---|
-| 1 | Ingestion and provenance | `ingestion/` |
-| 2 | Cleaning, alignment, FFT, plotting | `processing/` |
-| 3 | Retrieval over procedures and manuals (RAG) | `rag/` |
-| 4 | Draft summaries, hypothesis ranking, human review gate | `knowledge/` |
+Double-click **START_PROJECT.cmd**. First launch runs setup automatically: it installs the private Python runtime, application packages, portable Ollama, Qwen3 4B and MiniLM into **dependencies**, verifies the real models, then opens the workspace. First setup needs internet access and several gigabytes of storage. Later launches reuse the installation.
 
-## Repository layout
+Use **STOP_PROJECT.cmd** to stop the workspace. **SETUP_PROJECT.cmd** reruns setup/repair. No global Python or Ollama installation is required.
 
-| Folder | Contents |
-|---|---|
-| `schemas/` | The data contract: JSON Schemas for the three input types, plus examples |
-| `generator/` | Synthetic Engineering Data Generator; see `generator/README.md` |
-| `ingestion/` | Level 1 |
-| `processing/` | Level 2 |
-| `rag/` | Level 3 |
-| `knowledge/` | Level 4 |
-| `dashboard/` | Streamlit interface |
-| `scripts/` | Data download and conversion scripts |
-| `data/` | `sources.json` lists the datasets; `external/` and `converted/` hold the files (not committed to git) |
-| `tests/` | Automated checks |
-| `docs/` | Design notes and data-source survey |
+For macOS, use `FRIB_Final_Project/START_FRIB.command`; its original source launcher uses the macOS managed storage layout described in the application docs.
 
-## The data contract
+## Included features
 
-Everything entering the system is one of three record types, and every
-record carries the same provenance block.
+- Ollama / LM Studio model selection, saved profiles and compatibility checks.
+- Hardware-aware main-model setup and optional adjustment after hardware upgrades.
+- Model downloads by name/library link, role assignment and confirmed removal of unused models.
+- A separately configurable, optional Data Quality Agent with read-only tools, bounded coverage, grounded graph flags and human-approved repairs into separate copies.
+- Compact AI settings and chart-first event exploration with configurable views.
+- Live CPU, RAM and GPU allocation information with a persistent hide/show switch.
+- Original-file preservation, engineering analysis, approved-document retrieval, cited answers, draft review and a knowledge library.
 
-- `schemas/timeseries.schema.json`: sampled signals
-- `schemas/event_log.schema.json`: discrete state changes, alarms, interlocks
-- `schemas/document.schema.json`: procedures and manuals
-- `schemas/provenance.schema.json`: source, asset, operating mode, configuration, timestamps
+The quality agent starts unassigned on a fresh clone. Open **AI settings → Quality agent → Get a small model** to download and enable Qwen3 1.7B, or choose another installed model.
 
-No schema contains a field tied to one engineering domain. The domain is a
-free-text label in `provenance.asset.domain` and nothing may branch on it.
-See `docs/schema_overview.md`.
+## Source and workflow
 
-## Generating synthetic data
+- Application: [FRIB_Final_Project/FRIB_Decision_Support](FRIB_Final_Project/FRIB_Decision_Support)
+- [Complete workflow](FRIB_Final_Project/FRIB_Decision_Support/docs/PRODUCT_WORKFLOW.md)
+- [AI settings](FRIB_Final_Project/FRIB_Decision_Support/docs/AI_SETTINGS.md)
+- [Data Quality Agent](FRIB_Final_Project/FRIB_Decision_Support/docs/DATA_QUALITY_AGENT.md)
+- [Project audit and remaining limitations](PROJECT_CHECK_REPORT.md)
 
-```
-python3 -m generator --seed 42 --events 30    # writes data/generated/seed-42/
-python3 -m generator --list                   # show fields and scenarios
-```
+The latest focused interface/provider/quality suite passed 117 checks on Windows; earlier acceptance also exercised real local models, original preservation, restarts and protected model deletion. This is a local, single-user decision-support prototype. Existing audit findings and domain validation requirements are documented in the report; this branch does not claim production or facility commissioning.
 
-Covers three fields (RF, mechanical, PLC) with 14 scenarios and 12
-procedure documents. See `generator/README.md`.
+## Development
 
-## Getting real public data
-
-```
-python3 scripts/fetch_data.py      # download public datasets into data/external/
-python3 scripts/convert_data.py    # convert them into canonical records in data/converted/
-```
-
-Sources and licenses are listed in `docs/data_sources.md`. Downloaded and
-converted data are not committed to git.
-
-## Running the checks
-
-```
-pip install -r requirements.txt
-pytest
-```
-
-## Stack
-
-Python, Streamlit, ChromaDB, SentenceTransformers, Ollama, SQLite,
-Docker Compose. Everything runs locally at no cost.
+After setup, install development tools from the source directory with the private Python interpreter and `pip install -e ".[ui,dev]"`. Tests use isolated storage and test doubles unless explicitly running a real-model verification script. Application source is preserved from the running workspace; this publication adds fresh-clone setup and sets the fallback chat model to Qwen3 4B. Saved user profiles and local datasets are excluded.

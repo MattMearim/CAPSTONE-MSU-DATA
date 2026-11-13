@@ -1,0 +1,75 @@
+{
+  "fictional": true,
+  "dataset_id": "REPAIR",
+  "filename": "damaged_capture.csv",
+  "title": "Damaged capture requiring explicit repairs",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-REPAIR",
+    "dataset_name": "Damaged capture requiring explicit repairs",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "other",
+    "column_roles": {
+      "voltage [V]": "numeric",
+      "note": "log"
+    },
+    "signal_names": {
+      "voltage [V]": "voltage"
+    }
+  },
+  "expected_outcome": "Raw import is blocked with no writes. Only the listed explicit repairs produce a valid copy. Original bytes and repair receipt remain downloadable; no missing measurements are filled.",
+  "expected": {
+    "valid": false,
+    "repaired_valid": true,
+    "repair_options": {
+      "_repairs": [
+        {
+          "operation": "drop_exact_duplicate_rows"
+        },
+        {
+          "operation": "mark_missing_tokens",
+          "columns": [
+            "voltage [V]"
+          ]
+        },
+        {
+          "operation": "drop_invalid_numeric_cells",
+          "rows": [
+            6
+          ],
+          "columns": [
+            "voltage [V]"
+          ]
+        },
+        {
+          "operation": "drop_malformed_rows",
+          "rows": [
+            8
+          ]
+        }
+      ]
+    },
+    "processor": "mixed_evidence_summary",
+    "repaired_values": {
+      "voltage": [
+        1,
+        2,
+        5,
+        7
+      ]
+    }
+  },
+  "question": "Missing measurements malformed rows preserve original evidence",
+  "expected_issue_codes": [
+    "row_shape",
+    "duplicate_rows",
+    "missing_tokens",
+    "mixed_numeric_text"
+  ],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

@@ -1,0 +1,30 @@
+{
+  "fictional": true,
+  "dataset_id": "DBM",
+  "filename": "unsupported_dbm.csv",
+  "title": "Unsupported logarithmic unit",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-DBM",
+    "dataset_name": "Unsupported logarithmic unit",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "other",
+    "column_roles": {
+      "rf_power [dBm]": "numeric"
+    }
+  },
+  "expected_outcome": "Unsupported dBm is blocked. Convert outside this app with a reviewed reference and import a supported unit; do not relabel numeric readings as W.",
+  "expected": {
+    "valid": false
+  },
+  "question": "Unsupported logarithmic power units",
+  "expected_issue_codes": [
+    "unsupported_unit"
+  ],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

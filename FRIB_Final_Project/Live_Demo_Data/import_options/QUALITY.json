@@ -1,0 +1,61 @@
+{
+  "fictional": true,
+  "dataset_id": "QUALITY",
+  "filename": "gap_jump_flatline.csv",
+  "title": "Gap, jump and flatline expectations",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-QUALITY",
+    "dataset_name": "Gap, jump and flatline expectations",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "other",
+    "column_roles": {
+      "voltage [V]": "numeric",
+      "temperature [K]": "numeric"
+    },
+    "signal_names": {
+      "voltage [V]": "voltage",
+      "temperature [K]": "temperature"
+    },
+    "quality_expectations": {
+      "expected_interval_s": 1,
+      "required_channels": [
+        "voltage",
+        "temperature",
+        "vacuum"
+      ],
+      "channels": {
+        "voltage": {
+          "max": 10,
+          "expected_stable": true,
+          "stability_tolerance": 2
+        },
+        "temperature": {
+          "flatline_samples": 5
+        }
+      }
+    }
+  },
+  "expected_outcome": "Missing cadence/channel, voltage bound/stability and repeated-sample checks appear. They flag data/declared expectations and do not prove sensor failure or negligence.",
+  "expected": {
+    "valid": true,
+    "processor": "mixed_evidence_summary",
+    "signals": 2,
+    "l2_codes": [
+      "RECORDING_GAP",
+      "MISSING_CHANNEL",
+      "OUT_OF_BOUNDS",
+      "STABILITY_EXCEEDED",
+      "FLATLINE_RUN",
+      "BASELINE_CHANGE"
+    ]
+  },
+  "question": "Voltage gap jump flatline required channel evidence review",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

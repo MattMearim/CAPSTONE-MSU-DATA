@@ -1,0 +1,61 @@
+{
+  "fictional": true,
+  "dataset_id": "CRYO",
+  "filename": "cryo_temperature.csv",
+  "title": "Cryogenic temperature with capture gap",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-CRYO",
+    "dataset_name": "Cryogenic temperature with capture gap",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "other",
+    "column_roles": {
+      "helium_temperature [C]": "numeric",
+      "helium_pressure [mbar]": "numeric",
+      "mode": "category",
+      "note": "log"
+    },
+    "signal_names": {
+      "helium_temperature [C]": "helium_temperature",
+      "helium_pressure [mbar]": "helium_pressure"
+    },
+    "quality_expectations": {
+      "expected_interval_s": 1,
+      "channels": {
+        "helium_temperature": {
+          "min": 4,
+          "max": 4.3,
+          "expected_stable": true,
+          "stability_tolerance": 0.05
+        }
+      }
+    }
+  },
+  "expected_outcome": "Celsius becomes kelvin and mbar becomes Pa; the capture gap and declared stability/bound differences are flagged. Generic evidence summary, no cryogenic diagnosis.",
+  "expected": {
+    "valid": true,
+    "processor": "mixed_evidence_summary",
+    "signals": 2,
+    "units": {
+      "helium_temperature": "K",
+      "helium_pressure": "Pa"
+    },
+    "first_values": {
+      "helium_temperature": 4.15,
+      "helium_pressure": 100000
+    },
+    "l2_codes": [
+      "RECORDING_GAP",
+      "STABILITY_EXCEEDED",
+      "OUT_OF_BOUNDS"
+    ]
+  },
+  "question": "Cryogenic helium temperature pressure capture gap evidence review",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

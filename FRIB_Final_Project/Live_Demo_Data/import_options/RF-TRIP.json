@@ -1,0 +1,53 @@
+{
+  "fictional": true,
+  "dataset_id": "RF-TRIP",
+  "filename": "rf_trip.csv",
+  "title": "RF trip with recorded interlock",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-RF-TRIP",
+    "dataset_name": "RF trip with recorded interlock",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "rf",
+    "column_roles": {
+      "cavity_field [MV/m]": "numeric",
+      "reflected_power [kW]": "numeric",
+      "forward_power [kW]": "numeric",
+      "tuner_pressure [kPa]": "numeric",
+      "RF_INTERLOCK": "category"
+    },
+    "signal_names": {
+      "cavity_field [MV/m]": "cavity_field",
+      "reflected_power [kW]": "reflected_power",
+      "forward_power [kW]": "forward_power",
+      "tuner_pressure [kPa]": "tuner_pressure"
+    }
+  },
+  "expected_outcome": "Valid RF analysis: recorded reference at 0 s, 100 Pa pressure increase and approximately 25 ms field threshold crossing. Coincidence is not causation.",
+  "expected": {
+    "valid": true,
+    "processor": "rf_trip",
+    "signals": 4,
+    "units": {
+      "cavity_field": "V/m",
+      "reflected_power": "W",
+      "forward_power": "W",
+      "tuner_pressure": "Pa"
+    },
+    "features": {
+      "trip_time_s": 0,
+      "pressure_delta": 100,
+      "approx_decay_ms": 25
+    },
+    "feature_tolerance": 0.02,
+    "review": "approve"
+  },
+  "question": "RF cavity trip reflected power tuner pressure evidence review",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}

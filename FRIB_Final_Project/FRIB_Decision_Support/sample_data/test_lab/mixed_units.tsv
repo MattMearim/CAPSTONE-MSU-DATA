@@ -1,0 +1,4 @@
+datetime	voltage	voltage_unit	temperature [F]	pressure [kPa]	fraction [%]	note
+2026-10-11T12:00:00Z	1000	mV	32	1	25	[INFO] first record
+2026-10-11T12:00:01Z	2	kV	68	20 mbar	50	[WARNING] unit prefix changed
+2026-10-11T12:00:02Z	500	mV	212	1	100	[INFO] final record

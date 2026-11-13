@@ -1,0 +1,43 @@
+{
+  "verified_at_utc": "2026-10-20T16:06:59.663253+00:00",
+  "platform": "macOS / Python 3.12",
+  "full_suite": {
+    "tests": 886,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 7,
+    "passed": 879
+  },
+  "skipped_cases": [
+    {
+      "test": "tests.test_showcase_distribution.test_embedded_offline_javascript_parses_when_node_is_available",
+      "reason": "Node is optional; syntax check runs when the runtime is available"
+    },
+    {
+      "test": "tests.test_startup.test_staging_preserves_active_runtime_and_resolves_cross_python_wheels[True]",
+      "reason": "Verified private runtime upgrades are Windows-only"
+    },
+    {
+      "test": "tests.test_startup.test_wrong_fixed_python_version_cannot_be_activated",
+      "reason": "Verified private runtime upgrades are Windows-only"
+    },
+    {
+      "test": "tests.test_startup.test_extended_paths_are_unc_safe_and_idempotent[C:\\\\folder with spaces\\\\python.exe-\\\\\\\\?\\\\C:\\\\folder with spaces\\\\python.exe]",
+      "reason": "Windows extended-length paths"
+    },
+    {
+      "test": "tests.test_startup.test_extended_paths_are_unc_safe_and_idempotent[\\\\\\\\server\\\\share\\\\python.exe-\\\\\\\\?\\\\UNC\\\\server\\\\share\\\\python.exe]",
+      "reason": "Windows extended-length paths"
+    },
+    {
+      "test": "tests.test_startup.test_extended_paths_are_unc_safe_and_idempotent[\\\\\\\\?\\\\C:\\\\already extended\\\\python.exe-\\\\\\\\?\\\\C:\\\\already extended\\\\python.exe]",
+      "reason": "Windows extended-length paths"
+    },
+    {
+      "test": "tests.test_startup.test_extended_paths_are_unc_safe_and_idempotent[\\\\\\\\?\\\\UNC\\\\server\\\\share\\\\python.exe-\\\\\\\\?\\\\UNC\\\\server\\\\share\\\\python.exe]",
+      "reason": "Windows extended-length paths"
+    }
+  ],
+  "distribution": "Complete source and fictional fixtures. User uploads, databases and private runtime environments are excluded.",
+  "security_advisories": "Historical October 13 scan is documented separately; not a new October 20 advisory scan."
+}

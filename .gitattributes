@@ -1,2 +1,5 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Preserve sample-data checksums and launcher bytes across operating systems.
+* -text
+*.png binary
+*.jpg binary
+*.pdf binary

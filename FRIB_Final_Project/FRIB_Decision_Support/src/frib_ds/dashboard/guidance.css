@@ -1,0 +1,28 @@
+/* Clear section hierarchy and sources that reveal detail only on request. */
+.stApp [data-testid="stMain"] [data-testid="stHeadingWithActionElements"]:not(.info-card *) > h3 {
+  color:var(--ink,#193b2c); font-size:1.4rem; font-weight:600; line-height:1.35;
+}
+.stApp [data-testid="stMain"] h4 {
+  color:var(--ink,#193b2c); font-size:1.22rem; font-weight:650;
+  line-height:1.35; letter-spacing:-.018em; margin:.8rem 0 .55rem;
+}
+.stApp [data-testid="stMain"] h5 {
+  color:var(--ink,#193b2c); font-size:1.08rem; font-weight:600; line-height:1.4;
+}
+[class*="st-key-citation_sources_"] { background:#ffffffb8; border-color:var(--line,#dce7dc); border-radius:17px; padding:1rem; }
+[class*="st-key-citation_sources_"] h4 { margin-top:0 !important; }
+[class*="st-key-citation_bubbles_"] { gap:.4rem; flex-wrap:wrap; }
+.stApp [class*="st-key-citation_bubbles_"] button[kind] {
+  min-width:2.8rem; min-height:2.8rem; padding:.3rem .7rem; border-radius:999px;
+  font-size:.82rem; font-weight:650; line-height:1;
+}
+[class*="st-key-citation_bubbles_"] button[kind="secondary"] { color:#24573d; background:#e7f2e6; border-color:#c6ddc5; }
+[class*="st-key-citation_bubbles_"] button[kind="secondary"]:hover { color:#193b2c; background:#d9ebd8; border-color:#8db48f; }
+.stApp [class*="st-key-citation_bubbles_"] button[kind]:focus-visible { outline:3px solid var(--focus,#327d58); outline-offset:3px; }
+@media(max-width:600px) {
+  .stApp [data-testid="stMain"] h4 { font-size:1.15rem; }
+  [class*="st-key-citation_sources_"] { padding:.85rem; }
+}
+@media(forced-colors:active) {
+  [class*="st-key-citation_bubbles_"] button[kind="primary"] { outline:2px solid Highlight; }
+}

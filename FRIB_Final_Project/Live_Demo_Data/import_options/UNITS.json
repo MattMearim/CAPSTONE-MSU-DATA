@@ -1,0 +1,73 @@
+{
+  "fictional": true,
+  "dataset_id": "UNITS",
+  "filename": "mixed_units.tsv",
+  "title": "TSV with mixed scales and offset units",
+  "import_kind": "mixed",
+  "options": {
+    "event_id": "LAB-UNITS",
+    "dataset_name": "TSV with mixed scales and offset units",
+    "metadata": {
+      "fictional": true,
+      "captured_by": "Fictional Test Lab",
+      "beam_state": "SIMULATION",
+      "equipment": "LAB fixture"
+    },
+    "domain": "other",
+    "time_column": "datetime",
+    "time_unit": "datetime",
+    "column_roles": {
+      "voltage": "numeric",
+      "voltage_unit": "ignore",
+      "temperature [F]": "numeric",
+      "pressure [kPa]": "numeric",
+      "fraction [%]": "numeric",
+      "note": "log"
+    },
+    "signal_names": {
+      "temperature [F]": "temperature",
+      "pressure [kPa]": "pressure",
+      "fraction [%]": "fraction"
+    },
+    "unit_columns": {
+      "voltage": "voltage_unit"
+    }
+  },
+  "expected_outcome": "Voltage [1,2000,0.5] V, temperature [273.15,293.15,373.15] K, pressure [1000,2000,1000] Pa, fraction [0.25,0.5,1]. Original TSV bytes remain unchanged.",
+  "expected": {
+    "valid": true,
+    "processor": "mixed_evidence_summary",
+    "signals": 4,
+    "values": {
+      "voltage": [
+        1,
+        2000,
+        0.5
+      ],
+      "temperature": [
+        273.15,
+        293.15,
+        373.15
+      ],
+      "pressure": [
+        1000,
+        2000,
+        1000
+      ],
+      "fraction": [
+        0.25,
+        0.5,
+        1
+      ]
+    },
+    "units": {
+      "voltage": "V",
+      "temperature": "K",
+      "pressure": "Pa",
+      "fraction": "1"
+    }
+  },
+  "question": "Mixed units voltage temperature pressure normalization evidence",
+  "expected_issue_codes": [],
+  "note": "Reference mapping and expected outcomes. General upload does not automatically read this sidecar. Test Lab provides the preset mapping; repairs require explicit selection."
+}
