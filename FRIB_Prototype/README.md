@@ -1,17 +1,18 @@
-# Current FRIB project
+# Current FRIB project (Docker Version)
 
 **Download [FRIBCURRENTPROJECT.zip](FRIBCURRENTPROJECT.zip)** using the download button or **View raw**, then extract it.
+[FRIB_Final_Project.zip](https://github.com/user-attachments/files/34776321/FRIB_Final_Project.zip)
 
-1. On macOS, double-click `FRIB_Final_Project/START_FRIB.command`.
-2. On Windows, double-click `FRIB_Final_Project/START_FRIB.cmd`.
-3. Follow `FIRST_STEPS.md` or the Home-page tutorial in the extracted project.
+### Prerequisites
+1. Download and install **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** for your operating system (Mac or Windows). 
+2. Ensure Docker Desktop is running in the background before proceeding.
 
-This is the complete current project, including the latest interface, live draft progress, and single-instance startup fixes. The newest launch takes priority over older verified FRIB instances. It includes source code, automated tests, documentation, 13 synthetic datasets and 7 procedure files.
-
-The first launch may download required dependencies and AI models; later launches reuse the permanent local cache. Model weights, virtual environments, personal records, credentials and runtime databases are excluded from this download.
-
-Only one current ZIP is kept in this folder. Older versions are available through Git history. This consolidation affects `hithesh-version` only.
-
-**Archive verification:** 351 members; SHA256 `c3777910e972e06e28f9ba66ab55a510aa0baf2b182a7995e3630b968c6302f4`.
-
-For checks, use the included `RUN_UNIT_TESTS.command` and `RUN_SECURITY_CHECKS.command` launchers.
+### Initial Setup & Launch
+1. Open your terminal or command prompt and navigate directly into the extracted `FRIB_Final_Project` folder.
+2. Build and start the infrastructure by running the following command. The very first launch will take several minutes as it downloads required dependencies and AI models:
+   ```bash
+   docker compose up -d --build
+   
+3. Open your web browser and navigate to http://localhost:8501 to access the ai wiki dashboard.
+   
+Note: Later launches will reuse the permanent local cache. Model weights, virtual environments, personal records, credentials, and runtime databases are excluded from the initial download.
