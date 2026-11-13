@@ -1,3 +1,15 @@
+# Download the one-click Windows package
+
+[Download FRIB_OneClick_Windows.zip](https://github.com/MattMearim/CAPSTONE-MSU-DATA/raw/refs/heads/aymanfull-zip/FRIB_OneClick_Windows.zip) (3.26 MiB)
+
+Extract the entire ZIP, then double-click **START_PROJECT.bat**. First launch creates **dependencies**, installs the private runtime, pinned packages and required AI assets, verifies the models, then opens the app. Later launches reuse the installation. **STOP_PROJECT.bat** stops the workspace.
+
+The ZIP contains no installed models, environments or saved user data. First setup requires 64-bit Windows, internet access and several GB of storage. See the README inside the ZIP. The adjacent SHA-256 file verifies the download.
+
+The source files below are retained from `ayman-version`; the ZIP contains the finalized lightweight launcher layout.
+
+---
+
 # FRIB workspace — Ayman version
 
 Source-only publication of the local FRIB Decision Support workspace developed on the `ayman-version` branch. The application, tests, docs, sample inputs and private-runtime setup scripts are included. Installed runtimes, model weights, local evidence databases, caches and account-specific settings are intentionally downloaded or created locally.
