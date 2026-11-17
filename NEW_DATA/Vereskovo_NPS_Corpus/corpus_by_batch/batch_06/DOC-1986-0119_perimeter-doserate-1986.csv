@@ -1,0 +1,10 @@
+timestamp,main gate dose_rate_mR_per_h,admin building dose_rate_mR_per_h,Unit 1 entrance dose_rate_mR_per_h,construction site Units 5-6 dose_rate_mR_per_h,note,related_document
+1986-05-20T00:00:00,1501,901,351,2801,,DOC-1986-0018_dosimetry-report-0517.md
+1986-06-01T00:00:00,805,483,189,1502,,DOC-1986-0018_dosimetry-report-0517.md
+1986-06-15T00:00:00,432,260,102,805,,DOC-1986-0018_dosimetry-report-0517.md
+1986-07-01T00:00:00,128,77,31,432,,DOC-1986-0018_dosimetry-report-0517.md
+1986-08-01T00:00:00,69,42,17,232,,DOC-1986-0018_dosimetry-report-0517.md
+1986-09-01T00:00:00,38,23,9.7,125,,DOC-1986-0018_dosimetry-report-0517.md
+1986-10-01T00:00:00,21,13,5.8,68,,DOC-1986-0018_dosimetry-report-0517.md
+1986-11-01T00:00:00,12,7.5,3.6,37,,DOC-1986-0018_dosimetry-report-0517.md
+1986-12-01T00:00:00,6.8,4.6,2.5,20,,DOC-1986-0018_dosimetry-report-0517.md

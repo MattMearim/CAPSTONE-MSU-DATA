@@ -1,0 +1,15 @@
+timestamp_local,column,buses,passengers_people,destination,note,related_document
+1986-05-18 14:00,column 1,96,3530,Lisove district (villages),,DOC-1986-0041_karpenko-report.md
+1986-05-18 14:10,column 2,104,3800,Lisove district (villages),,DOC-1986-0041_karpenko-report.md
+1986-05-18 14:20,column 3,88,3210,Kalynivka / Zarichne,,DOC-1986-0041_karpenko-report.md
+1986-05-18 14:30,column 4,92,3390,Moshchanka,,DOC-1986-0041_karpenko-report.md
+1986-05-18 14:40,column 5,110,4020,Staryi Hai,,DOC-1986-0041_karpenko-report.md
+1986-05-18 14:50,column 6,85,3120,Horodyshche,,DOC-1986-0041_karpenko-report.md
+1986-05-18 15:00,column 7,79,2890,Lypnyky,,DOC-1986-0041_karpenko-report.md
+1986-05-18 15:10,column 8,90,3300,Petrivka,,DOC-1986-0041_karpenko-report.md
+1986-05-18 15:20,column 9,101,3700,Novosilky,,DOC-1986-0041_karpenko-report.md
+1986-05-18 15:30,column 10,87,3180,Zhytnyky (rail),,DOC-1986-0041_karpenko-report.md
+1986-05-18 15:40,column 11,64,2340,Lisove,,DOC-1986-0041_karpenko-report.md
+1986-05-18 15:50,column 12,77,2810,Bilyi Brid,,DOC-1986-0041_karpenko-report.md
+1986-05-18 16:00,column 13,72,2640,Lypnyky,,DOC-1986-0041_karpenko-report.md
+1986-05-18 16:10,column 14,71,2670,Petrivka,last column departed 16:40,DOC-1986-0041_karpenko-report.md

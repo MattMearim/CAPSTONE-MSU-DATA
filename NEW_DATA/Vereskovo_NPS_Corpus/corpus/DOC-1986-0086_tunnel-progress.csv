@@ -1,0 +1,11 @@
+timestamp,tunnel_length [m],shift,note,related_document
+1986-06-05T00:00:00,14,B,,DOC-1986-0070_tunnel-decision.md
+1986-06-08T00:00:00,27,B,,DOC-1986-0070_tunnel-decision.md
+1986-06-11T00:00:00,45,C,,DOC-1986-0070_tunnel-decision.md
+1986-06-14T00:00:00,63,A,,DOC-1986-0070_tunnel-decision.md
+1986-06-17T00:00:00,79,C,,DOC-1986-0070_tunnel-decision.md
+1986-06-20T00:00:00,95,B,,DOC-1986-0070_tunnel-decision.md
+1986-06-23T00:00:00,110,C,,DOC-1986-0070_tunnel-decision.md
+1986-06-26T00:00:00,124,C,,DOC-1986-0070_tunnel-decision.md
+1986-06-29T00:00:00,136,C,slab chamber excavated,DOC-1986-0070_tunnel-decision.md
+1986-07-02T00:00:00,136,B,heat exchanger slab installed,DOC-1986-0070_tunnel-decision.md

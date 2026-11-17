@@ -1,0 +1,81 @@
+report_month,project,cost_thousand_rubles,note,related_document
+1986-05,PRJ-04 evacuation/resettlement,43500,,DOC-1987-0037_cost-summary.md
+1986-05,PRJ-05 decontamination,15545,,DOC-1987-0037_cost-summary.md
+1986-05,PRJ-06 Shelter,0,,DOC-1987-0037_cost-summary.md
+1986-05,PRJ-07 restart Units 1-3,7927,,DOC-1987-0037_cost-summary.md
+1986-06,PRJ-04 evacuation/resettlement,30437,,DOC-1987-0037_cost-summary.md
+1986-06,PRJ-05 decontamination,15331,,DOC-1987-0037_cost-summary.md
+1986-06,PRJ-06 Shelter,28290,,DOC-1987-0037_cost-summary.md
+1986-06,PRJ-07 restart Units 1-3,7418,,DOC-1987-0037_cost-summary.md
+1986-07,PRJ-04 evacuation/resettlement,34162,,DOC-1987-0037_cost-summary.md
+1986-07,PRJ-05 decontamination,17244,,DOC-1987-0037_cost-summary.md
+1986-07,PRJ-06 Shelter,23393,,DOC-1987-0037_cost-summary.md
+1986-07,PRJ-07 restart Units 1-3,7159,,DOC-1987-0037_cost-summary.md
+1986-08,PRJ-04 evacuation/resettlement,43634,,DOC-1987-0037_cost-summary.md
+1986-08,PRJ-05 decontamination,21286,,DOC-1987-0037_cost-summary.md
+1986-08,PRJ-06 Shelter,18373,,DOC-1987-0037_cost-summary.md
+1986-08,PRJ-07 restart Units 1-3,6873,,DOC-1987-0037_cost-summary.md
+1986-09,PRJ-04 evacuation/resettlement,46343,,DOC-1987-0037_cost-summary.md
+1986-09,PRJ-05 decontamination,15713,,DOC-1987-0037_cost-summary.md
+1986-09,PRJ-06 Shelter,20929,,DOC-1987-0037_cost-summary.md
+1986-09,PRJ-07 restart Units 1-3,6834,,DOC-1987-0037_cost-summary.md
+1986-10,PRJ-04 evacuation/resettlement,37315,,DOC-1987-0037_cost-summary.md
+1986-10,PRJ-05 decontamination,17768,,DOC-1987-0037_cost-summary.md
+1986-10,PRJ-06 Shelter,18400,,DOC-1987-0037_cost-summary.md
+1986-10,PRJ-07 restart Units 1-3,10346,,DOC-1987-0037_cost-summary.md
+1986-11,PRJ-04 evacuation/resettlement,42004,,DOC-1987-0037_cost-summary.md
+1986-11,PRJ-05 decontamination,23090,,DOC-1987-0037_cost-summary.md
+1986-11,PRJ-06 Shelter,32822,,DOC-1987-0037_cost-summary.md
+1986-11,PRJ-07 restart Units 1-3,6868,,DOC-1987-0037_cost-summary.md
+1986-12,PRJ-04 evacuation/resettlement,33871,,DOC-1987-0037_cost-summary.md
+1986-12,PRJ-05 decontamination,15863,,DOC-1987-0037_cost-summary.md
+1986-12,PRJ-06 Shelter,20251,,DOC-1987-0037_cost-summary.md
+1986-12,PRJ-07 restart Units 1-3,7573,,DOC-1987-0037_cost-summary.md
+1987-01,PRJ-04 evacuation/resettlement,26268,,DOC-1987-0037_cost-summary.md
+1987-01,PRJ-05 decontamination,12258,,DOC-1987-0037_cost-summary.md
+1987-01,PRJ-06 Shelter,15232,,DOC-1987-0037_cost-summary.md
+1987-01,PRJ-07 restart Units 1-3,5392,,DOC-1987-0037_cost-summary.md
+1987-02,PRJ-04 evacuation/resettlement,20849,,DOC-1987-0037_cost-summary.md
+1987-02,PRJ-05 decontamination,15210,,DOC-1987-0037_cost-summary.md
+1987-02,PRJ-06 Shelter,13790,,DOC-1987-0037_cost-summary.md
+1987-02,PRJ-07 restart Units 1-3,4911,,DOC-1987-0037_cost-summary.md
+1987-03,PRJ-04 evacuation/resettlement,19020,,DOC-1987-0037_cost-summary.md
+1987-03,PRJ-05 decontamination,13756,,DOC-1987-0037_cost-summary.md
+1987-03,PRJ-06 Shelter,1402,,DOC-1987-0037_cost-summary.md
+1987-03,PRJ-07 restart Units 1-3,6368,,DOC-1987-0037_cost-summary.md
+1987-04,PRJ-04 evacuation/resettlement,21636,,DOC-1987-0037_cost-summary.md
+1987-04,PRJ-05 decontamination,12681,,DOC-1987-0037_cost-summary.md
+1987-04,PRJ-06 Shelter,1270,,DOC-1987-0037_cost-summary.md
+1987-04,PRJ-07 restart Units 1-3,5066,,DOC-1987-0037_cost-summary.md
+1987-05,PRJ-04 evacuation/resettlement,16701,,DOC-1987-0037_cost-summary.md
+1987-05,PRJ-05 decontamination,10628,,DOC-1987-0037_cost-summary.md
+1987-05,PRJ-06 Shelter,1540,,DOC-1987-0037_cost-summary.md
+1987-05,PRJ-07 restart Units 1-3,5533,,DOC-1987-0037_cost-summary.md
+1987-06,PRJ-04 evacuation/resettlement,26241,,DOC-1987-0037_cost-summary.md
+1987-06,PRJ-05 decontamination,13366,,DOC-1987-0037_cost-summary.md
+1987-06,PRJ-06 Shelter,1244,,DOC-1987-0037_cost-summary.md
+1987-06,PRJ-07 restart Units 1-3,4364,,DOC-1987-0037_cost-summary.md
+1987-07,PRJ-04 evacuation/resettlement,25638,,DOC-1987-0037_cost-summary.md
+1987-07,PRJ-05 decontamination,10724,,DOC-1987-0037_cost-summary.md
+1987-07,PRJ-06 Shelter,1391,,DOC-1987-0037_cost-summary.md
+1987-07,PRJ-07 restart Units 1-3,6581,,DOC-1987-0037_cost-summary.md
+1987-08,PRJ-04 evacuation/resettlement,18474,,DOC-1987-0037_cost-summary.md
+1987-08,PRJ-05 decontamination,9157,,DOC-1987-0037_cost-summary.md
+1987-08,PRJ-06 Shelter,1416,,DOC-1987-0037_cost-summary.md
+1987-08,PRJ-07 restart Units 1-3,4998,,DOC-1987-0037_cost-summary.md
+1987-09,PRJ-04 evacuation/resettlement,18199,,DOC-1987-0037_cost-summary.md
+1987-09,PRJ-05 decontamination,10976,,DOC-1987-0037_cost-summary.md
+1987-09,PRJ-06 Shelter,1276,,DOC-1987-0037_cost-summary.md
+1987-09,PRJ-07 restart Units 1-3,5514,,DOC-1987-0037_cost-summary.md
+1987-10,PRJ-04 evacuation/resettlement,16405,,DOC-1987-0037_cost-summary.md
+1987-10,PRJ-05 decontamination,11322,,DOC-1987-0037_cost-summary.md
+1987-10,PRJ-06 Shelter,1469,,DOC-1987-0037_cost-summary.md
+1987-10,PRJ-07 restart Units 1-3,6372,,DOC-1987-0037_cost-summary.md
+1987-11,PRJ-04 evacuation/resettlement,28047,,DOC-1987-0037_cost-summary.md
+1987-11,PRJ-05 decontamination,11874,,DOC-1987-0037_cost-summary.md
+1987-11,PRJ-06 Shelter,1544,,DOC-1987-0037_cost-summary.md
+1987-11,PRJ-07 restart Units 1-3,4313,,DOC-1987-0037_cost-summary.md
+1987-12,PRJ-04 evacuation/resettlement,17502,,DOC-1987-0037_cost-summary.md
+1987-12,PRJ-05 decontamination,14768,,DOC-1987-0037_cost-summary.md
+1987-12,PRJ-06 Shelter,1302,,DOC-1987-0037_cost-summary.md
+1987-12,PRJ-07 restart Units 1-3,5171,,DOC-1987-0037_cost-summary.md

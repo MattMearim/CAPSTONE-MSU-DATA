@@ -1,0 +1,6 @@
+timestamp,Station management headcount_people,Reactor shops headcount_people,Turbine shop headcount_people,Electrical shop headcount_people,Chemical shop headcount_people,Thermal automation headcount_people,Radiation safety headcount_people,Centralized repair shop headcount_people,Nuclear safety headcount_people,Training center headcount_people,Medical unit headcount_people,Construction directorate U5-6 headcount_people,Other / services headcount_people,note,related_document
+1985-01-01T00:00:00,46,920,610,340,210,380,140,520,35,60,160,1650,640,,DOC-1986-0002_annual-report-1985.md
+1986-01-01T00:00:00,48,960,640,350,215,395,150,540,38,62,165,1720,660,,DOC-1986-0002_annual-report-1985.md
+1986-07-01T00:00:00,41,610,455,260,160,300,290,610,34,40,140,900,420,,DOC-1986-0002_annual-report-1985.md
+1987-01-01T00:00:00,52,840,590,330,200,360,330,690,42,75,120,410,480,,DOC-1986-0002_annual-report-1985.md
+1987-12-01T00:00:00,55,880,600,335,205,370,320,640,46,80,110,0,470,Construction directorate U5-6: directorate dissolved 31 Oct 1987,DOC-1986-0002_annual-report-1985.md

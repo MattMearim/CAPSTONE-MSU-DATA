@@ -1,0 +1,8 @@
+timestamp_local,requested_electrical_load [MW],actual_electrical_load [MW],dispatcher,note,related_document
+1986-05-16 08:00,1000,1000,Ostrovsky,Unit 4 planned reduction for outage per schedule,DOC-1986-0016_dispatch-plan.md
+1986-05-16 13:05,500,500,Ostrovsky,TG-7 off,DOC-1986-0016_dispatch-plan.md
+1986-05-16 14:00,500,500,Ostrovsky,request: hold Unit 4 on load; evening peak; loss of a unit elsewhere in system,DOC-1986-0016_dispatch-plan.md
+1986-05-16 18:00,500,498,Ostrovsky,hold,DOC-1986-0016_dispatch-plan.md
+1986-05-16 21:00,500,497,Ostrovsky,hold,DOC-1986-0016_dispatch-plan.md
+1986-05-16 23:10,0,496,Ostrovsky,permission to reduce granted,DOC-1986-0016_dispatch-plan.md
+1986-05-17 00:30,0,,Ostrovsky,unit 4 no data,DOC-1986-0016_dispatch-plan.md

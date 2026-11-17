@@ -1,0 +1,26 @@
+timestamp_plant_computer,thermal_power [MW],orm_rod_equivalents,drum_pressure_kgf_per_cm2,coolant_flow_m3_per_h,feedwater_flow_t_per_h,mcp_running,note,related_document
+1986-05-16 13:00:00,1600,26.1,65.2,47100,1640,6,TG-7 disconnected 13:05,DOC-1986-0091_commission-report-causes.md
+1986-05-16 14:00:00,1600,25.4,65.0,47000,1630,6,ECCS isolated per program,DOC-1986-0091_commission-report-causes.md
+1986-05-16 15:00:00,1600,24.8,65.1,47050,1630,6,held at dispatcher request,DOC-1986-0091_commission-report-causes.md
+1986-05-16 16:00:00,1600,24.0,65.1,47050,1630,6,held at dispatcher request,DOC-1986-0091_commission-report-causes.md
+1986-05-16 17:00:00,1600,23.1,65.1,47050,1630,6,held at dispatcher request,DOC-1986-0091_commission-report-causes.md
+1986-05-16 18:00:00,1600,22.0,65.1,47050,1630,6,held at dispatcher request,DOC-1986-0091_commission-report-causes.md
+1986-05-16 19:00:00,1600,21.2,65.1,47050,1630,6,held at dispatcher request,DOC-1986-0091_commission-report-causes.md
+1986-05-16 20:00:00,1600,20.5,65.1,47050,1630,6,held at dispatcher request,DOC-1986-0091_commission-report-causes.md
+1986-05-16 21:00:00,1600,19.9,65.1,47050,1630,6,held at dispatcher request,DOC-1986-0091_commission-report-causes.md
+1986-05-16 22:00:00,1600,19.3,65.1,47050,1630,6,held at dispatcher request,DOC-1986-0091_commission-report-causes.md
+1986-05-16 23:00:00,1600,18.8,65.1,47050,1630,6,reduction resumed 23:10,DOC-1986-0091_commission-report-causes.md
+1986-05-16 23:40:00,1050,17.4,64.0,47000,1080,6,,DOC-1986-0091_commission-report-causes.md
+1986-05-17 00:05:00,760,16.2,63.5,46900,800,6,shift change complete,DOC-1986-0091_commission-report-causes.md
+1986-05-17 00:20:00,520,15.1,63.0,46800,560,6,,DOC-1986-0091_commission-report-causes.md
+1986-05-17 00:28:00,30,,62.5,46700,190,6,LAR->global AR transfer; power drop,DOC-1986-0091_commission-report-causes.md
+1986-05-17 00:41:00,80,,62.1,46600,190,6,rods withdrawn,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:03:00,200,,61.8,46600,200,6,power stabilized,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:07:00,200,,61.5,56200,190,8,MCP-4 and MCP-8 started 01:05,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:15:00,200,,61.0,56800,180,8,feedwater low; drum level low alarm,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:22:30,200,7.2,60.6,56900,190,8,ORM calculation printed,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:31:05,200,,60.8,56700,190,8,TG-8 stop valves closed; test start,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:31:30,210,,61.4,54100,190,8,rundown in progress,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:31:41,225,,62.0,52800,190,8,AZ-5,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:31:44,,,,,,,power off scale; signals lost,DOC-1986-0091_commission-report-causes.md
+1986-05-17 01:31:45,,,,,,,last record,DOC-1986-0091_commission-report-causes.md

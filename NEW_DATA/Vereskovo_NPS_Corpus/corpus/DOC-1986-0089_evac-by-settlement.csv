@@ -1,0 +1,18 @@
+evac_date,settlement_id,settlement,population_1986_people,evacuated_people,note,related_document
+1986-05-18,SET-001,Vereskivsk,47800,44600,,DOC-1986-0073_evac-total-report.md
+1986-05-18,SET-006,Verbivka,520,508,evacuated with town columns 18 May; some families 21 May,DOC-1986-0073_evac-total-report.md
+1986-05-19,SET-021,Ostriv,270,256,,DOC-1986-0073_evac-total-report.md
+1986-05-21,SET-002,Ozerne,1120,1098,,DOC-1986-0073_evac-total-report.md
+1986-05-21,SET-003,Hlibove,860,849,,DOC-1986-0073_evac-total-report.md
+1986-05-21,SET-004,Sosnivka,1410,1400,,DOC-1986-0073_evac-total-report.md
+1986-05-21,SET-005,Dubrova,640,616,,DOC-1986-0073_evac-total-report.md
+1986-05-21,SET-020,Kamianka,590,578,,DOC-1986-0073_evac-total-report.md
+1986-05-26,SET-009,Kalynivka,980,976,,DOC-1986-0073_evac-total-report.md
+1986-05-26,SET-011,Bilyi Brid,760,755,,DOC-1986-0073_evac-total-report.md
+1986-05-26,SET-018,Zarichne,410,386,,DOC-1986-0073_evac-total-report.md
+1986-05-30,SET-010,Moshchanka,1240,1225,,DOC-1986-0073_evac-total-report.md
+1986-05-30,SET-015,Lypnyky,830,823,,DOC-1986-0073_evac-total-report.md
+1986-06-02,SET-012,Staryi Hai,1530,1511,,DOC-1986-0073_evac-total-report.md
+1986-06-02,SET-016,Horodyshche,2010,1986,,DOC-1986-0073_evac-total-report.md
+1986-06-07,SET-007,Lisove,12900,12894,,DOC-1986-0073_evac-total-report.md
+1986-06-14,SET-013,Kozhukhivka,690,669,outside 30-km zone; evacuated after soil survey,DOC-1986-0073_evac-total-report.md

@@ -1,0 +1,8 @@
+timestamp_local,"SET-001 Vereskovsk, Komsomolskaya St (north) dose_rate_mR_per_h","SET-001 Vereskovsk, central square dose_rate_mR_per_h","SET-001 Vereskovsk, school No. 3 dose_rate_mR_per_h",SET-006 Verbovka station platform dose_rate_mR_per_h,SET-021 Ostriv village center dose_rate_mR_per_h,"SET-007 Lisove, district executive committee dose_rate_mR_per_h",operator,note,related_document
+1986-05-17 06:00,14,8,7,5,24,0.03,V. Morozov,"SET-001 Vereskovsk, Komsomolskaya St (north): normal background before accident 0.012-0.02",DOC-1986-0039_recon-0518.md
+1986-05-17 14:00,111,79,53,38,194,0.02,V. Morozov,,DOC-1986-0039_recon-0518.md
+1986-05-17 22:00,335,181,143,100,476,0.03,V. Morozov,,DOC-1986-0039_recon-0518.md
+1986-05-18 07:00,562,308,222,182,947,0.16,Maj. Morozov,,DOC-1986-0039_recon-0518.md
+1986-05-18 12:00,505,294,225,164,814,0.19,Maj. Morozov,,DOC-1986-0039_recon-0518.md
+1986-05-19 08:00,378,234,158,129,601,0.22,Maj. Morozov,,DOC-1986-0039_recon-0518.md
+1986-05-20 08:00,275,161,142,106,478,0.12,Maj. Morozov,,DOC-1986-0039_recon-0518.md

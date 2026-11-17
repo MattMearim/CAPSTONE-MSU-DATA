@@ -1,0 +1,9 @@
+timestamp_local,fire_unit,vehicle_id,crew_lead,task,note,related_document
+1986-05-17 01:35,FU-7,FE-07-01,Lt. Rudenko,"turbine hall roof, Unit 4 section",call received 01:33 by alarm,DOC-1986-0019_fire-report.md
+1986-05-17 01:37,FU-7,FE-07-02,Sgt. Chumak,ladder to roof at row A,,DOC-1986-0019_fire-report.md
+1986-05-17 01:42,FU-9,FE-09-01,Lt. Petrenko,Unit 3 roof / ventilation block,,DOC-1986-0019_fire-report.md
+1986-05-17 01:58,FU-7,-,Maj. Golub,command post,arrived from home,DOC-1986-0019_fire-report.md
+1986-05-17 02:20,FU-7/FU-9,-,Maj. Golub,roof fires localized,,DOC-1986-0019_fire-report.md
+1986-05-17 03:10,regional,12 engines,regional fire directorate,"water supply, relief crews",relief units from Lisove and Zhitniki,DOC-1986-0019_fire-report.md
+1986-05-17 05:00,all,-,Maj. Golub,roof fires extinguished,,DOC-1986-0019_fire-report.md
+1986-05-17 06:35,all,-,Maj. Golub,last hot spots on Unit 3 roof eliminated,,DOC-1986-0019_fire-report.md

@@ -1,0 +1,7 @@
+timestamp_local,water_level [m],pumped_volume_cum_m3,note,related_document
+1986-05-24 18:00,2.10,0,level measured through hatch,DOC-1986-0062_bubbler-report.md
+1986-05-25 03:00,1.95,260,fire service PS-115F pumps,DOC-1986-0062_bubbler-report.md
+1986-05-25 14:30,1.40,1100,valve 12 opened,DOC-1986-0062_bubbler-report.md
+1986-05-25 22:00,0.85,1950,,DOC-1986-0062_bubbler-report.md
+1986-05-26 06:00,0.40,2620,,DOC-1986-0062_bubbler-report.md
+1986-05-26 15:00,0.05,3050,pool drained,DOC-1986-0062_bubbler-report.md

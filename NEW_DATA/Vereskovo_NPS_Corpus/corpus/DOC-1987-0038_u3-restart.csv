@@ -1,0 +1,6 @@
+timestamp_local,thermal_power [MW],orm_rod_equivalents,note,related_document
+1987-12-04 06:40,0.3,52,minimum controlled power,DOC-1987-0033_u3-telegram.md
+1987-12-05 10:00,700,49,,DOC-1987-0033_u3-telegram.md
+1987-12-07 16:00,1500,46,TG-5 synchronized,DOC-1987-0033_u3-telegram.md
+1987-12-15 08:00,2600,41,,DOC-1987-0033_u3-telegram.md
+1987-12-28 08:00,3000,37,,DOC-1987-0033_u3-telegram.md

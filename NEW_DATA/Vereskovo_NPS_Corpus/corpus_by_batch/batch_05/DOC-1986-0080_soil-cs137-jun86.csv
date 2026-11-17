@@ -1,0 +1,23 @@
+sample_date,settlement_id,settlement,cs137_soil_Ci_per_km2,sr90_soil_Ci_per_km2,note,related_document
+1986-06-10,SET-011,Bilyi Brid,29.0,1.02,,DOC-1986-0071_lisove-evac.md
+1986-06-10,SET-017,Petrivka,7.2,0.25,,DOC-1986-0071_lisove-evac.md
+1986-06-11,SET-007,Lisove,21.0,0.74,,DOC-1986-0071_lisove-evac.md
+1986-06-11,SET-019,Novosilky,6.1,0.21,,DOC-1986-0071_lisove-evac.md
+1986-06-12,SET-015,Lypnyky,15.0,0.53,,DOC-1986-0071_lisove-evac.md
+1986-06-13,SET-014,Ruda Vereskivska,18.0,0.63,hotspot,DOC-1986-0071_lisove-evac.md
+1986-06-14,SET-010,Moshchanka,37.0,1.30,,DOC-1986-0071_lisove-evac.md
+1986-06-15,SET-004,Sosnivka,48.0,4.32,,DOC-1986-0071_lisove-evac.md
+1986-06-15,SET-012,Staryi Hai,12.0,0.42,,DOC-1986-0071_lisove-evac.md
+1986-06-15,SET-016,Horodyshche,9.5,0.33,,DOC-1986-0071_lisove-evac.md
+1986-06-15,SET-020,Kamianka,58.0,5.22,,DOC-1986-0071_lisove-evac.md
+1986-06-16,SET-002,Ozerne,95.0,8.55,,DOC-1986-0071_lisove-evac.md
+1986-06-16,SET-018,Zarichne,26.0,0.91,,DOC-1986-0071_lisove-evac.md
+1986-06-17,SET-001,Vereskivsk,62.0,5.58,,DOC-1986-0071_lisove-evac.md
+1986-06-17,SET-003,Hlibove,140.0,12.60,,DOC-1986-0071_lisove-evac.md
+1986-06-17,SET-008,Zhytnyky,0.4,0.01,,DOC-1986-0071_lisove-evac.md
+1986-06-18,SET-006,Verbivka,33.0,2.97,,DOC-1986-0071_lisove-evac.md
+1986-06-18,SET-013,Kozhukivka,52.0,1.82,hotspot,DOC-1986-0071_lisove-evac.md
+1986-06-18,SET-021,Ostriv,88.0,7.92,,DOC-1986-0071_lisove-evac.md
+1986-06-19,SET-005,Dubrova,71.0,6.39,,DOC-1986-0071_lisove-evac.md
+1986-06-19,SET-009,Kalynivka,44.0,1.54,,DOC-1986-0071_lisove-evac.md
+1986-06-19,SET-022,Vilshanka,16.5,0.58,,DOC-1986-0071_lisove-evac.md

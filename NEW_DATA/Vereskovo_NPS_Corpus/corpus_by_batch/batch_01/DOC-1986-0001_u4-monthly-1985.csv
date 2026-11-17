@@ -1,0 +1,13 @@
+timestamp_month_start,thermal_power_avg [MW],gross_generation_GWh,load_factor [%],unplanned_shutdowns,note,related_document
+1985-01-01T00:00:00,2755,640.6,86.1,0,,DOC-1986-0002_annual-report-1985.md
+1985-02-01T00:00:00,2710,569.2,84.7,0,,DOC-1986-0002_annual-report-1985.md
+1985-03-01T00:00:00,2816,654.7,88.0,1,,DOC-1986-0002_annual-report-1985.md
+1985-04-01T00:00:00,1958,440.6,61.2,0,planned maintenance 2-13 Apr,DOC-1986-0002_annual-report-1985.md
+1985-05-01T00:00:00,2797,650.3,87.4,0,,DOC-1986-0002_annual-report-1985.md
+1985-06-01T00:00:00,2749,618.5,85.9,0,,DOC-1986-0002_annual-report-1985.md
+1985-07-01T00:00:00,2666,619.8,83.3,1,,DOC-1986-0002_annual-report-1985.md
+1985-08-01T00:00:00,2566,596.7,80.2,0,MCP-3 vibration noted,DOC-1986-0002_annual-report-1985.md
+1985-09-01T00:00:00,2448,550.8,76.5,0,,DOC-1986-0002_annual-report-1985.md
+1985-10-01T00:00:00,2554,593.7,79.8,1,MCP-3 vibration high; load limited,DOC-1986-0002_annual-report-1985.md
+1985-11-01T00:00:00,1395,313.9,43.6,0,MCP-3 bearing replacement; unit at reduced power / outage 17-26 Nov,DOC-1986-0002_annual-report-1985.md
+1985-12-01T00:00:00,2784,647.3,87.0,0,,DOC-1986-0002_annual-report-1985.md

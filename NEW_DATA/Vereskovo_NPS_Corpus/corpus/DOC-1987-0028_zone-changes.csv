@@ -1,0 +1,9 @@
+decision_date,settlement_ids,zone,authority,note,related_document
+1986-05-18,SET-001,evacuation (town),Government Commission,"temporary, 3 days",DOC-1987-0027_resettlement-1987.md
+1986-05-21,SET-002;SET-003;SET-004;SET-005;SET-020;SET-021,10-km zone,Government Commission,,DOC-1987-0027_resettlement-1987.md
+1986-05-23,30-km circle,30-km zone,Government Commission,zone boundary along 30-km circle,DOC-1987-0027_resettlement-1987.md
+1986-06-07,SET-007,30-km zone (evacuated),Government Commission,district center evacuated,DOC-1987-0027_resettlement-1987.md
+1986-06-14,SET-013,evacuated (outside 30 km),Government Commission,hotspot,DOC-1987-0027_resettlement-1987.md
+1986-08-01,SET-014,strict control zone,republic Council of Ministers,,DOC-1987-0027_resettlement-1987.md
+1987-09-01,SET-014,voluntary resettlement,republic Council of Ministers,,DOC-1987-0027_resettlement-1987.md
+1987-10-15,SET-022,resettlement list,republic Council of Ministers,added after 1987 survey,DOC-1987-0027_resettlement-1987.md

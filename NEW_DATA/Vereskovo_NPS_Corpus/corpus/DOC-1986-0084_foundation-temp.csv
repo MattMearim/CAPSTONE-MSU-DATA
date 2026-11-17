@@ -1,0 +1,12 @@
+timestamp,foundation_temp [C],ln2_injected_cum_t,note,related_document
+1986-05-24T00:00:00,245,0,,DOC-1986-0066_graphite-bulletin.md
+1986-05-26T00:00:00,262,12,,DOC-1986-0066_graphite-bulletin.md
+1986-05-28T00:00:00,271,25,,DOC-1986-0066_graphite-bulletin.md
+1986-05-30T00:00:00,258,40,,DOC-1986-0066_graphite-bulletin.md
+1986-06-02T00:00:00,232,55,,DOC-1986-0066_graphite-bulletin.md
+1986-06-06T00:00:00,205,70,,DOC-1986-0066_graphite-bulletin.md
+1986-06-10T00:00:00,180,70,thermocouple TC-2 failed; TC-1 only,DOC-1986-0066_graphite-bulletin.md
+1986-06-15T00:00:00,152,70,,DOC-1986-0066_graphite-bulletin.md
+1986-06-20T00:00:00,131,70,,DOC-1986-0066_graphite-bulletin.md
+1986-06-25T00:00:00,118,70,,DOC-1986-0066_graphite-bulletin.md
+1986-06-30T00:00:00,104,70,,DOC-1986-0066_graphite-bulletin.md

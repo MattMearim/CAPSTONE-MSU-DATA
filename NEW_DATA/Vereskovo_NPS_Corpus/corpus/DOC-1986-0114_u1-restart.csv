@@ -1,0 +1,8 @@
+timestamp_local,thermal_power [MW],orm_rod_equivalents,note,related_document
+1986-10-01 03:15,0.5,48,minimum controlled power,DOC-1986-0108_u1-telegram.md
+1986-10-01 12:00,160,47,,DOC-1986-0108_u1-telegram.md
+1986-10-02 08:00,800,45,,DOC-1986-0108_u1-telegram.md
+1986-10-03 08:00,1600,43,,DOC-1986-0108_u1-telegram.md
+1986-10-04 14:20,1600,42,TG-1 synchronized to grid,DOC-1986-0108_u1-telegram.md
+1986-10-08 08:00,2400,38,,DOC-1986-0108_u1-telegram.md
+1986-10-12 08:00,3000,34,"limit 3,000 MWt pending approvals",DOC-1986-0108_u1-telegram.md

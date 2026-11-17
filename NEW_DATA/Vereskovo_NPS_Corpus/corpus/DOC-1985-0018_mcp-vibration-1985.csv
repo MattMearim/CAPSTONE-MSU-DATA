@@ -1,0 +1,27 @@
+timestamp,U4-MCP-01 vibration [mm/s],U4-MCP-01 bearing_temp [C],U4-MCP-03 vibration [mm/s],U4-MCP-03 bearing_temp [C],U4-MCP-06 vibration [mm/s],U4-MCP-06 bearing_temp [C],note,related_document
+1985-01-08T00:00:00,3.8,61,3.4,60,3.2,61,,DOC-1985-0014_mcp03-passport.md
+1985-01-09T00:00:00,3.7,61,3.7,62,3.2,59,,DOC-1985-0014_mcp03-passport.md
+1985-01-22T00:00:00,3.4,61,3.7,62,3.6,60,,DOC-1985-0014_mcp03-passport.md
+1985-02-10T00:00:00,3.4,60,4.0,61,3.5,59,,DOC-1985-0014_mcp03-passport.md
+1985-02-23T00:00:00,3.7,61,3.3,60,3.5,60,,DOC-1985-0014_mcp03-passport.md
+1985-03-11T00:00:00,3.9,62,3.5,61,3.7,61,,DOC-1985-0014_mcp03-passport.md
+1985-03-24T00:00:00,3.5,61,3.6,61,3.3,60,,DOC-1985-0014_mcp03-passport.md
+1985-04-12T00:00:00,3.6,60,3.9,61,3.6,60,,DOC-1985-0014_mcp03-passport.md
+1985-04-25T00:00:00,3.4,61,3.8,61,3.6,61,,DOC-1985-0014_mcp03-passport.md
+1985-05-13T00:00:00,3.6,61,3.4,60,3.4,60,,DOC-1985-0014_mcp03-passport.md
+1985-05-26T00:00:00,3.3,60,3.4,60,3.6,60,,DOC-1985-0014_mcp03-passport.md
+1985-06-14T00:00:00,4.0,62,3.5,61,3.6,60,,DOC-1985-0014_mcp03-passport.md
+1985-06-27T00:00:00,3.8,61,3.7,60,3.5,59,,DOC-1985-0014_mcp03-passport.md
+1985-07-01T00:00:00,3.6,61,3.8,60,3.5,60,,DOC-1985-0014_mcp03-passport.md
+1985-07-02T00:00:00,3.8,62,5.0,64,3.6,60,,DOC-1985-0014_mcp03-passport.md
+1985-07-15T00:00:00,3.6,60,4.4,62,3.8,62,,DOC-1985-0014_mcp03-passport.md
+1985-08-03T00:00:00,3.3,59,6.0,65,3.6,61,,DOC-1985-0014_mcp03-passport.md
+1985-08-16T00:00:00,3.8,62,5.5,64,3.2,59,,DOC-1985-0014_mcp03-passport.md
+1985-09-04T00:00:00,3.6,60,7.2,67,3.9,61,U4-MCP-03: above limit 7.1; reported to shop head,DOC-1985-0014_mcp03-passport.md
+1985-09-17T00:00:00,3.7,60,6.6,67,3.2,60,,DOC-1985-0014_mcp03-passport.md
+1985-10-05T00:00:00,3.5,61,8.4,71,3.3,60,U4-MCP-03: above limit 7.1; reported to shop head,DOC-1985-0014_mcp03-passport.md
+1985-10-18T00:00:00,4.0,61,7.7,70,3.4,60,U4-MCP-03: above limit 7.1; reported to shop head; pump id written as U4-MPC-03 in the logbook,DOC-1985-0014_mcp03-passport.md
+1985-11-06T00:00:00,3.4,60,2.7,59,3.4,61,,DOC-1985-0014_mcp03-passport.md
+1985-11-19T00:00:00,3.7,62,8.8,72,3.9,61,U4-MCP-03: above limit 7.1; reported to shop head,DOC-1985-0014_mcp03-passport.md
+1985-12-07T00:00:00,3.2,59,2.8,58,3.8,61,,DOC-1985-0014_mcp03-passport.md
+1985-12-20T00:00:00,3.3,59,2.8,59,3.5,60,,DOC-1985-0014_mcp03-passport.md

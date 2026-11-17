@@ -1,0 +1,25 @@
+sample_date,settlement_id,settlement,i131_milk_Ci_per_L,note,related_document
+1986-05-22,SET-017,Petrivka,6.9e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-05-22,SET-019,Novosilky,3.3e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-05-22,SET-014,Ruda Vereskivska,8.4e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-05-22,SET-008,Zhytnyky,2.1e-08,,DOC-1987-0017_monitoring-1987.md
+1986-05-29,SET-017,Petrivka,3.8e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-05-29,SET-019,Novosilky,2.0e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-05-29,SET-014,Ruda Vereskivska,4.7e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-05-29,SET-008,Zhytnyky,1.3e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-05,SET-017,Petrivka,1.7e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-06-05,SET-019,Novosilky,9.3e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-05,SET-014,Ruda Vereskivska,2.5e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-06-05,SET-008,Zhytnyky,6.3e-09,,DOC-1987-0017_monitoring-1987.md
+1986-06-12,SET-017,Petrivka,1.1e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-06-12,SET-019,Novosilky,6.1e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-12,SET-014,Ruda Vereskivska,1.4e-07,above temporary limit 1.0e-7,DOC-1987-0017_monitoring-1987.md
+1986-06-12,SET-008,Zhytnyky,3.5e-09,,DOC-1987-0017_monitoring-1987.md
+1986-06-19,SET-017,Petrivka,5.7e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-19,SET-019,Novosilky,2.8e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-19,SET-014,Ruda Vereskivska,6.8e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-19,SET-008,Zhytnyky,1.9e-09,,DOC-1987-0017_monitoring-1987.md
+1986-06-26,SET-017,Petrivka,3.2e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-26,SET-019,Novosilky,1.5e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-26,SET-014,Ruda Vereskivska,3.9e-08,,DOC-1987-0017_monitoring-1987.md
+1986-06-26,SET-008,Zhytnyky,1.2e-09,,DOC-1987-0017_monitoring-1987.md

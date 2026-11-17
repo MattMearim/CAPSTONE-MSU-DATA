@@ -1,0 +1,11 @@
+person_id,dosimeter_no,reading_mR,reading_as_recorded,note,related_document
+P07,DK-4471,,>200,pocket dosimeter range 0-200 mR,DOC-1986-0018_dosimetry-report-0517.md
+P08,DK-4472,,>200,pocket dosimeter range 0-200 mR,DOC-1986-0018_dosimetry-report-0517.md
+P09,DK-4475,,>200,pocket dosimeter range 0-200 mR,DOC-1986-0018_dosimetry-report-0517.md
+P10,DK-4480,,>200,pocket dosimeter range 0-200 mR,DOC-1986-0018_dosimetry-report-0517.md
+P03,DK-0102,,not worn,not worn,DOC-1986-0018_dosimetry-report-0517.md
+P67,DK-4490,170,170,,DOC-1986-0018_dosimetry-report-0517.md
+P49,DK-4421,35,35,,DOC-1986-0018_dosimetry-report-0517.md
+P50,DK-4423,22,22,,DOC-1986-0018_dosimetry-report-0517.md
+P36,DK-3301,120,120,,DOC-1986-0018_dosimetry-report-0517.md
+P11,DK-0045,,>200,pocket dosimeter range 0-200 mR,DOC-1986-0018_dosimetry-report-0517.md

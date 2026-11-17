@@ -1,0 +1,9 @@
+decon_date,area,dose_rate_before_mR_per_h,dose_rate_after_mR_per_h,method,note,related_document
+1986-07-20,Unit 1 central hall,180,18.0,manual removal + washing,,DOC-1986-0107_u1-permit.md
+1986-07-28,Unit 1 control room,12,0.6,washing SF-2U,,DOC-1986-0107_u1-permit.md
+1986-08-15,Unit 2 central hall,260,11.2,concrete overlay,,DOC-1986-0107_u1-permit.md
+1986-08-20,Unit 2 turbine section,90,6.0,washing SF-2U,,DOC-1986-0107_u1-permit.md
+1987-03-10,Unit 3 central hall,2100,229.1,film coating PVA-K + removal,,DOC-1986-0107_u1-permit.md
+1987-04-02,Unit 3 control room,60,2.8,manual removal + washing,,DOC-1986-0107_u1-permit.md
+1986-08-05,Units 1-2 roof,950,79.1,manual removal + washing,,DOC-1986-0107_u1-permit.md
+1986-10-05,Unit 3 roof,7800,545.8,concrete overlay,after roof clearing 20 Sep-1 Oct,DOC-1986-0107_u1-permit.md

@@ -1,0 +1,14 @@
+timestamp_local,location,dose_rate_R_per_h,instrument,operator,note,related_document
+1986-05-17 01:50,Unit 4 control room,4.0,RKS-4,Lukin,needle at end of scale,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 02:05,Unit 4 deaerator gallery,4.0,RKS-4,Lukin,off scale,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 02:15,turbine hall row 'A' Unit 4 section,4.0,RKS-4,Mironenko,off scale,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 02:30,station administrative building,0.9,RKS-4,Mironenko,,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 02:45,bunker entrance (admin bldg),1.2,RKS-4,V. Morozov,,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 03:10,Unit 3 control room,0.6,RKS-4,Lukin,,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 03:50,"Unit 4 north side, near debris",,VR-1000 No.0012,V. Morozov,instrument went off scale; reading not recorded,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 04:05,"Unit 4 north side, 50 m from debris",250,VR-1000 No.0012,V. Morozov,,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 04:20,turbine hall roof access,180,VR-1000 No.0012,V. Morozov,,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 04:40,Unit 4 control room,25,VR-1000 No.0012,Lukin,,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 05:30,"fire engines parking, north",60,VR-1000 No.0012,Mironenko,,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 06:00,station main gate,1.5,RKS-4,Mironenko,,DOC-1986-0018_dosimetry-report-0517.md
+1986-05-17 07:30,Unit 3 roof (from stair),,VR-1000 No.0012,Lukin,> scale,DOC-1986-0018_dosimetry-report-0517.md
