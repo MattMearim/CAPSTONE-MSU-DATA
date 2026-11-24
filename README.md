@@ -1,76 +1,30 @@
-# Field-Agnostic Four-Level Human-Supervised Decision-Support System
+# FRIB — one-click Windows edition
 
-MSU ECE capstone, Fall 2026. Sponsor: Facility for Rare Isotope Beams (FRIB).
+This is the lightweight system folder. It contains application code, sample inputs, documentation and setup scripts. It contains no installed Python, application packages, AI engines, model weights or saved user databases.
 
-A proof-of-concept that helps a human operator analyze an operational event.
-It never acts on its own: every summary passes through an
-Approve / Correct / Escalate gate.
+## Run
 
-| Level | What it does | Folder |
-|---|---|---|
-| 1 | Ingestion and provenance | `ingestion/` |
-| 2 | Cleaning, alignment, FFT, plotting | `processing/` |
-| 3 | Retrieval over procedures and manuals (RAG) | `rag/` |
-| 4 | Draft summaries, hypothesis ranking, human review gate | `knowledge/` |
+1. Extract the complete ZIP into a writable folder on your Windows computer.
+2. Double-click **START_PROJECT.bat**.
+3. Keep its window open during first setup. The browser opens automatically when the workspace is ready.
 
-## Repository layout
+The first launch creates **dependencies** beside the batch file and installs private Python, the pinned application packages, portable Ollama, Qwen3 4B and MiniLM embeddings there. It verifies the real models before starting the application. Internet access and several gigabytes of free storage are needed for first setup. No existing Python or Ollama installation is required, and setup does not change the system PATH.
 
-| Folder | Contents |
-|---|---|
-| `schemas/` | The data contract: JSON Schemas for the three input types, plus examples |
-| `generator/` | Synthetic Engineering Data Generator; see `generator/README.md` |
-| `ingestion/` | Level 1 |
-| `processing/` | Level 2 |
-| `rag/` | Level 3 |
-| `knowledge/` | Level 4 |
-| `dashboard/` | Streamlit interface |
-| `scripts/` | Data download and conversion scripts |
-| `data/` | `sources.json` lists the datasets; `external/` and `converted/` hold the files (not committed to git) |
-| `tests/` | Automated checks |
-| `docs/` | Design notes and data-source survey |
+Later launches reuse the installation. Double-click **STOP_PROJECT.bat** to stop the workspace. Failed setup can be retried by opening START_PROJECT.bat again; cached downloads and saved data are retained. The setup log is `dependencies/logs/setup.log`.
 
-## The data contract
+## Locations
 
-Everything entering the system is one of three record types, and every
-record carries the same provenance block.
+- `FRIB_Final_Project/FRIB_Decision_Support`: application, docs and examples.
+- `setup`: the small first-run bootstrap scripts and package-version constraints.
+- `dependencies`: created on first launch; all installed tools, packages, AI assets and caches go here.
+- `FRIB_Final_Project/FRIB_Decision_Support/data-local-ai`: your saved workspace, created when the app runs.
 
-- `schemas/timeseries.schema.json`: sampled signals
-- `schemas/event_log.schema.json`: discrete state changes, alarms, interlocks
-- `schemas/document.schema.json`: procedures and manuals
-- `schemas/provenance.schema.json`: source, asset, operating mode, configuration, timestamps
+The app opens at http://127.0.0.1:8501. Keep the installed folder in the same location; Windows virtual environments contain absolute paths. To distribute a clean copy, share this original ZIP rather than a folder that already contains dependencies or saved data.
 
-No schema contains a field tied to one engineering domain. The domain is a
-free-text label in `provenance.asset.domain` and nothing may branch on it.
-See `docs/schema_overview.md`.
+## AI and workflow
 
-## Generating synthetic data
+Use **AI settings** to change the main model, add or remove models, enable hardware matching or configure the separate optional Data Quality Agent. On a clean install, enable the quality agent through **Quality agent → Get a small model**. All model downloads stay in dependencies. LM Studio remains an optional externally managed engine.
 
-```
-python3 -m generator --seed 42 --events 30    # writes data/generated/seed-42/
-python3 -m generator --list                   # show fields and scenarios
-```
+[Complete workflow](FRIB_Final_Project/FRIB_Decision_Support/docs/PRODUCT_WORKFLOW.md) · [AI settings](FRIB_Final_Project/FRIB_Decision_Support/docs/AI_SETTINGS.md) · [Quality agent](FRIB_Final_Project/FRIB_Decision_Support/docs/DATA_QUALITY_AGENT.md)
 
-Covers three fields (RF, mechanical, PLC) with 14 scenarios and 12
-procedure documents. See `generator/README.md`.
-
-## Getting real public data
-
-```
-python3 scripts/fetch_data.py      # download public datasets into data/external/
-python3 scripts/convert_data.py    # convert them into canonical records in data/converted/
-```
-
-Sources and licenses are listed in `docs/data_sources.md`. Downloaded and
-converted data are not committed to git.
-
-## Running the checks
-
-```
-pip install -r requirements.txt
-pytest
-```
-
-## Stack
-
-Python, Streamlit, ChromaDB, SentenceTransformers, Ollama, SQLite,
-Docker Compose. Everything runs locally at no cost.
+This package targets 64-bit Windows. The existing source launchers and documents for other platforms remain inside the application folder. The project audit documents remaining prototype and domain-validation limitations.

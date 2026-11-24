@@ -1,0 +1,11 @@
+{
+  "edition": "FRIB one-click Windows",
+  "source_commit": "eee290deac4da3ef884a5656cc66d1d382f1133c",
+  "created_utc": "2026-11-13T16:29:52.001032+00:00",
+  "installed_dependencies_included": false,
+  "dependencies_created_on_first_launch": true,
+  "launcher": "START_PROJECT.bat",
+  "pinned_python_packages": 80,
+  "bootstrap_tests_passed": 9,
+  "full_fresh_network_install_repeated": false
+}

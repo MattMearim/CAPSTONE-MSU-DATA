@@ -1,20 +1,12 @@
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-.pytest_cache/
-*.egg-info/
-
-# Local data and databases (downloaded or generated; do not commit)
-data/external/*
-!data/external/README.md
-data/generated/
-data/converted/
-*.sqlite
-*.db
-chroma/
-
-# Secrets and OS files
+/dependencies/
+**/data-local-ai/
+**/__pycache__/
+**/.pytest_cache/
+**/.frib/
+**/.venv/
+**/venv/
+**/ai-settings.json
+**/quality-agent.json
+**/ui-preferences.json
 .env
-.DS_Store
+**/.streamlit/secrets.toml
